@@ -1,13 +1,804 @@
-<!DOCTYPE html><html lang="hi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#6b183a"><title>Divya Sadhana V2</title><style>
-:root{--bg:#fff8f0;--card:#fff;--ink:#35202b;--muted:#795f70;--primary:#7d214b;--accent:#e6a34b;--border:#eed9c8}.dark{--bg:#171117;--card:#251c24;--ink:#f9e9f1;--muted:#c8adbe;--primary:#d76a98;--accent:#e6b45d;--border:#493341}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,'Noto Sans Devanagari',sans-serif}header{padding:25px;text-align:center;color:white;background:linear-gradient(135deg,#5b1838,#9d3b58,#dc8b3c)}nav{position:sticky;top:0;background:var(--card);z-index:4;display:flex;gap:7px;overflow:auto;padding:10px;border-bottom:1px solid var(--border)}button{border:0;border-radius:12px;background:var(--primary);color:white;padding:10px 14px;font-weight:600;cursor:pointer}nav button{white-space:nowrap}.alt{background:var(--card);border:1px solid var(--border);color:var(--ink)}main{max-width:1000px;margin:auto;padding:15px}.tab{display:none}.tab.on{display:block}.hero,.card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:17px;margin-bottom:13px}.hero{background:linear-gradient(135deg,#6b183a,#ad493f);color:white}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px}.tile{text-align:center;cursor:pointer}.emoji{font-size:38px}.muted{color:var(--muted)}input,textarea,select{padding:12px;width:100%;border:1px solid var(--border);border-radius:12px;background:var(--card);color:var(--ink);margin:6px 0}.mantra{font-size:24px;text-align:center;line-height:1.8;padding:14px;background:var(--bg);border-radius:14px}.counter{text-align:center}.number{font-size:66px;color:var(--accent);font-weight:bold}.mala{width:145px;height:145px;border-radius:50%;font-size:25px;background:radial-gradient(circle,#edbd66,#812447)}.bar{height:12px;background:var(--border);border-radius:20px;overflow:hidden}.bar div{height:100%;background:var(--accent);width:0}.row{display:flex;gap:10px;flex-wrap:wrap}.row>*{flex:1}.modal{display:none;position:fixed;inset:0;background:#0009;overflow:auto;padding:12px;z-index:9}.modal.show{display:block}.modalbox{max-width:700px;margin:25px auto;background:var(--card);border-radius:20px;padding:20px}footer{text-align:center;padding:20px;color:var(--muted)}
-</style></head><body><header><h1>🪔 Divya Sadhana</h1><p>भक्ति • मंत्र • जप • ध्यान • पूजा</p><small>Advanced Edition · दश महाविद्या + पर्व कैलेंडर</small></header><nav><button onclick="tab('home')">🏠 Home</button><button onclick="tab('vidya')">🔱 महाविद्या</button><button onclick="tab('japa')">📿 जप</button><button onclick="tab('puja')">🪔 पूजा</button><button onclick="tab('calendar')">🗓️ पर्व</button><button onclick="tab('planner')">📅 Planner</button><button onclick="tab('saved')">❤️ Saved</button><button onclick="tab('settings')">⚙️</button></nav><main>
-<section id="home" class="tab on"><div class="hero"><h2>दिव्य साधना में आपका स्वागत है</h2><p>दश महाविद्या, मंत्र स्मरण और दैनिक अभ्यास के लिए डिजिटल स्थान।</p><button onclick="tab('vidya')">अध्ययन शुरू करें</button></div><div class="grid"><div class="card"><h3>📿 दैनिक जप</h3><button onclick="tab('japa')">जप शुरू करें</button></div><div class="card"><h3>🔱 दश महाविद्या</h3><button onclick="tab('vidya')">देखें</button></div><div class="card"><h3>🪔 पूजा Checklist</h3><button onclick="tab('puja')">देखें</button></div><div class="card"><h3>आज का चिंतन</h3><p id="quote"></p></div></div></section>
-<section id="vidya" class="tab"><h2>🔱 दश महाविद्या</h2><input id="filter" placeholder="देवी खोजें..." oninput="render()"><div class="grid" id="deities"></div></section>
-<section id="japa" class="tab"><div class="card counter"><h2>📿 मंत्र जप</h2><select id="mantraSelect"></select><div class="number" id="num">0</div><button class="mala" onclick="inc()">जप +1</button><div class="row" style="margin-top:15px"><button class="alt" onclick="undo()">↩ Undo</button><button class="alt" onclick="reset()">Reset</button></div><hr><div class="row"><div>लक्ष्य<input id="goal" type="number" min="1" value="108" onchange="setGoal()"></div><div><p id="stats"></p><div class="bar"><div id="fill"></div></div></div></div><p id="done"></p><button class="alt" onclick="saveJapa()">आज का जप Save करें</button></div><div class="card"><h3>जप इतिहास</h3><div id="history"></div></div></section>
-<section id="puja" class="tab"><h2>🪔 सामान्य पूजा Checklist</h2><div class="card" id="checklist"></div><p class="muted">यह सामान्य devotional checklist है, विशेष तांत्रिक अनुष्ठान निर्देश नहीं।</p></section>
-<section id="calendar" class="tab"><h2>🗓️ पर्व एवं विशेष दिवस</h2><p class="muted">प्रमुख पर्वों की सूची और पारंपरिक तिथि। चंद्र-पंचांग के अनुसार अंग्रेज़ी तारीख हर वर्ष बदलती है।</p><div id="festivals"></div></section><section id="planner" class="tab"><h2>📅 साधना Planner</h2><div class="card"><textarea id="plan" rows="4" placeholder="आज का संकल्प / अभ्यास..."></textarea><button onclick="savePlan()">Save</button><h3>Saved Planner</h3><div id="planList"></div></div></section><section id="saved" class="tab"><h2>❤️ पसंदीदा देवी</h2><div class="grid" id="fav"></div></section><section id="settings" class="tab"><div class="card"><h2>⚙️ Settings</h2><button onclick="dark()">Dark / Light</button><hr><button class="alt" onclick="exportAll()">Data Export</button><p class="muted">डेटा इस ब्राउज़र के Local Storage में रहता है।</p></div></section></main><footer>Divya Sadhana Advanced · श्रद्धा, अध्ययन और ध्यान</footer><div class="modal" id="modal" onclick="if(event.target===this)close()"><div class="modalbox"><button class="alt" onclick="close()">✕</button><div id="detail"></div></div></div>
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#6b183a">
+<meta name="description" content="दिव्य साधना: दश महाविद्या, मंत्र, जप गणक, 51 शक्तिपीठ, पूजा विधि, दुर्गा सप्तशती और पर्व कैलेंडर।">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<title>Divya Sadhana · Premium V5</title>
+<style>
+:root{
+  --bg:#fdf6ef;
+  --card:#ffffff;
+  --ink:#2c1520;
+  --muted:#6b4f5e;
+  --primary:#7a1f45;
+  --on-primary:#fff;
+  --accent:#d4a04a;
+  --gold:#b8860b;
+  --border:#ead5c4;
+  --chip:#f8ebe0;
+  --shadow:0 8px 28px rgba(90,24,48,.08);
+  --radius:20px;
+  --fs:16px;
+}
+body.dark{
+  --bg:#120e12;
+  --card:#1f171c;
+  --ink:#f8e8f0;
+  --muted:#c4a8b8;
+  --primary:#e07a9e;
+  --on-primary:#1a0a12;
+  --accent:#e8c070;
+  --gold:#f0c860;
+  --border:#3d2a35;
+  --chip:#2a2026;
+  --shadow:0 10px 32px rgba(0,0,0,.35);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:system-ui,'Noto Sans Devanagari','Mukta',sans-serif;
+  font-size:var(--fs);
+  line-height:1.65;
+  padding-left:env(safe-area-inset-left);
+  padding-right:env(safe-area-inset-right);
+  background-image:radial-gradient(ellipse at top,#f5e6d8 0%,transparent 55%);
+}
+body.dark{background-image:radial-gradient(ellipse at top,#2a1a22 0%,transparent 50%)}
+header{
+  padding:28px 18px 24px;
+  text-align:center;
+  color:#fff;
+  background:linear-gradient(145deg,#4a122c 0%,#8b2d4a 45%,#c47a3a 100%);
+  position:relative;
+  overflow:hidden;
+}
+header::before{
+  content:"";
+  position:absolute;inset:0;
+  background:radial-gradient(circle at 80% 20%,rgba(255,200,120,.25),transparent 45%);
+  pointer-events:none;
+}
+header h1{margin:0;font-size:1.85em;letter-spacing:.02em;text-shadow:0 2px 12px rgba(0,0,0,.25)}
+header p{margin:6px 0 2px;opacity:.95}
+header small{opacity:.85;font-size:.82em}
+nav{
+  position:sticky;top:0;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  z-index:4;
+  display:flex;gap:8px;
+  overflow-x:auto;padding:12px 10px;
+  border-bottom:1px solid var(--border);
+  scrollbar-width:none;
+  box-shadow:0 2px 12px rgba(90,24,48,.04);
+}
+body.dark nav{background:rgba(31,23,28,.92)}
+nav::-webkit-scrollbar{display:none}
+button{
+  border:0;border-radius:14px;
+  background:var(--primary);color:var(--on-primary);
+  padding:11px 16px;font:inherit;font-weight:600;cursor:pointer;
+  transition:transform .15s,box-shadow .15s,background .15s;
+  box-shadow:0 2px 8px rgba(122,31,69,.2);
+}
+button:active{transform:scale(.97)}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+nav button{white-space:nowrap;background:var(--chip);color:var(--ink);box-shadow:none;font-weight:500}
+nav button.on{background:var(--primary);color:var(--on-primary);box-shadow:0 3px 10px rgba(122,31,69,.25)}
+.alt{background:var(--card);border:1px solid var(--border);color:var(--ink);box-shadow:none}
+.sm{padding:7px 12px;font-size:.85em;border-radius:10px}
+main{max-width:1040px;margin:auto;padding:18px 14px 36px}
+.tab{display:none}.tab.on{display:block}
+h2{margin:8px 0 14px;font-size:1.45em;letter-spacing:.01em}
+.hero,.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:18px;
+  margin-bottom:14px;
+  min-width:0;
+  box-shadow:var(--shadow);
+}
+.hero{
+  background:linear-gradient(145deg,#5c1836 0%,#9a3a48 50%,#c47a3a 100%);
+  color:#fff;border:0;
+  position:relative;overflow:hidden;
+}
+.hero::after{
+  content:"";
+  position:absolute;right:-20px;top:-30px;
+  width:180px;height:180px;
+  background:radial-gradient(circle,rgba(255,210,140,.2),transparent 70%);
+  pointer-events:none;
+}
+.hero .alt{color:#2c1520;background:#fff}
+.mata-img{
+  width:100%;max-width:280px;margin:0 auto 14px;display:block;
+  border-radius:16px;box-shadow:0 8px 24px rgba(0,0,0,.25);
+  object-fit:cover;aspect-ratio:3/4;background:#3a1528;
+}
+.mata-banner{
+  width:100%;max-height:220px;object-fit:cover;border-radius:16px;
+  margin-bottom:14px;box-shadow:0 6px 20px rgba(0,0,0,.2);
+}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:14px}
+.grid.w{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.tile{text-align:center;cursor:pointer;transition:transform .18s,box-shadow .18s}
+.tile:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(90,24,48,.12)}
+.tile h3{margin:8px 0 4px}
+.emoji{font-size:40px;line-height:1.2}
+.muted{color:var(--muted)}
+.small{font-size:.85em}
+label{display:block;font-size:.9em;color:var(--muted);margin-top:8px}
+input,textarea,select{
+  padding:13px;width:100%;
+  border:1px solid var(--border);border-radius:14px;
+  background:var(--card);color:var(--ink);margin:6px 0;font:inherit;
+  transition:border-color .15s,box-shadow .15s;
+}
+input:focus,textarea:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(212,160,74,.2)}
+input[type=checkbox]{width:auto;margin:0 8px 0 0;transform:scale(1.2)}
+.mantra{
+  font-size:1.5em;text-align:center;line-height:1.85;
+  padding:16px;background:linear-gradient(180deg,var(--bg),var(--chip));
+  border-radius:16px;white-space:pre-line;overflow-wrap:anywhere;
+  border:1px solid var(--border);
+}
+.ro{font-size:.9em;color:var(--muted);font-style:italic;text-align:center;white-space:pre-line;overflow-wrap:anywhere}
+.counter{text-align:center}
+.number{font-size:4.4em;color:var(--gold);font-weight:700;line-height:1.1;font-variant-numeric:tabular-nums;text-shadow:0 2px 8px rgba(184,134,11,.15)}
+.mala{
+  width:156px;height:156px;border-radius:50%;font-size:1.5em;color:#fff;
+  background:radial-gradient(circle at 35% 30%,#f0d080,#c47a3a 45%,#7a1f45);
+  touch-action:manipulation;
+  box-shadow:0 0 0 10px var(--chip),0 8px 24px rgba(122,31,69,.3);
+  margin:16px 0;transition:transform .12s;
+}
+.mala:active{transform:scale(.96)}
+.bar{height:12px;background:var(--border);border-radius:20px;overflow:hidden}
+.bar div{height:100%;background:linear-gradient(90deg,var(--accent),#e8c070);width:0;transition:width .25s}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-start}
+.row>*{flex:1 1 140px;min-width:0}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:4px 0 12px;scrollbar-width:none}
+.chips button{flex:none;background:var(--chip);color:var(--ink);font-weight:500;border-radius:999px;padding:8px 15px;box-shadow:none}
+.chips button.on{background:var(--primary);color:var(--on-primary);box-shadow:0 3px 10px rgba(122,31,69,.22)}
+.lbl{font-size:.72em;letter-spacing:.08em;color:var(--gold);font-weight:700;text-transform:uppercase}
+.badge{display:inline-block;font-size:.75em;padding:3px 10px;border-radius:999px;background:var(--chip);color:var(--muted)}
+.badge.guru{background:#fde3d6;color:#8a2b0e}
+body.dark .badge.guru{background:#4a2418;color:#ffb89c}
+.stat{text-align:center}
+.stat b{display:block;font-size:1.7em;color:var(--gold);font-variant-numeric:tabular-nums}
+details.card summary{cursor:pointer;font-weight:600}
+.check{display:flex;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border)}
+.check:last-child{border-bottom:0}
+.check.done span{text-decoration:line-through;color:var(--muted)}
+.modal{display:none;position:fixed;inset:0;background:rgba(20,8,15,.72);overflow:auto;padding:14px;z-index:9;backdrop-filter:blur(4px)}
+.modal.show{display:block}
+.modalbox{max-width:720px;margin:28px auto;background:var(--card);border-radius:22px;padding:22px;box-shadow:0 20px 50px rgba(0,0,0,.3)}
+.toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom));transform:translateX(-50%);background:#2c1520;color:#fff;padding:12px 20px;border-radius:999px;z-index:20;opacity:0;pointer-events:none;transition:opacity .2s;max-width:90vw;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.toast.show{opacity:1}
+.res{display:block;width:100%;text-align:left;background:var(--card);color:var(--ink);border:1px solid var(--border);margin:6px 0;font-weight:500;border-radius:14px}
+.res small{display:block;color:var(--muted);font-weight:400}
+.note{margin-top:22px;padding:16px;border:1px dashed var(--border);border-radius:14px;color:var(--muted);font-size:.9em;background:var(--chip)}
+.today{outline:2px solid var(--accent);outline-offset:1px}
+table{border-collapse:collapse;width:100%}
+td,th{border-bottom:1px solid var(--border);padding:10px 8px;text-align:left}
+.scroll{overflow-x:auto}
+footer{text-align:center;padding:24px;color:var(--muted);font-size:.9em}
+.ch-summary{margin:10px 0;line-height:1.7}
+.ch-summary b{color:var(--primary)}
+body.dark .ch-summary b{color:var(--accent)}
+img.lazy-deity{width:72px;height:72px;object-fit:cover;border-radius:50%;margin:0 auto 6px;display:block;border:3px solid var(--accent);box-shadow:0 4px 12px rgba(0,0,0,.15)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header>
+  <h1>🪔 Divya Sadhana</h1>
+  <p>भक्ति • मंत्र • जप • ध्यान • पूजा</p>
+  <small>Premium Edition V5 · माँ दुर्गा · दश महाविद्या · 51 शक्तिपीठ · दुर्गा सप्तशती · पर्व कैलेंडर</small>
+</header>
+<nav id="nav" aria-label="मुख्य मेनू"></nav>
+<main>
+
+<section id="home" class="tab on">
+  <div class="hero">
+    <img class="mata-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Durga_Mahisasuramardini.JPG/500px-Durga_Mahisasuramardini.JPG" alt="माँ दुर्गा महिषासुरमर्दिनी" loading="lazy" width="280" height="370">
+    <h2>जय माँ दुर्गा · दिव्य साधना</h2>
+    <p id="todayLine"></p>
+    <label for="gq" style="color:#fff">पूरे ऐप में खोजें</label>
+    <input id="gq" type="search" placeholder="काली, क्रीं, हिंगलाज, गायत्री, अध्याय 8…" autocomplete="off">
+    <div id="gres"></div>
+  </div>
+  <div class="grid w">
+    <div class="card"><h3>📿 आज की साधना</h3>
+      <div class="row">
+        <div class="stat"><b id="hToday">0</b>आज के जप</div>
+        <div class="stat"><b id="hStreak">0</b>दिन की लय</div>
+      </div>
+      <p><button data-act="tab" data-id="japa">जप शुरू करें</button></p>
+    </div>
+    <div class="card"><h3>🌅 आज का मंत्र</h3>
+      <div id="dailyM"></div>
+    </div>
+    <div class="card"><h3>आज का चिंतन</h3><p id="quote"></p></div>
+    <div class="card"><h3>🔱 आगे बढ़ें</h3>
+      <div class="chips" style="flex-wrap:wrap;overflow:visible">
+        <button data-act="tab" data-id="vidya">दश महाविद्या</button>
+        <button data-act="tab" data-id="peeth">शक्तिपीठ</button>
+        <button data-act="tab" data-id="saptashati">सप्तशती</button>
+        <button data-act="tab" data-id="puja">पूजा विधि</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="vidya" class="tab">
+  <h2>🔱 दश महाविद्या</h2>
+  <img class="mata-banner" src="https://upload.wikimedia.org/wikipedia/commons/7/77/Dasha_Mahavidya.jpg" alt="दश महाविद्या (राजस्थानी चित्र)" loading="lazy" style="max-height:320px;object-fit:contain;background:#1a0a12">
+  <label for="vf">देवी खोजें</label>
+  <input id="vf" type="search" placeholder="नाम, बीज, मंत्र या ग्रह…">
+  <div class="grid" id="deities"></div>
+  <h3>बीज मंत्र</h3>
+  <p class="muted">बीज अक्षर किसी देवता या शक्ति की सूक्ष्म ध्वनि माने जाते हैं।</p>
+  <div class="grid" id="beejs"></div>
+  <h3>तंत्र साधना: बुनियाद</h3>
+  <div class="grid w" id="tantra"></div>
+  <p class="note">छिन्नमस्ता, बगलामुखी, भैरवी, धूमावती जैसी उग्र विद्याओं की साधना योग्य गुरु से दीक्षा लेकर ही करने की परंपरा है। यह पन्ना उपासना और अध्ययन के लिए है, किसी फल की गारंटी नहीं।</p>
+</section>
+
+<section id="mantra" class="tab">
+  <h2>🕉️ मंत्र संग्रह</h2>
+  <label for="mf">मंत्र खोजें</label>
+  <input id="mf" type="search" placeholder="गायत्री, शिव, गणेश, शनि…">
+  <div class="chips" id="mchips" role="group" aria-label="श्रेणी"></div>
+  <div class="grid w" id="mlist"></div>
+</section>
+
+<section id="japa" class="tab">
+  <div class="card counter">
+    <h2>📿 मंत्र जप</h2>
+    <label for="mantraSelect">मंत्र चुनें</label>
+    <select id="mantraSelect"></select>
+    <label for="sankalp">संकल्प (वैकल्पिक)</label>
+    <input id="sankalp" maxlength="120" placeholder="जैसे: आज एक माला शांति के लिए">
+    <div class="number" id="num" aria-live="polite">0</div>
+    <div class="muted" id="malaTxt"></div>
+    <button class="mala" id="tapBtn" data-act="inc" aria-label="एक जप जोड़ें">जप +1</button>
+    <div class="row">
+      <button class="alt" data-act="undo">↩ Undo</button>
+      <button class="alt" id="resetBtn" data-act="reset">Reset</button>
+    </div>
+    <hr style="border:0;border-top:1px solid var(--border);margin:16px 0">
+    <div class="chips" id="goals" role="group" aria-label="लक्ष्य"></div>
+    <div class="row">
+      <div><label for="goal">लक्ष्य (जप)</label><input id="goal" type="number" min="1" max="100000" inputmode="numeric"></div>
+      <div><p id="stats" style="margin-bottom:6px"></p><div class="bar" role="progressbar" aria-label="लक्ष्य प्रगति"><div id="fill"></div></div></div>
+    </div>
+    <p id="done"></p>
+    <button data-act="save">आज का जप Save करें</button>
+    <p id="jmsg" class="muted small" aria-live="polite"></p>
+  </div>
+  <div class="card"><div class="row">
+    <div class="stat"><b id="jToday">0</b>आज</div>
+    <div class="stat"><b id="jStreak">0</b>दिन की लय</div>
+    <div class="stat"><b id="jTotal">0</b>कुल जप</div>
+  </div></div>
+  <div class="card"><h3>जप इतिहास</h3><div id="history"></div></div>
+</section>
+
+<section id="puja" class="tab">
+  <h2>🪔 पूजा विधि</h2>
+  <p class="muted">देवी पूजन का सामान्य क्रम, नवरात्रि विधि और हर महाविद्या के लिए प्रचलित सामग्री।</p>
+  <div class="card"><div class="row" style="align-items:center"><h3 style="margin:0">षोडशोपचार क्रम (12 चरण)</h3><button class="alt sm" id="pjReset" data-act="pjreset" style="flex:0 0 auto">चेक हटाएँ</button></div><div id="pjSteps"></div></div>
+  <h3>नवरात्रि विधि</h3>
+  <div class="grid w" id="pjNav"></div>
+  <h3>महाविद्या के अनुसार सामग्री</h3>
+  <div class="grid w" id="pjMv"></div>
+  <p class="note">पूजा-विधि परंपरा और संप्रदाय के अनुसार भिन्न हो सकती है। तिथि और मुहूर्त के लिए पंचांग या योग्य पंडित से पूछें।</p>
+</section>
+
+<section id="peeth" class="tab">
+  <h2>🛕 51 शक्तिपीठ</h2>
+  <details class="card"><summary>सती और शक्तिपीठ की कथा</summary><p id="spHi"></p><p class="muted" lang="en" id="spEn"></p></details>
+  <div class="row" style="align-items:end">
+    <div><label for="pf">पीठ खोजें</label><input id="pf" type="search" placeholder="कामाख्या, हिंगलाज, नेत्र…"></div>
+    <div class="card stat" style="margin:6px 0"><b id="pvis">0 / 51</b>दर्शन किए (आपके अनुसार)</div>
+  </div>
+  <div class="chips" id="pchips" role="group" aria-label="क्षेत्र"></div>
+  <div class="grid w" id="plist"></div>
+  <p class="note">सूची परंपरा और ग्रंथ के अनुसार बदलती है (पीठनिर्णय, तंत्रचूड़ामणि आदि)। कुछ पीठों के अंग, स्थान या भैरव में मतभेद मिलते हैं। उपयोग से पहले किसी प्रामाणिक ग्रंथ या पंडित से मिलान करें।</p>
+</section>
+
+<section id="saptashati" class="tab">
+  <h2>📖 दुर्गा सप्तशती · देवी माहात्म्य</h2>
+  <img class="mata-banner" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/11th_12th_century_Durga_Mahisasuramardini%2C_Alampur%2C_Telangana.jpg/800px-11th_12th_century_Durga_Mahisasuramardini%2C_Alampur%2C_Telangana.jpg" alt="माँ दुर्गा महिषासुरमर्दिनी (अलमपुर)" loading="lazy">
+  <p class="muted">700 श्लोक · 13 अध्याय · तीन चरित्र (प्रथम, मध्यम, उत्तम)। प्रत्येक अध्याय का सार हिन्दी व English में।</p>
+  <div class="card stat"><b id="dsProg">0 / 13</b>अध्याय पढ़े गए</div>
+  <h3>तीन चरित्र · 13 अध्याय</h3>
+  <div class="grid w" id="dsCh"></div>
+  <h3>पाठ क्रम</h3>
+  <div class="card"><p id="dsOrdHi"></p><p class="muted" lang="en" id="dsOrdEn"></p></div>
+  <h3>प्रमुख श्लोक</h3>
+  <div class="grid w" id="dsMt"></div>
+  <p class="note">यह अध्याय-सार अध्ययन और भक्ति के लिए है। पूरा पाठ किसी प्रामाणिक संस्करण (जैसे गीताप्रेस) से करें। परंपरा में नवरात्रि में अध्याय बाँटकर पाठ किया जाता है।</p>
+</section>
+
+<section id="calendar" class="tab">
+  <h2>🗓️ पर्व एवं विशेष दिवस</h2>
+  <p class="muted">पारंपरिक तिथि दी गई है। चंद्र-पंचांग के अनुसार अंग्रेज़ी तारीख हर वर्ष बदलती है, इसलिए तारीख पंचांग से देखें।</p>
+  <h3>वार और देवता</h3>
+  <div class="card scroll"><table id="dayTable"></table></div>
+  <h3>मासिक तिथियाँ</h3>
+  <div class="grid w" id="monthly"></div>
+  <h3>प्रमुख पर्व (चंद्र वर्ष के क्रम में)</h3>
+  <div class="grid w" id="festivals"></div>
+</section>
+
+<section id="meditate" class="tab">
+  <h2>🧘 ध्यान टाइमर</h2>
+  <div class="card counter">
+    <p class="muted">शांत बैठें, सहज श्वास लें और ध्यान करें।</p>
+    <div class="chips" id="medGoals"><button data-act="medset" data-sec="300">5 मिनट</button><button data-act="medset" data-sec="600">10 मिनट</button><button data-act="medset" data-sec="900">15 मिनट</button><button data-act="medset" data-sec="1800">30 मिनट</button></div>
+    <div class="number" id="medTime">10:00</div><div class="bar"><div id="medFill"></div></div>
+    <div class="row" style="margin-top:14px"><button id="medStart" data-act="medstart">▶ शुरू</button><button class="alt" data-act="medreset">↻ रीसेट</button></div>
+    <p id="medMsg" class="muted" aria-live="polite">10 मिनट चुनें या शुरू करें।</p>
+  </div>
+</section>
+
+<section id="planner" class="tab">
+  <h2>📅 साधना Planner</h2>
+  <div class="card">
+    <label for="plan">आज का संकल्प / अभ्यास</label>
+    <textarea id="plan" rows="4" placeholder="आज का संकल्प / अभ्यास…"></textarea>
+    <button data-act="plansave">Save</button>
+    <h3>Saved Planner</h3>
+    <div id="planList"></div>
+  </div>
+</section>
+
+<section id="saved" class="tab">
+  <h2>❤️ पसंदीदा</h2>
+  <div class="grid w" id="fav"></div>
+</section>
+
+<section id="settings" class="tab">
+  <div class="card">
+    <h2>⚙️ Settings</h2>
+    <div class="row">
+      <button data-act="dark">🌓 Dark / Light</button>
+      <button class="alt" data-act="fontdn" aria-label="अक्षर छोटे करें">A−</button>
+      <button class="alt" data-act="fontup" aria-label="अक्षर बड़े करें">A+</button>
+    </div>
+    <label><input type="checkbox" id="vibOn"> जप पर कंपन (vibration)</label>
+    <hr style="border:0;border-top:1px solid var(--border);margin:16px 0">
+    <div class="row">
+      <button class="alt" data-act="export">Data Export</button>
+      <button class="alt" data-act="import">Data Import</button>
+      <button class="alt" id="wipeBtn" data-act="wipe">सारा डेटा हटाएँ</button>
+    </div>
+    <input id="impFile" type="file" accept="application/json" hidden>
+    <p class="muted small">डेटा इस ब्राउज़र के Local Storage में रहता है। Export से बैकअप लें।</p>
+  </div>
+  <div class="card">
+    <h3>सूचना</h3>
+    <p class="small">यह ऐप भक्ति और अध्ययन के लिए है। किसी भी तांत्रिक प्रयोग या टोटके के लिए योग्य गुरु से मार्गदर्शन लें। ऐप कोई परिणाम की गारंटी नहीं देता। स्वास्थ्य और कानूनी विषयों में पेशेवर सलाह लें।</p>
+  </div>
+</section>
+
+</main>
+<footer>Divya Sadhana Premium V5 · माँ दुर्गा · श्रद्धा, अध्ययन और ध्यान</footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="विवरण"><div class="modalbox"><button class="alt" data-act="closemodal" aria-label="बंद करें">✕</button><div id="detail"></div></div></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
 <script>
-const D=[['kali','माँ काली','🖤','काल, परिवर्तन, निर्भयता और शक्ति के प्रतीक रूप में पूजित।','ॐ क्रीं कालिकायै नमः','काली परंपरा में शक्ति और परिवर्तन का प्रतीक।'],['tara','माँ तारा','🔵','करुणा, मार्गदर्शन और संकट से पार जाने के प्रतीक रूप में पूजित।','ॐ तारे तुत्तारे तुरे स्वाहा','यह मंत्र बौद्ध तारा परंपरा में भी प्रसिद्ध है।'],['tripura','माँ त्रिपुरसुन्दरी','🌺','श्रीविद्या परंपरा की प्रमुख देवी।','ॐ श्रीं ह्रीं क्लीं','विशिष्ट श्रीविद्या मंत्रों के लिए परंपरागत गुरु मार्गदर्शन लें।'],['bhuvaneshwari','माँ भुवनेश्वरी','🌍','विश्व और व्यापक चेतना की देवी के रूप में पूजित।','ॐ ह्रीं भुवनेश्वर्यै नमः',''],['bhairavi','माँ भैरवी','🔥','तप, अनुशासन और शक्ति की परंपरा से जुड़ी महाविद्या।','ॐ ह्रीं भैरव्यै नमः',''],['chinnamasta','माँ छिन्नमस्ता','⚡','त्याग, आत्मबल और गहन प्रतीकवाद की महाविद्या।','ॐ ह्रीं छिन्नमस्तायै नमः','विशिष्ट साधना में गुरु मार्गदर्शन आवश्यक माना जाता है।'],['dhumavati','माँ धूमावती','🌫️','वैराग्य और जीवन के कठिन अनुभवों से संबंधित महाविद्या।','ॐ धूं धूमावत्यै नमः',''],['bagalamukhi','माँ बगलामुखी','🟡','वाणी, शक्ति और स्तम्भन प्रतीकवाद से संबंधित महाविद्या।','ॐ ह्लीं बगलामुख्यै नमः','विशिष्ट अनुष्ठान के लिए गुरु मार्गदर्शन लें।'],['matangi','माँ मातंगी','🎵','वाणी, संगीत, कला और ज्ञान से संबंधित महाविद्या।','ॐ ह्रीं मातंग्यै नमः',''],['kamala','माँ कमला','🪷','समृद्धि, सौभाग्य और लक्ष्मी स्वरूप से संबंधित महाविद्या।','ॐ श्रीं कमलायै नमः','']];
-const FEST=[['दीपावली','महालक्ष्मी पूजा','कार्तिक अमावस्या'],['गणेश चतुर्थी','गणेश पूजा','भाद्रपद शुक्ल चतुर्थी'],['महाशिवरात्रि','शिव पूजा','फाल्गुन कृष्ण चतुर्दशी'],['हनुमान जयंती','हनुमान पूजा','चैत्र पूर्णिमा (क्षेत्रीय परंपराएँ भिन्न)'],['चैत्र नवरात्रि','दुर्गा पूजा','चैत्र शुक्ल प्रतिपदा से नवमी'],['शारदीय नवरात्रि','दुर्गा पूजा','आश्विन शुक्ल प्रतिपदा से नवमी'],['जन्माष्टमी','कृष्ण पूजा','भाद्रपद कृष्ण अष्टमी'],['राम नवमी','श्रीराम पूजा','चैत्र शुक्ल नवमी'],['रक्षाबंधन','पर्व','श्रावण पूर्णिमा'],['होली','रंगोत्सव','फाल्गुन पूर्णिमा']];
-let favs=JSON.parse(localStorage.getItem('dv2_favs')||'[]'),ct=+localStorage.getItem('dv2_ct')||0,goal=+localStorage.getItem('dv2_goal')||108,hist=JSON.parse(localStorage.getItem('dv2_hist')||'[]'),plans=JSON.parse(localStorage.getItem('dv2_plans')||'[]');function tab(id){document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));document.getElementById(id).classList.add('on');if(id==='saved')favorites();if(id==='japa')update();scrollTo({top:0,behavior:'smooth'})}function render(){let q=(document.getElementById('filter').value||'').toLowerCase();document.getElementById('deities').innerHTML=D.filter(d=>d[1].toLowerCase().includes(q)).map(d=>`<div class="card tile" onclick="openD('${d[0]}')"><div class="emoji">${d[2]}</div><h3>${d[1]}</h3><small class="muted">परिचय · मंत्र</small><p><button>विवरण</button></p></div>`).join('')}function openD(id){let d=D.find(x=>x[0]===id);document.getElementById('detail').innerHTML=`<h2>${d[2]} ${d[1]}</h2><p>${d[3]}</p><h3>मंत्र</h3><div class="mantra">${d[4]}</div><p>${d[5]}</p><div class="row"><button onclick="copy('${d[4]}')">मंत्र Copy</button><button class="alt" onclick="toggleFav('${id}')">${favs.includes(id)?'❤️ हटाएँ':'❤️ पसंद में जोड़ें'}</button></div><p class="muted">पाठ-विधि परंपरा के अनुसार भिन्न हो सकती है।</p>`;document.getElementById('modal').classList.add('show')}function close(){document.getElementById('modal').classList.remove('show')}function toggleFav(id){favs.includes(id)?favs=favs.filter(x=>x!==id):favs.push(id);localStorage.setItem('dv2_favs',JSON.stringify(favs));close();favorites()}function favorites(){document.getElementById('fav').innerHTML=favs.length?D.filter(d=>favs.includes(d[0])).map(d=>`<div class="card tile" onclick="openD('${d[0]}')"><div class="emoji">${d[2]}</div><h3>${d[1]}</h3></div>`).join(''):'<p>अभी कोई पसंदीदा नहीं।</p>'}function inc(){ct++;localStorage.setItem('dv2_ct',ct);update();if(ct===goal&&navigator.vibrate)navigator.vibrate([100,80,100])}function undo(){if(ct>0)ct--;localStorage.setItem('dv2_ct',ct);update()}function reset(){if(confirm('जप Reset करें?')){ct=0;localStorage.setItem('dv2_ct',ct);update()}}function setGoal(){goal=Math.max(1,+document.getElementById('goal').value||108);localStorage.setItem('dv2_goal',goal);update()}function update(){document.getElementById('num').textContent=ct;document.getElementById('goal').value=goal;document.getElementById('stats').textContent=ct+' / '+goal;document.getElementById('fill').style.width=Math.min(100,ct/goal*100)+'%';document.getElementById('done').textContent=ct>=goal?'🙏 लक्ष्य पूरा हुआ!':'';document.getElementById('history').innerHTML=hist.slice().reverse().map(x=>`<p>${x.date}: ${x.count} जप — ${x.mantra}</p>`).join('')||'अभी इतिहास खाली है'}function saveJapa(){hist.push({date:new Date().toLocaleDateString('hi-IN'),count:ct,mantra:document.getElementById('mantraSelect').value});localStorage.setItem('dv2_hist',JSON.stringify(hist));update();alert('जप इतिहास सेव हुआ')}function copy(t){navigator.clipboard?.writeText(t).then(()=>alert('Copy हुआ')).catch(()=>alert(t))}function dark(){document.body.classList.toggle('dark');localStorage.setItem('dv2_dark',document.body.classList.contains('dark'))}function savePlan(){let v=document.getElementById('plan').value.trim();if(!v)return;plans.push({date:new Date().toLocaleDateString('hi-IN'),text:v});localStorage.setItem('dv2_plans',JSON.stringify(plans));document.getElementById('plan').value='';showPlans()}function showPlans(){document.getElementById('planList').innerHTML=plans.slice().reverse().map(x=>`<div class="card"><small>${x.date}</small><p>${x.text}</p></div>`).join('')}function exportAll(){let data={favorites:favs,japaCount:ct,target:goal,history:hist,planner:plans},a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));a.download='divya-sadhana-backup.json';a.click()}document.getElementById('festivals').innerHTML=FEST.map(f=>`<div class="card"><h3>${f[0]}</h3><p>${f[1]}</p><small class="muted">${f[2]}</small></div>`).join('');document.getElementById('mantraSelect').innerHTML=D.map(d=>`<option>${d[4]}</option>`).join('');let steps=['पूजा स्थान स्वच्छ करें','दीपक सुरक्षित स्थान पर रखें','जल एवं पुष्प अर्पित करें','इष्ट का ध्यान करें','मंत्र स्मरण करें','प्रार्थना करें','पूजा के बाद अग्नि सुरक्षित रखें'];document.getElementById('checklist').innerHTML=steps.map((s,i)=>`<label style="display:block;padding:10px"><input type="checkbox" style="width:auto"> ${i+1}. ${s}</label>`).join('');document.getElementById('quote').textContent=['कुछ क्षण शांत होकर मंत्र स्मरण करें।','भक्ति के साथ नियमितता भी साधना है।','ध्यान, शांति और सद्भाव का अभ्यास करें।'][new Date().getDate()%3];render();update();showPlans();if(localStorage.getItem('dv2_dark')==='true')document.body.classList.add('dark');
-</script></body></html>
+const DATA={"MV":[{"n":1,"name":"काली","rm":"Kālī","beej":"क्रीं","roop":"काल की अधिष्ठात्री। श्याम वर्ण, मुण्डमाला, खड्ग। समय, मृत्यु और अहंकार के नाश का प्रतीक।","mantra":"ॐ क्रीं कालिकायै नमः","ro":"Oṃ Krīṃ Kālikāyai Namaḥ","graha":"शनि","bhav":"भय, काल और बंधन से मुक्ति का भाव।"},{"n":2,"name":"तारा","rm":"Tārā","beej":"स्त्रीं","roop":"नील वर्ण। संकट से तारने वाली माँ। बौद्ध और हिन्दू दोनों परंपराओं में पूज्य।","mantra":"ॐ ह्रीं स्त्रीं हूं फट्","ro":"Oṃ Hrīṃ Strīṃ Hūṃ Phaṭ","graha":"गुरु (बृहस्पति)","bhav":"ज्ञान, वाणी और संकट से पार जाने का भाव।"},{"n":3,"name":"त्रिपुर सुन्दरी (षोडशी)","rm":"Tripura Sundarī / Ṣoḍaśī","beej":"सौः","roop":"सोलह कलाओं से पूर्ण, सौंदर्य की परम देवी। श्रीविद्या की मुख्य देवी, श्रीयंत्र उनका यंत्र।","mantra":"ऐं क्लीं सौः","ro":"Aiṃ Klīṃ Sauḥ","graha":"बुध","bhav":"सौंदर्य, बुद्धि और पूर्णता का भाव। षोडशी मंत्र दीक्षा से मिलता है; ऊपर का बाला त्रिपुरा बीज-त्रय है।"},{"n":4,"name":"भुवनेश्वरी","rm":"Bhuvaneśvarī","beej":"ह्रीं","roop":"भुवनों की स्वामिनी। आकाश तत्त्व, दिशा और काल की अधिष्ठात्री। सौम्य और ऐश्वर्यमयी।","mantra":"ॐ ह्रीं भुवनेश्वर्यै नमः","ro":"Oṃ Hrīṃ Bhuvaneśvaryai Namaḥ","graha":"चन्द्रमा","bhav":"स्थिरता, विस्तार और मानसिक शांति का भाव।"},{"n":5,"name":"भैरवी (त्रिपुर भैरवी)","rm":"Bhairavī","beej":"ह्सैं","roop":"उग्र और तपस्विनी। रक्त वर्ण, तप और भीतरी ऊर्जा का रूप। भैरव की शक्ति।","mantra":"ॐ ह्रीं भैरव्यै नमः","ro":"Oṃ Hrīṃ Bhairavyai Namaḥ","graha":"लग्न / मंगल (परंपरा में मतभेद)","bhav":"तप, अनुशासन और ऊर्जा के नियमन का भाव।"},{"n":6,"name":"छिन्नमस्ता","rm":"Chinnamastā","beej":"ह्रीं","roop":"अपना मस्तक स्वयं काटे हुए, तीन रक्तधाराएँ। त्याग, आत्म-नियंत्रण और काम-क्रोध पर विजय का प्रतीक।","mantra":"श्रीं ह्रीं क्लीं ऐं वज्रवैरोचनीये हूं हूं फट् स्वाहा","ro":"Śrīṃ Hrīṃ Klīṃ Aiṃ Vajravairocanīye Hūṃ Hūṃ Phaṭ Svāhā","graha":"राहु","bhav":"आत्म-त्याग और जीवन-मृत्यु के चक्र की समझ। उग्र साधना, गुरु आवश्यक।"},{"n":7,"name":"धूमावती","rm":"Dhūmāvatī","beej":"धूं","roop":"धूम्र वर्ण, विधवा रूप, काकध्वज रथ। अभाव, वैराग्य और अज्ञान के नाश की देवी।","mantra":"ॐ धूं धूं धूमावती ठः ठः","ro":"Oṃ Dhūṃ Dhūṃ Dhūmāvatī Ṭhaḥ Ṭhaḥ","graha":"केतु","bhav":"वैराग्य और जीवन की नश्वरता की समझ।"},{"n":8,"name":"बगलामुखी","rm":"Bagalāmukhī","beej":"ह्लीं","roop":"पीताम्बरा। पीले वस्त्र, हल्दी की माला। वाणी और विघ्न को स्तंभित करने वाली शक्ति।","mantra":"ॐ ह्लीं बगलामुख्यै नमः","ro":"Oṃ Hlīṃ Bagalāmukhyai Namaḥ","graha":"मंगल","bhav":"वाणी पर संयम और बाधाओं के शमन का भाव।"},{"n":9,"name":"मातंगी","rm":"Mātaṅgī","beej":"ऐं","roop":"तंत्र की सरस्वती। हरित वर्ण, वीणा। वाणी, संगीत और कला की अधिष्ठात्री।","mantra":"ॐ ह्रीं क्लीं हूं मातंग्यै फट् स्वाहा","ro":"Oṃ Hrīṃ Klīṃ Hūṃ Mātaṅgyai Phaṭ Svāhā","graha":"सूर्य","bhav":"वाणी, कला और विद्या का भाव।"},{"n":10,"name":"कमला","rm":"Kamalā","beej":"श्रीं","roop":"कमल पर विराजमान, हाथी अभिषेक करते हुए। लक्ष्मी का तांत्रिक रूप।","mantra":"ॐ श्रीं ह्रीं श्रीं कमले कमलालये प्रसीद प्रसीद श्रीं ह्रीं श्रीं ॐ महालक्ष्म्यै नमः","ro":"Oṃ Śrīṃ Hrīṃ Śrīṃ Kamale Kamalālaye Prasīda Prasīda Śrīṃ Hrīṃ Śrīṃ Oṃ Mahālakṣmyai Namaḥ","graha":"शुक्र","bhav":"समृद्धि, सौंदर्य और संतोष का भाव।"}],"BJ":[["ॐ","प्रणव। सब मंत्रों का आदि"],["ऐं","वाग्बीज। सरस्वती, मातंगी"],["ह्रीं","मायाबीज। भुवनेश्वरी"],["श्रीं","लक्ष्मी बीज। कमला"],["क्लीं","कामबीज। आकर्षण शक्ति"],["क्रीं","काली बीज"],["हूं","कवच / भैरव बीज"],["गं","गणेश बीज"],["दुं","दुर्गा बीज"],["ह्लीं","बगलामुखी बीज"],["धूं","धूमावती बीज"],["स्त्रीं","तारा बीज"],["सौः","त्रिपुरा / शक्ति बीज"],["ह्रौं","शिव बीज"],["हं","हनुमान / आकाश बीज"],["फट्","अस्त्र बीज"]],"MT":[["वैदिक",[["गायत्री मंत्र","ॐ भूर्भुवः स्वः तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि धियो यो नः प्रचोदयात्","Oṃ Bhūr Bhuvaḥ Svaḥ Tat Savitur Vareṇyaṃ Bhargo Devasya Dhīmahi Dhiyo Yo Naḥ Pracodayāt"],["महामृत्युंजय मंत्र","ॐ त्र्यम्बकं यजामहे सुगन्धिं पुष्टिवर्धनम् । उर्वारुकमिव बन्धनान्मृत्योर्मुक्षीय माऽमृतात् ॥","Oṃ Tryambakaṃ Yajāmahe Sugandhiṃ Puṣṭivardhanam, Urvārukamiva Bandhanān Mṛtyormukṣīya Mā'mṛtāt"]]],["शिव",[["पंचाक्षरी","ॐ नमः शिवाय","Oṃ Namaḥ Śivāya"]]],["गणेश",[["गणेश बीज मंत्र","ॐ गं गणपतये नमः","Oṃ Gaṃ Gaṇapataye Namaḥ"]]],["विष्णु",[["द्वादशाक्षर","ॐ नमो भगवते वासुदेवाय","Oṃ Namo Bhagavate Vāsudevāya"]]],["देवी",[["नवार्ण मंत्र","ॐ ऐं ह्रीं क्लीं चामुण्डायै विच्चे","Oṃ Aiṃ Hrīṃ Klīṃ Cāmuṇḍāyai Vicce"],["दुर्गा","ॐ दुं दुर्गायै नमः","Oṃ Duṃ Durgāyai Namaḥ"],["लक्ष्मी","ॐ श्रीं महालक्ष्म्यै नमः","Oṃ Śrīṃ Mahālakṣmyai Namaḥ"],["सरस्वती","ॐ ऐं सरस्वत्यै नमः","Oṃ Aiṃ Sarasvatyai Namaḥ"]]],["हनुमान और भैरव",[["हनुमान","ॐ हं हनुमते नमः","Oṃ Haṃ Hanumate Namaḥ"],["काल भैरव","ॐ काल भैरवाय नमः","Oṃ Kāla Bhairavāya Namaḥ"],["बटुक भैरव","ॐ ह्रीं बटुकाय आपदुद्धारणाय कुरु कुरु बटुकाय ह्रीं","Oṃ Hrīṃ Baṭukāya Āpaduddhāraṇāya Kuru Kuru Baṭukāya Hrīṃ"]]],["नवग्रह बीज मंत्र",[["सूर्य","ॐ ह्रां ह्रीं ह्रौं सः सूर्याय नमः","Oṃ Hrāṃ Hrīṃ Hrauṃ Saḥ Sūryāya Namaḥ"],["चन्द्र","ॐ श्रां श्रीं श्रौं सः चन्द्रमसे नमः","Oṃ Śrāṃ Śrīṃ Śrauṃ Saḥ Candramase Namaḥ"],["मंगल","ॐ क्रां क्रीं क्रौं सः भौमाय नमः","Oṃ Krāṃ Krīṃ Krauṃ Saḥ Bhaumāya Namaḥ"],["बुध","ॐ ब्रां ब्रीं ब्रौं सः बुधाय नमः","Oṃ Brāṃ Brīṃ Brauṃ Saḥ Budhāya Namaḥ"],["गुरु","ॐ ग्रां ग्रीं ग्रौं सः गुरवे नमः","Oṃ Grāṃ Grīṃ Grauṃ Saḥ Gurave Namaḥ"],["शुक्र","ॐ द्रां द्रीं द्रौं सः शुक्राय नमः","Oṃ Drāṃ Drīṃ Drauṃ Saḥ Śukrāya Namaḥ"],["शनि","ॐ प्रां प्रीं प्रौं सः शनैश्चराय नमः","Oṃ Prāṃ Prīṃ Prauṃ Saḥ Śanaiścarāya Namaḥ"],["राहु","ॐ भ्रां भ्रीं भ्रौं सः राहवे नमः","Oṃ Bhrāṃ Bhrīṃ Bhrauṃ Saḥ Rāhave Namaḥ"],["केतु","ॐ स्रां स्रीं स्रौं सः केतवे नमः","Oṃ Srāṃ Srīṃ Srauṃ Saḥ Ketave Namaḥ"]]]],"TN":[["गुरु और दीक्षा","तंत्र परंपरा में मंत्र गुरु-मुख से मिलता है। दीक्षा के बिना उग्र विद्याओं की साधना वर्जित मानी गई है।"],["संकल्प","साधना शुरू करने से पहले उद्देश्य, संख्या और अवधि का मन में निश्चय। जल हाथ में लेकर किया जाता है।"],["आसन, दिशा, काल","एक ही आसन, एक ही दिशा और एक ही समय पर नित्य बैठना। ब्रह्म मुहूर्त और रात्रि का मध्य काल प्रचलित हैं।"],["न्यास","अंगों में मंत्राक्षर स्थापित करने की क्रिया। करन्यास और अंगन्यास जप से पहले किए जाते हैं।"],["विनियोग","मंत्र का ऋषि, छंद, देवता, बीज और शक्ति बताने वाला संकल्प वाक्य।"],["जप और माला","जप वाचिक, उपांशु या मानसिक होता है। माला 108 मनकों की। रुद्राक्ष, स्फटिक, हल्दी (बगलामुखी) आदि मंत्र के अनुसार।"],["पुरश्चरण","मंत्र के जितने अक्षर, उतने लाख जप का अनुष्ठान। इसका दशांश हवन, उसका दशांश तर्पण, फिर मार्जन और भोजन।"],["यंत्र","देवी का ज्यामितीय रूप। श्रीयंत्र (षोडशी), बगलामुखी यंत्र आदि। प्राण-प्रतिष्ठा के बाद पूजा।"],["नियम और संयम","सात्त्विक आहार, ब्रह्मचर्य, मौन और सत्य। साधना के दौरान नींद और स्वास्थ्य का ध्यान रखना भी नियम का हिस्सा है।"],["मार्ग","दक्षिणाचार (सात्त्विक, वैदिक-निकट) और वामाचार (गुप्त, कठिन)। आरंभ के लिए पहला मार्ग ही परंपरा में बताया गया है।"]],"SP":[["हिंगलाज","बलूचिस्तान, पाकिस्तान","ब्रह्मरंध्र (सिर का ऊपरी भाग)","कोट्टरी","भीमलोचन"],["शिवहरकरय (शर्कररे)","कराची, पाकिस्तान","नेत्र","महिषमर्दिनी","क्रोधीश"],["सुगंधा","शिकारपुर, बांग्लादेश","नासिका","सुनंदा","त्र्यंबक"],["अमरनाथ","कश्मीर, भारत","कंठ","महामाया","त्रिसंध्येश्वर"],["ज्वालामुखी","कांगड़ा, हिमाचल, भारत","जिह्वा","सिद्धिदा (अम्बिका)","उन्मत्त"],["जालंधर (त्रिपुरमालिनी)","पंजाब, भारत","बायाँ स्तन","त्रिपुरमालिनी","भीषण"],["वैद्यनाथ","देवघर, झारखंड, भारत","हृदय","जयदुर्गा","वैद्यनाथ"],["गुह्येश्वरी","पशुपतिनाथ, नेपाल","दोनों घुटने","महामाया","कपाली"],["मानस","मानसरोवर, तिब्बत","दायाँ हाथ","दाक्षायणी","अमर"],["बिरजा","जाजपुर, ओडिशा, भारत","नाभि","विमला","जगन्नाथ"],["गंडकी","मुक्तिनाथ, नेपाल","दायाँ कपोल","गंडकी चंडी","चक्रपाणि"],["बहुला","केतुग्राम, बंगाल, भारत","बायाँ हाथ","बहुला","भीरुक"],["मंगल चंडिका","उजानी, बंगाल, भारत","दायीं कलाई","मंगल चंडिका","कपिलांबर"],["त्रिपुर सुंदरी","उदयपुर, त्रिपुरा, भारत","दायाँ पैर","त्रिपुरसुंदरी","त्रिपुरेश"],["भवानी","सीताकुंड, बांग्लादेश","दायाँ हाथ","भवानी","चंद्रशेखर"],["भ्रामरी","जलपाईगुड़ी, बंगाल, भारत","बायाँ पैर","भ्रामरी","अंबर"],["कामाख्या","गुवाहाटी, असम, भारत","योनि","कामाख्या","उमानंद"],["युगाद्या","क्षीरग्राम, बंगाल, भारत","दाएँ पैर का अंगूठा","युगाद्या","क्षीरकंटक"],["कालीघाट","कोलकाता, भारत","दाएँ पैर की उंगलियाँ","कालिका","नकुलेश"],["ललिता","प्रयागराज, उत्तर प्रदेश, भारत","हाथ की उंगलियाँ","ललिता","भव"],["जयंती","नर्तियांग, मेघालय, भारत","बायीं जांघ","जयंती","क्रमदीश्वर"],["किरीट","मुर्शिदाबाद, बंगाल, भारत","मुकुट","विमला","संवर्त"],["विशालाक्षी (मणिकर्णिका)","वाराणसी, भारत","कर्णकुंडल / मणि","विशालाक्षी","कालभैरव"],["कन्याश्रम (कन्याकुमारी)","तमिलनाडु, भारत","पीठ","शर्वाणी","निमिष"],["सावित्री (भद्रकाली)","कुरुक्षेत्र, हरियाणा, भारत","एड़ी (टखना)","सावित्री","स्थाणु"],["गायत्री (मणिबंध)","पुष्कर, राजस्थान, भारत","दोनों कलाइयाँ","गायत्री","सर्वानंद"],["महालक्ष्मी (श्रीशैल)","सिलहट, बांग्लादेश","गर्दन","महालक्ष्मी","संबरानंद"],["देवगर्भा (कंकालिताला)","बीरभूम, बंगाल, भारत","कटि (श्रोणि)","देवगर्भा","रुरु"],["नर्मदा (शोणदेश)","अमरकंटक, मध्य प्रदेश, भारत","दायाँ नितंब","नर्मदा","भद्रसेन"],["शिवानी (रामगिरि)","चित्रकूट, भारत","दायाँ स्तन","शिवानी","चंड"],["उमा","वृंदावन, उत्तर प्रदेश, भारत","केश","उमा","भूतेश"],["नारायणी (शुचि)","सुचींद्रम, तमिलनाडु, भारत","ऊपरी दाँत","नारायणी","संहार"],["वाराही (पंचसागर)","पंचसागर (स्थान पर मतभेद)","निचले दाँत","वाराही","महारुद्र"],["जयदुर्गा (कर्णाट)","कर्णाट (स्थान पर मतभेद)","दोनों कान","जयदुर्गा","अभीरु"],["श्रीसुंदरी","श्रीपर्वत, लद्दाख, भारत","दायाँ पायल / टखना","श्रीसुंदरी","सुंदरानंद"],["कपालिनी (विभाष)","तमलुक, बंगाल, भारत","बायाँ टखना","कपालिनी (भीमरूपा)","सर्वानंद"],["चंद्रभागा (प्रभास)","सोमनाथ, गुजरात, भारत","उदर","चंद्रभागा","वक्रतुंड"],["अवंती (भैरवपर्वत)","उज्जैन, मध्य प्रदेश, भारत","ऊपरी होंठ / कोहनी","अवंती","लंबकर्ण"],["जशोरेश्वरी","जेशोर, बांग्लादेश","हथेलियाँ और तलवे","जशोरेश्वरी","चंड"],["फुल्लरा (अट्टहास)","लाभपुर, बंगाल, भारत","निचला होंठ","फुल्लरा","विश्वेश"],["नंदिनी","सैंथिया, बंगाल, भारत","हार","नंदिनी","नंदिकेश्वर"],["इंद्राक्षी","लंका, श्रीलंका","पायल","इंद्राक्षी","राक्षसेश्वर"],["विश्वेश्वरी (सर्वशैल)","राजमहेंद्रवरम, आंध्र प्रदेश, भारत","बायाँ कपोल","विश्वेश्वरी","दंडपाणि"],["काली (कालमाधव)","मध्य प्रदेश, भारत","बायाँ नितंब","काली","असितांग"],["कुमारी (रत्नावली)","खानाकुल, बंगाल, भारत","दायाँ कंधा","कुमारी","घंटेश्वर"],["उमा (मिथिला)","जनकपुर, नेपाल/भारत सीमा","बायाँ कंधा","उमा","महोदर"],["कालिका (नलहाटी)","नलहाटी, बंगाल, भारत","कंठ-नली","कालिका","योगेश"],["अंबाजी","बनासकांठा, गुजरात, भारत","हृदय (परंपरा के अनुसार)","अंबाजी","बटुक"],["तारापीठ","बीरभूम, बंगाल, भारत","नेत्र की पुतली","तारा","चंद्रचूड़"],["शांकरी","त्रिंकोमाली, श्रीलंका","कटि / जघन","शांकरी","राक्षसेश्वर"],["अंबिका (विराट)","बैराट, राजस्थान, भारत","बाएँ पैर की उंगलियाँ","अंबिका","अमृत"]],"SPSTORY_HI":"प्रजापति दक्ष की पुत्री सती ने शिव से विवाह किया। दक्ष ने एक महायज्ञ किया और शिव को नहीं बुलाया। सती बिना बुलाए पहुँचीं, पर वहाँ शिव का अपमान सुनकर उन्होंने यज्ञ-अग्नि में प्राण त्याग दिए। शिव शोक और क्रोध में सती का शरीर कंधे पर लेकर तांडव करने लगे। सृष्टि को बचाने के लिए विष्णु ने सुदर्शन चक्र से शरीर के टुकड़े किए। वे अंग और आभूषण जहाँ-जहाँ गिरे, वहाँ शक्तिपीठ बने। हर पीठ पर देवी का एक रूप (शक्ति) और शिव का एक रूप (भैरव) रक्षक माने जाते हैं।","SPSTORY_EN":"Sati, daughter of Daksha, married Shiva. Daksha held a great sacrifice and did not invite him. Sati went uninvited, heard Shiva insulted, and gave up her life in the sacrificial fire. Shiva, mad with grief, carried her body and began the cosmic dance. To protect the world, Vishnu cut the body into pieces with his Sudarshana discus. The places where the limbs and ornaments fell became the Shakti Peethas. Each is guarded by a form of the Goddess (Shakti) and a form of Shiva (Bhairava).","PJ":[["1. संकल्प और शुद्धि","स्नान, स्वच्छ वस्त्र, आसन पर पूर्व या उत्तर मुख बैठना। आचमन, पवित्रीकरण और हाथ में जल लेकर संकल्प।","Bathe, sit facing east or north, sip water, and state your resolve with water in hand."],["2. गणेश और कलश पूजन","पहले गणेश, फिर जल से भरा कलश। कलश में देवताओं का आवाहन।","Worship Ganesha first, then the water pot (kalash)."],["3. आवाहन और आसन","देवी का ध्यान करके उन्हें बुलाना और आसन अर्पित करना।","Invite the Goddess in meditation and offer a seat."],["4. पाद्य, अर्घ्य, आचमन","चरण धोने, हाथ धोने और आचमन के लिए जल अर्पण।","Offer water for feet, hands and sipping."],["5. स्नान","जल, फिर पंचामृत (दूध, दही, घी, शहद, शक्कर) से स्नान, फिर शुद्ध जल।","Bathe the image: water, panchamrit, water again."],["6. वस्त्र और आभूषण","लाल चुनरी, सिंदूर, चूड़ी, आभूषण।","Red cloth, vermilion, bangles, ornaments."],["7. गंध, पुष्प, माला","चंदन, कुमकुम, ताज़े फूल। देवी को लाल गुड़हल प्रिय माना जाता है।","Sandal paste, kumkum, fresh flowers. Red hibiscus is favoured."],["8. धूप, दीप","धूप या अगरबत्ती और घी का दीपक।","Incense and a ghee lamp."],["9. नैवेद्य और ताम्बूल","फल, मिठाई, खीर, हलवा, पान-सुपारी।","Fruit, sweets, kheer, halwa, betel."],["10. मंत्र जप और पाठ","नित्य संख्या तय करके माला से जप। चाहें तो दुर्गा सप्तशती या चालीसा।","Chant a fixed number of rounds on a mala, or recite Saptashati."],["11. आरती और प्रदक्षिणा","आरती, परिक्रमा और पुष्पांजलि।","Aarti, circumambulation, flower offering."],["12. क्षमा प्रार्थना","भूल-चूक के लिए क्षमा माँगना और प्रसाद बाँटना।","Ask forgiveness for errors and distribute prasad."]],"NAV":[["घटस्थापना (प्रतिपदा)","शुभ मुहूर्त में मिट्टी में जौ बोकर कलश स्थापित करें। नारियल, आम के पत्ते और लाल चुनरी लगाएँ।","On day one, sow barley in soil, install the kalash with coconut and mango leaves."],["अखंड ज्योति","घी का दीपक नौ दिन जलाए रखने की परंपरा है। न हो सके तो सुबह-शाम का दीप भी मान्य।","A lamp is kept lit for nine days by custom; morning and evening lamps are also accepted."],["नौ दिन, नौ रूप","शैलपुत्री, ब्रह्मचारिणी, चंद्रघंटा, कूष्मांडा, स्कंदमाता, कात्यायनी, कालरात्रि, महागौरी, सिद्धिदात्री।","Shailaputri, Brahmacharini, Chandraghanta, Kushmanda, Skandamata, Katyayani, Kalaratri, Mahagauri, Siddhidatri."],["नित्य पाठ","हर दिन कलश पूजन, जप और सप्तशती का पाठ या कवच-अर्गला-कीलक।","Daily: kalash puja, japa, and Saptashati or Kavach-Argala-Keelak."],["कन्या पूजन","अष्टमी या नवमी पर कन्याओं के पाँव धोकर भोजन, वस्त्र और दक्षिणा।","On Ashtami or Navami, honour young girls with a meal and gifts."],["हवन और विसर्जन","नवमी को हवन। दशमी को कलश के जल का छिड़काव और जौ का प्रसाद।","Havan on Navami; on Dashami sprinkle the kalash water and share the barley sprouts."]],"PJM":[["काली","लाल गुड़हल, काले तिल, नारियल, गुड़"],["तारा","नीले फूल, खीर, सफेद मिठाई"],["त्रिपुर सुंदरी","लाल कमल, श्रीयंत्र, खीर, लाल वस्त्र"],["भुवनेश्वरी","लाल और सफेद फूल, दूध-चावल की खीर"],["भैरवी","लाल फूल, लाल चंदन, गुड़"],["छिन्नमस्ता","लाल फूल, गुड़। केवल दीक्षित गुरु के निर्देश में"],["धूमावती","काले तिल, सादा सूखा नैवेद्य, सफेद या धूसर वस्त्र"],["बगलामुखी","पीले फूल, हल्दी की माला, पीला वस्त्र, बेसन का लड्डू"],["मातंगी","हरे वस्त्र, हरे फल-पत्ते, शहद"],["कमला","कमल का फूल, खीर, गुलाबी या पीला वस्त्र"]],"DSCH":[
+["1","प्रथम चरित्र · महाकाली","मधु-कैटभ वध","Slaying of Madhu & Kaitabha",
+"कल्प के अंत में विष्णु योगनिद्रा में शेषनाग पर शयन करते हैं। उनके कान के मैल से मधु और कैटभ असुर उत्पन्न होते हैं और ब्रह्मा को मारने लगते हैं। ब्रह्मा देवी योगनिद्रा की स्तुति करते हैं। देवी जागृत होती हैं, विष्णु उठते हैं और दोनों असुरों का वध करते हैं। यह अध्याय बताता है कि स्वयं विष्णु भी माँ की शक्ति से ही जागते हैं।",
+"At the end of a cosmic cycle Vishnu lies in yogic sleep. From the dirt of his ears arise the demons Madhu and Kaitabha who attack Brahma. Brahma praises the Goddess as Yoganidra. She withdraws, Vishnu awakens and destroys the demons. Even Vishnu acts through the Mother's power."],
+["2","मध्यम चरित्र · महालक्ष्मी","महिषासुर की सेना का वध","Destruction of Mahisha's army",
+"महिषासुर देवताओं को हराकर स्वर्ग पर अधिकार कर लेता है। देवताओं के क्रोध और तेज से देवी दुर्गा का प्रादुर्भाव होता है। प्रत्येक देवता उन्हें अपना आयुध देते हैं। सिंह पर सवार होकर माँ महिषासुर की विशाल सेना का संहार करती हैं।",
+"Mahishasura defeats the gods and seizes heaven. From the combined fury and radiance of the gods the Goddess Durga is born. Each god gives her a weapon. Riding a lion she destroys Mahisha's vast army."],
+["3","मध्यम चरित्र · महालक्ष्मी","महिषासुर वध","Slaying of Mahishasura",
+"महिषासुर रूप बदल-बदलकर लड़ता है — भैंसा, सिंह, मनुष्य आदि। अंत में माँ उसके गले में पैर रखकर त्रिशूल से उसका वध करती हैं। महिषासुरमर्दिनी रूप यहाँ पूर्ण प्रकट होता है।",
+"Mahishasura changes forms — buffalo, lion, man — during the battle. Finally the Goddess pins him down and slays him with her trident. This is the classic Mahishasuramardini episode."],
+["4","मध्यम चरित्र · महालक्ष्मी","देवताओं द्वारा देवी की स्तुति","Hymn of the gods (Shakradi Stuti)",
+"महिषासुर के वध के बाद इंद्र आदि देवता माँ की स्तुति करते हैं। यह स्तुति देवी की सर्वव्यापकता, करुणा और शक्ति का वर्णन करती है। मध्यम चरित्र यहाँ समाप्त होता है।",
+"After Mahishasura's death the gods led by Indra praise the Goddess. The hymn celebrates her all-pervading power and compassion. The middle charita ends here."],
+["5","उत्तम चरित्र · महासरस्वती","देवी और दूत का संवाद · या देवी स्तुति","Messenger's dialogue & Ya Devi hymn",
+"शुम्भ-निशुम्भ ने फिर स्वर्ग छीन लिया। देवता हिमालय में माँ की स्तुति करते हैं — 'या देवी सर्वभूतेषु...'। शुम्भ दूत भेजकर माँ से विवाह प्रस्ताव रखता है। माँ कहती हैं — जो मुझे युद्ध में जीते, वही मेरा पति होगा।",
+"Shumbha and Nishumbha again seize heaven. The gods praise the Goddess in the Himalayas with the famous Ya Devi Sarvabhuteshu hymn. Shumbha sends a messenger proposing marriage. She replies that only one who defeats her in battle may win her."],
+["6","उत्तम चरित्र · महासरस्वती","धूम्रलोचन वध","Slaying of Dhumralochana",
+"शुम्भ का सेनापति धूम्रलोचन माँ को पकड़ने आता है। माँ के हुंकार मात्र से वह भस्म हो जाता है। उसकी सेना भी नष्ट हो जाती है।",
+"Shumbha's general Dhumralochana comes to seize the Goddess. She reduces him to ashes with a mere roar (humkara). His army is also destroyed."],
+["7","उत्तम चरित्र · महासरस्वती","चंड-मुंड वध · चामुंडा","Slaying of Chanda & Munda · Chamunda",
+"चंड और मुंड माँ पर आक्रमण करते हैं। माँ के ललाट से काली प्रकट होती हैं और दोनों का वध करके उनके सिर माँ को अर्पित करती हैं। तभी से काली को चामुंडा कहा जाता है।",
+"Chanda and Munda attack. From the Goddess's forehead Kali springs forth, slays both and presents their heads. From that day Kali is called Chamunda."],
+["8","उत्तम चरित्र · महासरस्वती","रक्तबीज वध","Slaying of Raktabija",
+"रक्तबीज का वरदान है कि उसके रक्त की हर बूँद से नया असुर पैदा हो। काली और मातृकाएँ (ब्राह्मी, माहेश्वरी आदि) उसके रक्त को पी जाती हैं ताकि नई सेना न बने। अंत में रक्तबीज का वध होता है।",
+"Raktabija has the boon that every drop of his blood creates a new demon. Kali and the Matrikas drink every drop so no new army can rise. Finally Raktabija is slain."],
+["9","उत्तम चरित्र · महासरस्वती","निशुम्भ वध","Slaying of Nishumbha",
+"निशुम्भ स्वयं युद्ध में आता है। लंबा और भयंकर युद्ध होता है। अंत में माँ निशुम्भ का वध करती हैं।",
+"Nishumbha himself enters the battle. After a fierce fight the Goddess slays him."],
+["10","उत्तम चरित्र · महासरस्वती","शुम्भ वध","Slaying of Shumbha",
+"शुम्भ अकेला माँ से लड़ता है और कहता है कि अन्य शक्तियाँ माँ की ही हैं। माँ सभी मातृकाओं को अपने में समाहित कर लेती हैं और शुम्भ का वध करती हैं। तीनों लोकों में शांति स्थापित होती है।",
+"Shumbha fights alone and claims the other powers are only parts of the Goddess. She draws all the Matrikas back into herself and slays Shumbha. Peace returns to the three worlds."],
+["11","उत्तम चरित्र · महासरस्वती","नारायणी स्तुति","Narayani Stuti",
+"देवता माँ की भव्य स्तुति करते हैं — नारायणी स्तुति। माँ वचन देती हैं कि जब-जब अधर्म बढ़ेगा, वे प्रकट होंगी। यह अध्याय देवी की करुणा और भविष्य की रक्षा का आश्वासन देता है।",
+"The gods offer the majestic Narayani Stuti. The Goddess promises to appear whenever dharma declines. This chapter affirms her compassion and future protection."],
+["12","उत्तम चरित्र · महासरस्वती","फलश्रुति","Fruits of reciting the text",
+"माँ स्वयं बताती हैं कि इस माहात्म्य का पाठ, श्रवण या चिंतन करने से भय, रोग, शत्रु और आपदा दूर होते हैं। नवरात्रि में विशेष फल कहा गया है।",
+"The Goddess herself declares the fruits of reading, hearing or contemplating this Mahatmya: freedom from fear, disease, enemies and calamity. Special merit is given for recitation in Navratri."],
+["13","उत्तम चरित्र · महासरस्वती","सुरथ और समाधि को वरदान","Boons to Suratha & Samadhi",
+"राजा सुरथ (जिसने राज्य खोया) और वैश्य समाधि (जिसका परिवार ने त्याग दिया) माँ की आराधना करते हैं। माँ सुरथ को फिर राज्य और भविष्य में सावर्णि मनु बनने का वर देती हैं; समाधि को ज्ञान और मुक्ति का वर मिलता है।",
+"King Suratha (who lost his kingdom) and the merchant Samadhi (abandoned by his family) worship the Goddess. She grants Suratha restoration of his kingdom and future birth as Savarni Manu; Samadhi receives knowledge and liberation."]
+],"DSORDER_HI":"सामान्य क्रम: संकल्प, गणेश-कलश पूजन, फिर देवी कवच, अर्गला स्तोत्र, कीलक स्तोत्र, नवार्ण जप, रात्रि सूक्त, इसके बाद तेरह अध्याय, देवी सूक्त, तीनों रहस्य (प्राधानिक, वैकृतिक, मूर्ति) और अंत में क्षमा प्रार्थना। नवरात्रि में नौ दिन में बाँटकर पाठ की परंपरा है। संप्रदाय के अनुसार क्रम बदल सकता है।","DSORDER_EN":"Usual order: resolve, Ganesha and kalash puja, then Devi Kavacha, Argala, Keelaka, Navarna japa, Ratri Sukta, the thirteen chapters, Devi Sukta, the three Rahasyas, and a closing prayer for forgiveness. Many split the chapters across the nine nights of Navratri. Lineages differ in the details.","DSMT":[["या देवी सर्वभूतेषु शक्तिरूपेण संस्थिता ।\nनमस्तस्यै नमस्तस्यै नमस्तस्यै नमो नमः ॥","Yā devī sarvabhūteṣu śaktirūpeṇa saṃsthitā |\nNamastasyai namastasyai namastasyai namo namaḥ ||","जो देवी सब प्राणियों में शक्ति रूप से स्थित हैं, उन्हें बारंबार नमस्कार।","Salutations again and again to the Goddess who dwells in all beings in the form of power.","अध्याय 5"],["सर्वमङ्गलमाङ्गल्ये शिवे सर्वार्थसाधिके ।\nशरण्ये त्र्यम्बके गौरि नारायणि नमोऽस्तु ते ॥","Sarvamaṅgalamāṅgalye śive sarvārthasādhike |\nŚaraṇye tryambake gauri nārāyaṇi namo'stu te ||","हे सब मंगलों की मंगल, कल्याणी, सब कार्य सिद्ध करने वाली, शरण देने वाली, त्रिनेत्री गौरी नारायणी, आपको नमस्कार।","O auspiciousness of all that is auspicious, giver of every aim, refuge, three-eyed Gauri, Narayani, I bow to you.","अध्याय 11"],["सर्वस्वरूपे सर्वेशे सर्वशक्तिसमन्विते ।\nभयेभ्यस्त्राहि नो देवि दुर्गे देवि नमोऽस्तु ते ॥","Sarvasvarūpe sarveśe sarvaśaktisamanvite |\nBhayebhyastrāhi no devi durge devi namo'stu te ||","हे सर्वरूपा, सबकी स्वामिनी, सर्वशक्तिमयी दुर्गा देवी, हमें भय से बचाइए। आपको नमस्कार।","O Durga, all-formed, sovereign of all, endowed with every power, protect us from fear. I bow to you.","अध्याय 11"],["रूपं देहि जयं देहि यशो देहि द्विषो जहि ।","Rūpaṃ dehi jayaṃ dehi yaśo dehi dviṣo jahi |","मुझे रूप दें, विजय दें, यश दें और मेरे शत्रुओं (विकारों) का नाश करें। (अर्गला स्तोत्र की टेक)","Grant me beauty, victory, fame, and destroy my adversaries. (Refrain of the Argala Stotra)","अर्गला स्तोत्र"],["ॐ ऐं ह्रीं क्लीं चामुण्डायै विच्चे","Oṃ Aiṃ Hrīṃ Klīṃ Cāmuṇḍāyai Vicce","नवार्ण मंत्र। ऐं (सरस्वती), ह्रीं (महालक्ष्मी), क्लीं (महाकाली) के बीज, चामुण्डा को संबोधन, विच्चे का अर्थ विज्ञान-शक्ति बताया जाता है।","The nine-syllable mantra. Aiṃ, Hrīṃ, Klīṃ are seeds of Sarasvati, Lakshmi and Kali, addressed to Chamunda.","पाठ से पहले जप"]]};
+
+/* ---------- helpers ---------- */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const LS={
+  get(k,d){try{const v=localStorage.getItem(k);return v===null?d:JSON.parse(v)}catch(e){return d}},
+  set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+};
+const pad=n=>String(n).padStart(2,'0');
+const iso=(d=new Date())=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+let toastT;
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),1800)}
+async function copyText(t){
+  try{await navigator.clipboard.writeText(t);toast('Copy हुआ')}
+  catch(e){const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy');toast('Copy हुआ')}catch(x){toast('Copy नहीं हो सका')}a.remove()}
+}
+async function shareText(t){
+  if(navigator.share){try{await navigator.share({text:t});return}catch(e){if(e&&e.name==='AbortError')return}}
+  copyText(t);
+}
+function twoStep(btn,fn){
+  if(btn.dataset.armed){delete btn.dataset.armed;btn.textContent=btn.dataset.old;fn();return}
+  btn.dataset.armed='1';btn.dataset.old=btn.textContent;btn.textContent='पक्का? दोबारा दबाएँ';
+  setTimeout(()=>{if(btn.dataset.armed){delete btn.dataset.armed;btn.textContent=btn.dataset.old}},3000);
+}
+
+/* ---------- data ---------- */
+const IDS=['kali','tara','tripura','bhuvaneshwari','bhairavi','chinnamasta','dhumavati','bagalamukhi','matangi','kamala'];
+const EMO=['🖤','🔵','🌺','🌍','🔥','⚡','🌫️','🟡','🎵','🪷'];
+const SIMPLE=['ॐ क्रीं कालिकायै नमः','ॐ तारे तुत्तारे तुरे स्वाहा','ॐ श्रीं ह्रीं क्लीं','ॐ ह्रीं भुवनेश्वर्यै नमः','ॐ ह्रीं भैरव्यै नमः','ॐ ह्रीं छिन्नमस्तायै नमः','ॐ धूं धूमावत्यै नमः','ॐ ह्लीं बगलामुख्यै नमः','ॐ ह्रीं मातंग्यै नमः','ॐ श्रीं कमलायै नमः'];
+const INTRO=['काल, परिवर्तन, निर्भयता और शक्ति के प्रतीक रूप में पूजित।','करुणा, मार्गदर्शन और संकट से पार जाने के प्रतीक रूप में पूजित।','श्रीविद्या परंपरा की प्रमुख देवी।','विश्व और व्यापक चेतना की देवी के रूप में पूजित।','तप, अनुशासन और शक्ति की परंपरा से जुड़ी महाविद्या।','त्याग, आत्मबल और गहन प्रतीकवाद की महाविद्या।','वैराग्य और जीवन के कठिन अनुभवों से संबंधित महाविद्या।','वाणी, शक्ति और स्तम्भन प्रतीकवाद से संबंधित महाविद्या।','वाणी, संगीत, कला और ज्ञान से संबंधित महाविद्या।','समृद्धि, सौभाग्य और लक्ष्मी स्वरूप से संबंधित महाविद्या।'];
+const NOTE=['काली परंपरा में शक्ति और परिवर्तन का प्रतीक।','यह मंत्र बौद्ध तारा परंपरा में भी प्रसिद्ध है।','विशिष्ट श्रीविद्या मंत्रों के लिए परंपरागत गुरु मार्गदर्शन लें।','','','विशिष्ट साधना में गुरु मार्गदर्शन आवश्यक माना जाता है।','','विशिष्ट अनुष्ठान के लिए गुरु मार्गदर्शन लें।','',''];
+const GURU=[2,4,5,6,7];
+const VID=DATA.MV.map((m,i)=>({id:IDS[i],emoji:EMO[i],name:'माँ '+m.name,rm:m.rm,intro:INTRO[i],roop:m.roop,beej:m.beej,simple:SIMPLE[i],prachalit:m.mantra,ro:m.ro,graha:m.graha,bhav:m.bhav,note:NOTE[i],guru:GURU.includes(i)}));
+
+const MANTRAS=[];
+DATA.MT.forEach(([cat,items])=>items.forEach(([t,dv,ro])=>MANTRAS.push({id:'mt'+MANTRAS.length,cat,title:t,dv,ro})));
+const BASE_MANTRAS=MANTRAS.length;
+VID.forEach(v=>MANTRAS.push({id:'mv-'+v.id,cat:'महाविद्या',title:v.name,dv:v.simple,ro:''}));
+const MCATS=['सभी',...new Set(MANTRAS.map(m=>m.cat))];
+const mById=id=>MANTRAS.find(m=>m.id===id);
+
+const DAYS=[['रविवार','सूर्य देव'],['सोमवार','शिव'],['मंगलवार','हनुमान, दुर्गा'],['बुधवार','गणेश'],['गुरुवार','विष्णु'],['शुक्रवार','लक्ष्मी, दुर्गा'],['शनिवार','हनुमान, शनि देव']];
+const MONTHLY=[['एकादशी','विष्णु','शुक्ल और कृष्ण पक्ष की 11वीं तिथि'],['प्रदोष','शिव','त्रयोदशी (13वीं तिथि) की संध्या'],['संकष्टी चतुर्थी','गणेश','कृष्ण पक्ष की चतुर्थी'],['मासिक शिवरात्रि','शिव','कृष्ण पक्ष की चतुर्दशी'],['दुर्गा अष्टमी','दुर्गा','शुक्ल पक्ष की अष्टमी'],['पूर्णिमा','सत्यनारायण, चंद्र','पक्ष की पूर्ण तिथि'],['अमावस्या','पितृ, काली उपासना','कृष्ण पक्ष की अंतिम तिथि']];
+const FEST=[['चैत्र नवरात्रि','दुर्गा पूजा','चैत्र शुक्ल प्रतिपदा से नवमी'],['राम नवमी','श्रीराम पूजा','चैत्र शुक्ल नवमी'],['हनुमान जयंती','हनुमान पूजा','चैत्र पूर्णिमा (क्षेत्रीय परंपराएँ भिन्न)'],['अक्षय तृतीया','लक्ष्मी-विष्णु पूजा','वैशाख शुक्ल तृतीया'],['गुप्त नवरात्रि','दश महाविद्या साधना','आषाढ़ और माघ शुक्ल प्रतिपदा से नवमी'],['गुरु पूर्णिमा','गुरु पूजा','आषाढ़ पूर्णिमा'],['रक्षाबंधन','पर्व','श्रावण पूर्णिमा'],['जन्माष्टमी','कृष्ण पूजा','भाद्रपद कृष्ण अष्टमी'],['गणेश चतुर्थी','गणेश पूजा','भाद्रपद शुक्ल चतुर्थी'],['शारदीय नवरात्रि','दुर्गा पूजा','आश्विन शुक्ल प्रतिपदा से नवमी'],['विजयादशमी','दुर्गा, श्रीराम','आश्विन शुक्ल दशमी'],['धनतेरस','लक्ष्मी-कुबेर, धन्वंतरि','कार्तिक कृष्ण त्रयोदशी'],['दीपावली','महालक्ष्मी पूजा','कार्तिक अमावस्या'],['कार्तिक पूर्णिमा','विष्णु, शिव','कार्तिक पूर्णिमा'],['वसंत पंचमी','सरस्वती पूजा','माघ शुक्ल पंचमी'],['महाशिवरात्रि','शिव पूजा','फाल्गुन कृष्ण चतुर्दशी'],['होली','रंगोत्सव','फाल्गुन पूर्णिमा']];
+const QUOTES=['कुछ क्षण शांत होकर मंत्र स्मरण करें।','भक्ति के साथ नियमितता भी साधना है।','ध्यान, शांति और सद्भाव का अभ्यास करें।'];
+
+/* ---------- state ---------- */
+let favs=LS.get('dv2_favs',[]);
+let ct=Math.max(0,parseInt(LS.get('dv2_ct',0),10)||0);
+let goal=Math.max(1,parseInt(LS.get('dv2_goal',108),10)||108);
+let hist=LS.get('dv2_hist',[]);
+let plans=LS.get('dv2_plans',[]);
+let days=LS.get('dv3_days',{});
+let curM=LS.get('dv3_mantra','mt0');
+if(!mById(curM))curM='mt0';
+let sankalp=LS.get('dv3_sankalp','');
+let chk=LS.get('dv3_chk',{});
+let visited=LS.get('dv3_visited',{});
+let readCh=LS.get('dv3_read',{});
+let vib=LS.get('dv3_vib',true);
+let fontPx=LS.get('dv3_font',16);
+let mCat='सभी',pGroup='सभी';
+let medTotal=600,medLeft=600,medInterval=null;
+
+/* ---------- navigation ---------- */
+const TABS=[['home','🏠 Home'],['vidya','🔱 महाविद्या'],['mantra','🕉️ मंत्र'],['japa','📿 जप'],['puja','🪔 पूजा'],['peeth','🛕 शक्तिपीठ'],['saptashati','📖 सप्तशती'],['calendar','🗓️ पर्व'],['meditate','🧘 ध्यान'],['planner','📅 Planner'],['saved','❤️ Saved'],['settings','⚙️']];
+$('#nav').innerHTML=TABS.map(t=>`<button data-act="tab" data-id="${t[0]}">${t[1]}</button>`).join('');
+const R={};
+function tab(id,noScroll){
+  if(!TABS.some(t=>t[0]===id))id='home';
+  document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x.id===id));
+  document.querySelectorAll('#nav button').forEach(b=>{const on=b.dataset.id===id;b.classList.toggle('on',on);if(on){b.setAttribute('aria-current','page');b.scrollIntoView({block:'nearest',inline:'center'})}else b.removeAttribute('aria-current')});
+  if(R[id])R[id]();
+  try{history.replaceState(null,'','#'+id)}catch(e){}
+  if(!noScroll)window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ---------- home ---------- */
+function dayOfYear(){const n=new Date();return Math.floor((n-new Date(n.getFullYear(),0,0))/864e5)}
+function streak(){
+  const d=new Date();let s=0;
+  if(!(days[iso(d)]>0))d.setDate(d.getDate()-1);
+  while(days[iso(d)]>0){s++;d.setDate(d.getDate()-1)}
+  return s;
+}
+R.home=()=>{
+  const wd=DAYS[new Date().getDay()];
+  $('#todayLine').textContent='आज '+wd[0]+' है। परंपरा में इस वार के देवता: '+wd[1]+'।';
+  $('#hToday').textContent=days[iso()]||0;
+  $('#hStreak').textContent=streak();
+  const m=MANTRAS[dayOfYear()%BASE_MANTRAS];
+  $('#dailyM').innerHTML=`<div class="lbl">${esc(m.cat)} · ${esc(m.title)}</div><div class="mantra" style="font-size:1.2em">${esc(m.dv)}</div><div class="row" style="margin-top:8px"><button class="alt sm" data-act="openM" data-id="${m.id}">विवरण</button><button class="sm" data-act="japaWith" data-id="${m.id}">जप में लें</button></div>`;
+  $('#quote').textContent=QUOTES[new Date().getDate()%3];
+};
+
+/* ---------- global search ---------- */
+let resFns=[];
+function search(q){
+  q=q.trim().toLowerCase();resFns=[];
+  if(q.length<1){$('#gres').innerHTML='';return}
+  const out=[];
+  const has=(...a)=>a.join(' ').toLowerCase().includes(q);
+  VID.forEach(v=>{if(has(v.name,v.rm,v.beej,v.simple,v.prachalit,v.graha))out.push(['महाविद्या',v.name,v.beej+' · '+v.simple,()=>openD(v.id)])});
+  MANTRAS.slice(0,BASE_MANTRAS).forEach(m=>{if(has(m.title,m.dv,m.ro,m.cat))out.push(['मंत्र',m.title,m.cat,()=>openM(m.id)])});
+  DATA.SP.forEach((s,i)=>{if(has(...s))out.push(['शक्तिपीठ',s[0],s[1]+' · '+s[2],()=>{tab('peeth');$('#pf').value=s[0];pGroup='सभी';R.peeth()}])});
+  DATA.DSCH.forEach(c=>{if(has(...c))out.push(['सप्तशती','अध्याय '+c[0]+': '+c[2],c[1],()=>tab('saptashati')])});
+  DATA.DSMT.forEach(v=>{if(has(...v))out.push(['श्लोक',v[0].split('\n')[0],v[4],()=>tab('saptashati')])});
+  const top=out.slice(0,12);
+  resFns=top.map(o=>o[3]);
+  $('#gres').innerHTML=top.length?top.map((o,i)=>`<button class="res" data-act="res" data-i="${i}">${esc(o[1])}<small>${esc(o[0])} · ${esc(o[2])}</small></button>`).join(''):'<p>कुछ नहीं मिला।</p>';
+}
+$('#gq').addEventListener('input',e=>search(e.target.value));
+
+/* ---------- favourites ---------- */
+function isFav(id){return favs.includes(id)}
+function toggleFav(id){
+  favs=isFav(id)?favs.filter(x=>x!==id):[...favs,id];
+  LS.set('dv2_favs',favs);toast(isFav(id)?'पसंद में जुड़ा':'पसंद से हटा');
+  document.querySelectorAll(`[data-act="fav"][data-id="${id}"]`).forEach(b=>b.textContent=isFav(id)?'❤️ हटाएँ':'🤍 पसंद');
+  if($('#saved').classList.contains('on'))R.saved();
+}
+const favBtn=id=>`<button class="alt" data-act="fav" data-id="${id}">${isFav(id)?'❤️ हटाएँ':'🤍 पसंद'}</button>`;
+
+/* ---------- modal ---------- */
+function showModal(html){$('#detail').innerHTML=html;$('#modal').classList.add('show');$('#modal .modalbox button').focus()}
+function closeModal(){$('#modal').classList.remove('show')}
+function openD(id){
+  const v=VID.find(x=>x.id===id);if(!v)return;
+  showModal(`<h2>${v.emoji} ${esc(v.name)}</h2><p class="muted">${esc(v.rm)} ${v.guru?'<span class="badge guru">गुरु मार्गदर्शन आवश्यक</span>':''}</p>
+  <p>${esc(v.intro)}</p><p>${esc(v.roop)}</p>
+  <div class="lbl">सरल मंत्र</div><div class="mantra">${esc(v.simple)}</div>
+  <div class="lbl" style="margin-top:10px">बीज</div><div class="mantra" style="font-size:1.6em">${esc(v.beej)}</div>
+  <div class="lbl" style="margin-top:10px">प्रचलित मंत्र</div><div class="mantra" style="font-size:1.15em">${esc(v.prachalit)}</div><div class="ro">${esc(v.ro)}</div>
+  <p><b>ग्रह संबंध:</b> ${esc(v.graha)}<br><b>भाव:</b> ${esc(v.bhav)}</p>
+  ${v.note?`<p class="muted">${esc(v.note)}</p>`:''}
+  <div class="row"><button data-act="copy" data-t="${esc(v.simple)}">मंत्र Copy</button><button class="alt" data-act="share" data-t="${esc(v.name+': '+v.simple)}">Share</button>${favBtn(v.id)}<button data-act="japaWith" data-id="mv-${v.id}">जप में लें</button></div>
+  <p class="muted small">पाठ-विधि परंपरा के अनुसार भिन्न हो सकती है।</p>`);
+}
+function openM(id){
+  const m=mById(id);if(!m)return;
+  showModal(`<div class="lbl">${esc(m.cat)}</div><h2>${esc(m.title)}</h2><div class="mantra">${esc(m.dv)}</div>${m.ro?`<div class="ro">${esc(m.ro)}</div>`:''}
+  <div class="row" style="margin-top:12px"><button data-act="copy" data-t="${esc(m.dv)}">Copy</button><button class="alt" data-act="share" data-t="${esc(m.title+'\n'+m.dv)}">Share</button>${favBtn(m.id)}<button data-act="japaWith" data-id="${m.id}">जप में लें</button></div>`);
+}
+
+/* ---------- महाविद्या ---------- */
+R.vidya=()=>{
+  const q=$('#vf').value.trim().toLowerCase();
+  const l=VID.filter(v=>!q||[v.name,v.rm,v.beej,v.simple,v.prachalit,v.graha].join(' ').toLowerCase().includes(q));
+  $('#deities').innerHTML=l.length?l.map(v=>`<div class="card tile" data-act="openD" data-id="${v.id}" role="button" tabindex="0"><div class="emoji">${v.emoji}</div><h3>${esc(v.name)}</h3><small class="muted">बीज: ${esc(v.beej)}</small>${v.guru?'<div><span class="badge guru">गुरु मार्गदर्शन</span></div>':''}</div>`).join(''):'<p>कुछ नहीं मिला।</p>';
+  $('#beejs').innerHTML=DATA.BJ.map(b=>`<div class="card tile" style="padding:12px"><div class="emoji" style="font-size:2em;color:var(--primary)">${esc(b[0])}</div><small class="muted">${esc(b[1])}</small></div>`).join('');
+  $('#tantra').innerHTML=DATA.TN.map(t=>`<div class="card"><h3 style="margin-top:0">${esc(t[0])}</h3>${esc(t[1])}</div>`).join('');
+};
+$('#vf').addEventListener('input',R.vidya);
+
+/* ---------- मंत्र संग्रह ---------- */
+R.mantra=()=>{
+  $('#mchips').innerHTML=MCATS.map(c=>`<button data-act="mcat" data-c="${esc(c)}" class="${c===mCat?'on':''}">${esc(c)}</button>`).join('');
+  const q=$('#mf').value.trim().toLowerCase();
+  const l=MANTRAS.filter(m=>(mCat==='सभी'||m.cat===mCat)&&(!q||[m.title,m.dv,m.ro,m.cat].join(' ').toLowerCase().includes(q)));
+  $('#mlist').innerHTML=l.length?l.map(m=>`<div class="card"><div class="lbl">${esc(m.cat)}</div><h3 style="margin:2px 0 8px">${esc(m.title)}</h3><div class="mantra" style="font-size:1.15em">${esc(m.dv)}</div>${m.ro?`<div class="ro">${esc(m.ro)}</div>`:''}<div class="row" style="margin-top:10px"><button class="sm" data-act="openM" data-id="${m.id}">मंत्र खोलें</button><button class="alt sm" data-act="copy" data-t="${esc(m.dv)}">Copy</button><button class="alt sm" data-act="fav" data-id="${m.id}">${isFav(m.id)?'❤️ हटाएँ':'🤍 पसंद'}</button><button class="sm" data-act="japaWith" data-id="${m.id}">जप में लें</button></div></div>`).join(''):'<p>कुछ नहीं मिला।</p>';
+};
+$('#mf').addEventListener('input',R.mantra);
+
+/* ---------- जप ---------- */
+function bumpDay(n){const k=iso();days[k]=Math.max(0,(days[k]||0)+n);if(!days[k])delete days[k];LS.set('dv3_days',days)}
+function buzz(p){if(vib&&navigator.vibrate){try{navigator.vibrate(p)}catch(e){}}}
+function updateJapa(){
+  $('#num').textContent=ct;
+  $('#malaTxt').textContent='माला '+Math.floor(ct/108)+' · मनका '+(ct%108)+' / 108';
+  if(document.activeElement!==$('#goal'))$('#goal').value=goal;
+  $('#stats').textContent=ct+' / '+goal;
+  const pct=Math.min(100,ct/goal*100);
+  $('#fill').style.width=pct+'%';
+  $('#fill').parentElement.setAttribute('aria-valuenow',Math.round(pct));
+  $('#done').textContent=ct>=goal?'🙏 लक्ष्य पूरा हुआ!':'';
+  const total=Object.values(days).reduce((a,b)=>a+b,0);
+  $('#jToday').textContent=days[iso()]||0;$('#jStreak').textContent=streak();$('#jTotal').textContent=total;
+  $('#goals').innerHTML=[11,21,54,108,501,1008].map(g=>`<button data-act="goal" data-g="${g}" class="${g===goal?'on':''}">${g}</button>`).join('');
+  $('#history').innerHTML=hist.length?hist.slice(-30).reverse().map((x,i)=>{const idx=hist.length-1-i;return `<div class="check" style="align-items:center"><span style="flex:1;min-width:0">${esc(x.date)}: <b>${esc(x.count)}</b> जप · ${esc(x.mantra)}${x.sankalp?'<br><small class="muted">'+esc(x.sankalp)+'</small>':''}</span><button class="alt sm" data-act="delh" data-i="${idx}" aria-label="हटाएँ">✕</button></div>`}).join(''):'<p class="muted">अभी इतिहास खाली है।</p>';
+}
+R.japa=()=>{
+  const sel=$('#mantraSelect');
+  if(!sel.options.length){
+    const groups={};MANTRAS.forEach(m=>(groups[m.cat]=groups[m.cat]||[]).push(m));
+    sel.innerHTML=Object.entries(groups).map(([c,l])=>`<optgroup label="${esc(c)}">${l.map(m=>`<option value="${m.id}">${esc(m.title)}</option>`).join('')}</optgroup>`).join('');
+  }
+  sel.value=curM;$('#sankalp').value=sankalp;
+  $('#jmsg').textContent='';
+  const m=mById(curM);$('#tapBtn').setAttribute('aria-label','एक जप जोड़ें: '+(m?m.title:''));
+  updateJapa();
+};
+$('#mantraSelect').addEventListener('change',e=>{curM=e.target.value;LS.set('dv3_mantra',curM)});
+$('#sankalp').addEventListener('input',e=>{sankalp=e.target.value;LS.set('dv3_sankalp',sankalp)});
+$('#goal').addEventListener('change',e=>{goal=Math.max(1,parseInt(e.target.value,10)||108);LS.set('dv2_goal',goal);updateJapa()});
+function inc(){
+  ct++;LS.set('dv2_ct',ct);bumpDay(1);
+  if(ct%108===0)buzz([120,80,120]);else if(ct===goal)buzz([100,80,100]);else buzz(8);
+  updateJapa();
+}
+function undo(){if(ct>0){ct--;LS.set('dv2_ct',ct);bumpDay(-1);updateJapa()}}
+function saveJapa(){
+  if(ct<1){$('#jmsg').textContent='पहले कुछ जप करें।';return}
+  const m=mById(curM);
+  hist.push({date:new Date().toLocaleDateString('hi-IN'),iso:iso(),count:ct,mantra:m?m.title:'',sankalp:sankalp.trim()});
+  if(hist.length>300)hist=hist.slice(-300);
+  LS.set('dv2_hist',hist);$('#jmsg').textContent='जप इतिहास में सेव हुआ। नया सत्र शुरू करने के लिए Reset दबाएँ।';updateJapa();
+}
+
+/* ---------- पूजा ---------- */
+R.puja=()=>{
+  $('#pjSteps').innerHTML=DATA.PJ.map((x,i)=>`<label class="check ${chk['pj'+i]?'done':''}" style="margin:0;color:var(--ink);font-size:1em"><input type="checkbox" data-act="chk" data-k="pj${i}" ${chk['pj'+i]?'checked':''}><span><b>${esc(x[0])}</b><br>${esc(x[1])}<br><small class="muted" lang="en">${esc(x[2])}</small></span></label>`).join('');
+  $('#pjNav').innerHTML=DATA.NAV.map(x=>`<div class="card"><h3 style="margin-top:0">${esc(x[0])}</h3><p>${esc(x[1])}</p><small class="muted" lang="en">${esc(x[2])}</small></div>`).join('');
+  $('#pjMv').innerHTML=DATA.PJM.map(x=>`<div class="card"><h3 style="margin-top:0">${esc(x[0])}</h3>${esc(x[1])}</div>`).join('');
+};
+
+/* ---------- शक्तिपीठ ---------- */
+const SPCH=['सभी','भारत','बांग्लादेश','नेपाल','पाकिस्तान','श्रीलंका / तिब्बत / अन्य'];
+const spGroup=r=>/भारत/.test(r)?'भारत':/बांग्लादेश/.test(r)?'बांग्लादेश':/नेपाल/.test(r)?'नेपाल':/पाकिस्तान/.test(r)?'पाकिस्तान':'श्रीलंका / तिब्बत / अन्य';
+R.peeth=()=>{
+  $('#spHi').textContent=DATA.SPSTORY_HI;$('#spEn').textContent=DATA.SPSTORY_EN;
+  $('#pchips').innerHTML=SPCH.map(c=>`<button data-act="pgrp" data-c="${esc(c)}" class="${c===pGroup?'on':''}">${esc(c)}</button>`).join('');
+  const q=$('#pf').value.trim().toLowerCase();
+  const l=DATA.SP.map((s,i)=>({s,i})).filter(o=>(pGroup==='सभी'||spGroup(o.s[1])===pGroup)&&(!q||o.s.join(' ').toLowerCase().includes(q)));
+  $('#plist').innerHTML=l.length?l.map(o=>`<div class="card"><div class="lbl">पीठ ${o.i+1}</div><h3 style="margin:2px 0">${esc(o.s[0])}</h3><div class="muted small">${esc(o.s[1])}</div><p style="margin:8px 0"><b>अंग:</b> ${esc(o.s[2])}<br><b>शक्ति:</b> ${esc(o.s[3])}<br><b>भैरव:</b> ${esc(o.s[4])}</p><label style="margin:0;color:var(--ink)"><input type="checkbox" data-act="visit" data-k="${o.i}" ${visited[o.i]?'checked':''}> दर्शन किया</label></div>`).join(''):'<p>कुछ नहीं मिला।</p>';
+  $('#pvis').textContent=Object.keys(visited).filter(k=>visited[k]).length+' / '+DATA.SP.length;
+};
+$('#pf').addEventListener('input',R.peeth);
+
+/* ---------- सप्तशती ---------- */
+R.saptashati=()=>{
+  $('#dsCh').innerHTML=DATA.DSCH.map(c=>`<div class="card"><div class="lbl">अध्याय ${esc(c[0])} · ${esc(c[1])}</div><h3 style="margin:4px 0">${esc(c[2])}</h3><small class="muted" lang="en">${esc(c[3])}</small><div class="ch-summary small" style="margin-top:8px">${esc((c[4]||'').slice(0,130))}…</div><p><button class="alt sm" data-act="dsopen" data-k="${esc(c[0])}">पूरा अध्याय सार पढ़ें</button></p><label style="margin-top:8px;color:var(--ink)"><input type="checkbox" data-act="read" data-k="${esc(c[0])}" ${readCh[c[0]]?'checked':''}> पढ़ लिया</label></div>`).join('');
+  $('#dsProg').textContent=Object.keys(readCh).filter(k=>readCh[k]).length+' / 13';
+  $('#dsOrdHi').textContent=DATA.DSORDER_HI;$('#dsOrdEn').textContent=DATA.DSORDER_EN;
+  $('#dsMt').innerHTML=DATA.DSMT.map(v=>`<div class="card"><div class="lbl">${esc(v[4])}</div><div class="mantra" style="font-size:1.15em">${esc(v[0])}</div><div class="ro">${esc(v[1])}</div><p style="margin:10px 0 4px"><b>हिन्दी:</b> ${esc(v[2])}</p><p class="muted" lang="en" style="margin:0"><b>English:</b> ${esc(v[3])}</p><div class="row" style="margin-top:8px"><button class="alt sm" data-act="copy" data-t="${esc(v[0].replace(/\n/g,' '))}">Copy</button></div></div>`).join('');
+};
+
+/* ---------- पर्व ---------- */
+R.calendar=()=>{
+  const t=new Date().getDay();
+  $('#dayTable').innerHTML='<tr><th>वार</th><th>देवता</th></tr>'+DAYS.map((d,i)=>`<tr class="${i===t?'today':''}"><td>${d[0]}${i===t?' (आज)':''}</td><td>${esc(d[1])}</td></tr>`).join('');
+  $('#monthly').innerHTML=MONTHLY.map(f=>`<div class="card"><h3 style="margin-top:0">${esc(f[0])}</h3><p style="margin:0">${esc(f[1])}</p><small class="muted">${esc(f[2])}</small></div>`).join('');
+  $('#festivals').innerHTML=FEST.map(f=>`<div class="card"><h3 style="margin-top:0">${esc(f[0])}</h3><p style="margin:0">${esc(f[1])}</p><small class="muted">${esc(f[2])}</small></div>`).join('');
+};
+
+/* ---------- meditation timer ---------- */
+function medRender(){
+  const mm=Math.floor(medLeft/60),ss=medLeft%60;$('#medTime').textContent=pad(mm)+':'+pad(ss);
+  $('#medFill').style.width=(medTotal?((medTotal-medLeft)/medTotal*100):0)+'%';
+}
+function medStop(){if(medInterval){clearInterval(medInterval);medInterval=null;}}
+function medSet(sec){medStop();medTotal=medLeft=sec;$('#medMsg').textContent='ध्यान अवधि '+Math.round(sec/60)+' मिनट चुनी गई।';$('#medStart').textContent='▶ शुरू';medRender();}
+function medStart(){if(medInterval){medStop();$('#medStart').textContent='▶ जारी';$('#medMsg').textContent='ध्यान रोका गया।';return;}if(medLeft<=0)medSet(medTotal);$('#medStart').textContent='⏸ रोकें';$('#medMsg').textContent='धीरे श्वास लें…';medInterval=setInterval(()=>{medLeft--;medRender();if(medLeft<=0){medStop();$('#medStart').textContent='▶ शुरू';$('#medMsg').textContent='🕊️ ध्यान पूर्ण हुआ।';buzz([180,120,180,120,300]);}},1000);}
+R.meditate=medRender;
+
+/* ---------- planner ---------- */
+function showPlans(){
+  $('#planList').innerHTML=plans.length?plans.slice().reverse().map((x,i)=>`<div class="card"><small class="muted">${esc(x.date)}</small><p style="white-space:pre-wrap;overflow-wrap:anywhere">${esc(x.text)}</p><button class="alt sm" data-act="delplan" data-i="${plans.length-1-i}">हटाएँ</button></div>`).join(''):'<p class="muted">अभी कुछ सेव नहीं है।</p>';
+}
+R.planner=showPlans;
+
+/* ---------- पसंदीदा ---------- */
+R.saved=()=>{
+  const items=favs.map(id=>{
+    const v=VID.find(x=>x.id===id);if(v)return `<div class="card tile" data-act="openD" data-id="${v.id}" role="button" tabindex="0"><div class="emoji">${v.emoji}</div><h3>${esc(v.name)}</h3></div>`;
+    const m=mById(id);if(m)return `<div class="card tile" data-act="openM" data-id="${m.id}" role="button" tabindex="0"><div class="lbl">${esc(m.cat)}</div><h3>${esc(m.title)}</h3><small class="muted">${esc(m.dv.split('\n')[0])}</small></div>`;
+    return '';
+  }).join('');
+  $('#fav').innerHTML=items||'<p>अभी कोई पसंदीदा नहीं।</p>';
+};
+
+/* ---------- settings ---------- */
+function applyTheme(dark){document.body.classList.toggle('dark',dark);const m=document.querySelector('meta[name=theme-color]');if(m)m.content=dark?'#171117':'#6b183a'}
+function applyFont(){document.documentElement.style.setProperty('--fs',fontPx+'px')}
+R.settings=()=>{$('#vibOn').checked=!!vib};
+$('#vibOn').addEventListener('change',e=>{vib=e.target.checked;LS.set('dv3_vib',vib)});
+function exportAll(){
+  const data={app:'divya-sadhana',version:4,favorites:favs,japaCount:ct,target:goal,history:hist,days,planner:plans,checks:chk,visited,read:readCh,mantra:curM};
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));a.download='divya-sadhana-backup.json';document.body.appendChild(a);a.click();a.remove();
+}
+$('#impFile').addEventListener('change',async e=>{
+  const f=e.target.files[0];if(!f)return;
+  try{
+    const d=JSON.parse(await f.text());
+    if(Array.isArray(d.favorites))favs=d.favorites;
+    if(Number.isFinite(d.japaCount))ct=Math.max(0,d.japaCount);
+    if(Number.isFinite(d.target))goal=Math.max(1,d.target);
+    if(Array.isArray(d.history))hist=d.history;
+    if(d.days&&typeof d.days==='object')days=d.days;
+    if(Array.isArray(d.planner))plans=d.planner;
+    if(d.checks&&typeof d.checks==='object')chk=d.checks;
+    if(d.visited&&typeof d.visited==='object')visited=d.visited;
+    if(d.read&&typeof d.read==='object')readCh=d.read;
+    if(typeof d.mantra==='string'&&mById(d.mantra))curM=d.mantra;
+    LS.set('dv2_favs',favs);LS.set('dv2_ct',ct);LS.set('dv2_goal',goal);LS.set('dv2_hist',hist);LS.set('dv3_days',days);LS.set('dv2_plans',plans);LS.set('dv3_chk',chk);LS.set('dv3_visited',visited);LS.set('dv3_read',readCh);LS.set('dv3_mantra',curM);
+    toast('Import हो गया');R.home();
+  }catch(x){toast('फाइल सही नहीं है')}
+  e.target.value='';
+});
+
+/* ---------- click router ---------- */
+document.addEventListener('click',e=>{
+  if(e.target.id==='modal'){closeModal();return}
+  const b=e.target.closest('[data-act]');if(!b)return;
+  const a=b.dataset.act,id=b.dataset.id;
+  switch(a){
+    case'tab':closeModal();tab(id);break;
+    case'openD':openD(id);break;
+    case'openM':openM(id);break;
+    case'closemodal':closeModal();break;
+    case'copy':copyText(b.dataset.t);break;
+    case'share':shareText(b.dataset.t);break;
+    case'fav':toggleFav(id);break;
+    case'res':{const f=resFns[+b.dataset.i];if(f)f();break}
+    case'japaWith':curM=id;LS.set('dv3_mantra',curM);closeModal();tab('japa');break;
+    case'mcat':mCat=b.dataset.c;R.mantra();break;
+    case'pgrp':pGroup=b.dataset.c;R.peeth();break;
+    case'inc':inc();break;
+    case'undo':undo();break;
+    case'reset':twoStep(b,()=>{ct=0;LS.set('dv2_ct',0);updateJapa()});break;
+    case'goal':goal=+b.dataset.g;LS.set('dv2_goal',goal);updateJapa();break;
+    case'save':saveJapa();break;
+    case'delh':hist.splice(+b.dataset.i,1);LS.set('dv2_hist',hist);updateJapa();break;
+    case'chk':chk[b.dataset.k]=b.checked;LS.set('dv3_chk',chk);b.closest('.check').classList.toggle('done',b.checked);break;
+    case'pjreset':chk={};LS.set('dv3_chk',chk);R.puja();break;
+    case'visit':visited[b.dataset.k]=b.checked;LS.set('dv3_visited',visited);$('#pvis').textContent=Object.keys(visited).filter(k=>visited[k]).length+' / '+DATA.SP.length;break;
+    case'read':readCh[b.dataset.k]=b.checked;LS.set('dv3_read',readCh);$('#dsProg').textContent=Object.keys(readCh).filter(k=>readCh[k]).length+' / 13';break;
+    case'dsopen':{const c=DATA.DSCH.find(x=>x[0]===b.dataset.k);if(c)showModal(`<h2>📖 अध्याय ${esc(c[0])}</h2><div class="lbl">${esc(c[1])}</div><h3>${esc(c[2])}</h3><p class="muted" lang="en">${esc(c[3])}</p><div class="ch-summary" style="margin:14px 0"><b>हिन्दी सार:</b><br>${esc(c[4]||'')}</div><div class="ch-summary muted" lang="en"><b>English summary:</b><br>${esc(c[5]||'')}</div><p class="note">पूरा श्लोक-पाठ प्रामाणिक ग्रंथ (गीताप्रेस आदि) से करें। यह सार अध्ययन हेतु है।</p><button data-act="closemodal">बंद करें</button>`);break;}
+    case'medset':medSet(+b.dataset.sec);break;
+    case'medstart':medStart();break;
+    case'medreset':medStop();medLeft=medTotal;$('#medStart').textContent='▶ शुरू';$('#medMsg').textContent='टाइमर रीसेट हुआ।';medRender();break;
+    case'plansave':{const v=$('#plan').value.trim();if(!v)return;plans.push({date:new Date().toLocaleDateString('hi-IN'),text:v});LS.set('dv2_plans',plans);$('#plan').value='';showPlans();toast('Planner सेव हुआ');break}
+    case'delplan':plans.splice(+b.dataset.i,1);LS.set('dv2_plans',plans);showPlans();break;
+    case'dark':{const d=!document.body.classList.contains('dark');applyTheme(d);LS.set('dv2_dark',d);break}
+    case'fontup':fontPx=Math.min(24,fontPx+1);LS.set('dv3_font',fontPx);applyFont();break;
+    case'fontdn':fontPx=Math.max(13,fontPx-1);LS.set('dv3_font',fontPx);applyFont();break;
+    case'export':exportAll();break;
+    case'import':$('#impFile').click();break;
+    case'wipe':twoStep(b,()=>{try{Object.keys(localStorage).filter(k=>/^dv[23]_/.test(k)).forEach(k=>localStorage.removeItem(k))}catch(x){}location.reload()});break;
+  }
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape')closeModal();
+  if((e.key==='Enter'||e.key===' ')&&e.target.matches('.tile[role=button]')){e.preventDefault();e.target.click()}
+});
+window.addEventListener('hashchange',()=>tab(location.hash.slice(1),true));
+
+/* ---------- boot ---------- */
+const savedDark=LS.get('dv2_dark',null);
+applyTheme(savedDark===null?window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches:savedDark);
+applyFont();
+tab(location.hash.slice(1)||'home',true);
+if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol)){
+  window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+}
+</script>
+</body>
+</html>
+All chapters of durga sapsti write and Fully advance, looking all gods pics and mantra update 
