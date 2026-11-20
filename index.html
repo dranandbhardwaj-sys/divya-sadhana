@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#6b183a">
-<meta name="description" content="दिव्य साधना: दश महाविद्या, मंत्र, जप गणक, 51 शक्तिपीठ, पूजा विधि, दुर्गा सप्तशती और पर्व कैलेंडर।">
+<meta name="description" content="दिव्य साधना: माँ दुर्गा, दश महाविद्या, सभी देवी-देवता दर्शन, संपूर्ण दुर्गा सप्तशती 13 अध्याय, मंत्र संग्रह, जप गणक, 51 शक्तिपीठ और पर्व कैलेंडर।">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon-192.png">
-<title>Divya Sadhana · Premium V5</title>
+<title>Divya Sadhana · Premium V6</title>
 <style>
 :root{
   --bg:#fdf6ef;
@@ -15,27 +15,29 @@
   --ink:#2c1520;
   --muted:#6b4f5e;
   --primary:#7a1f45;
+  --primary-2:#a83358;
   --on-primary:#fff;
   --accent:#d4a04a;
   --gold:#b8860b;
   --border:#ead5c4;
   --chip:#f8ebe0;
-  --shadow:0 8px 28px rgba(90,24,48,.08);
+  --shadow:0 8px 28px rgba(90,24,48,.09);
   --radius:20px;
   --fs:16px;
 }
 body.dark{
-  --bg:#120e12;
-  --card:#1f171c;
+  --bg:#110c11;
+  --card:#1d151b;
   --ink:#f8e8f0;
   --muted:#c4a8b8;
   --primary:#e07a9e;
+  --primary-2:#f09cb9;
   --on-primary:#1a0a12;
   --accent:#e8c070;
   --gold:#f0c860;
   --border:#3d2a35;
   --chip:#2a2026;
-  --shadow:0 10px 32px rgba(0,0,0,.35);
+  --shadow:0 10px 32px rgba(0,0,0,.45);
   color-scheme:dark;
 }
 *{box-sizing:border-box}
@@ -46,59 +48,63 @@ body{
   color:var(--ink);
   font-family:system-ui,'Noto Sans Devanagari','Mukta',sans-serif;
   font-size:var(--fs);
-  line-height:1.65;
+  line-height:1.68;
   padding-left:env(safe-area-inset-left);
   padding-right:env(safe-area-inset-right);
-  background-image:radial-gradient(ellipse at top,#f5e6d8 0%,transparent 55%);
+  background-image:radial-gradient(ellipse at top,#f5e4d4 0%,transparent 55%);
 }
-body.dark{background-image:radial-gradient(ellipse at top,#2a1a22 0%,transparent 50%)}
+body.dark{background-image:radial-gradient(ellipse at top,#2b1723 0%,transparent 50%)}
 header{
-  padding:28px 18px 24px;
+  padding:26px 18px 22px;
   text-align:center;
   color:#fff;
-  background:linear-gradient(145deg,#4a122c 0%,#8b2d4a 45%,#c47a3a 100%);
+  background:linear-gradient(140deg,#3d0c23 0%,#7a1f45 45%,#c47a3a 100%);
   position:relative;
   overflow:hidden;
 }
 header::before{
   content:"";
   position:absolute;inset:0;
-  background:radial-gradient(circle at 80% 20%,rgba(255,200,120,.25),transparent 45%);
+  background:radial-gradient(circle at 82% 20%,rgba(255,215,130,.28),transparent 45%),
+             radial-gradient(circle at 18% 80%,rgba(255,140,160,.16),transparent 40%);
   pointer-events:none;
 }
-header h1{margin:0;font-size:1.85em;letter-spacing:.02em;text-shadow:0 2px 12px rgba(0,0,0,.25)}
-header p{margin:6px 0 2px;opacity:.95}
-header small{opacity:.85;font-size:.82em}
+header h1{margin:0;font-size:1.9em;letter-spacing:.02em;text-shadow:0 2px 14px rgba(0,0,0,.3)}
+header p{margin:5px 0 2px;opacity:.95;font-weight:500}
+header small{opacity:.88;font-size:.82em;display:block}
 nav{
   position:sticky;top:0;
   background:rgba(255,255,255,.92);
-  backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px);
-  z-index:4;
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  z-index:5;
   display:flex;gap:8px;
-  overflow-x:auto;padding:12px 10px;
+  overflow-x:auto;padding:11px 12px;
   border-bottom:1px solid var(--border);
   scrollbar-width:none;
-  box-shadow:0 2px 12px rgba(90,24,48,.04);
+  box-shadow:0 3px 14px rgba(90,24,48,.05);
 }
-body.dark nav{background:rgba(31,23,28,.92)}
+body.dark nav{background:rgba(29,21,27,.92)}
 nav::-webkit-scrollbar{display:none}
 button{
   border:0;border-radius:14px;
   background:var(--primary);color:var(--on-primary);
-  padding:11px 16px;font:inherit;font-weight:600;cursor:pointer;
-  transition:transform .15s,box-shadow .15s,background .15s;
+  padding:10px 15px;font:inherit;font-weight:600;cursor:pointer;
+  transition:transform .14s,box-shadow .14s,background .14s,opacity .14s;
   box-shadow:0 2px 8px rgba(122,31,69,.2);
 }
+button:hover{opacity:.95}
 button:active{transform:scale(.97)}
 button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 nav button{white-space:nowrap;background:var(--chip);color:var(--ink);box-shadow:none;font-weight:500}
-nav button.on{background:var(--primary);color:var(--on-primary);box-shadow:0 3px 10px rgba(122,31,69,.25)}
+nav button.on{background:var(--primary);color:var(--on-primary);box-shadow:0 3px 10px rgba(122,31,69,.26);font-weight:600}
 .alt{background:var(--card);border:1px solid var(--border);color:var(--ink);box-shadow:none}
-.sm{padding:7px 12px;font-size:.85em;border-radius:10px}
-main{max-width:1040px;margin:auto;padding:18px 14px 36px}
-.tab{display:none}.tab.on{display:block}
+.sm{padding:6px 11px;font-size:.84em;border-radius:10px}
+main{max-width:1080px;margin:auto;padding:18px 14px 44px}
+.tab{display:none;animation:fadeIn .22s ease}.tab.on{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
 h2{margin:8px 0 14px;font-size:1.45em;letter-spacing:.01em}
+h3{margin-top:4px}
 .hero,.card{
   background:var(--card);
   border:1px solid var(--border);
@@ -109,38 +115,77 @@ h2{margin:8px 0 14px;font-size:1.45em;letter-spacing:.01em}
   box-shadow:var(--shadow);
 }
 .hero{
-  background:linear-gradient(145deg,#5c1836 0%,#9a3a48 50%,#c47a3a 100%);
+  background:linear-gradient(145deg,#4f102c 0%,#8e2c46 52%,#c47a3a 100%);
   color:#fff;border:0;
   position:relative;overflow:hidden;
 }
 .hero::after{
   content:"";
   position:absolute;right:-20px;top:-30px;
-  width:180px;height:180px;
-  background:radial-gradient(circle,rgba(255,210,140,.2),transparent 70%);
+  width:200px;height:200px;
+  background:radial-gradient(circle,rgba(255,215,140,.22),transparent 70%);
   pointer-events:none;
 }
 .hero .alt{color:#2c1520;background:#fff}
+.hero-grid{display:grid;grid-template-columns:minmax(0,220px) 1fr;gap:20px;align-items:center}
+@media(max-width:680px){.hero-grid{grid-template-columns:1fr;text-align:center}}
 .mata-img{
-  width:100%;max-width:280px;margin:0 auto 14px;display:block;
-  border-radius:16px;box-shadow:0 8px 24px rgba(0,0,0,.25);
-  object-fit:cover;aspect-ratio:3/4;background:#3a1528;
+  width:100%;max-width:220px;margin:0 auto;display:block;
+  border-radius:18px;box-shadow:0 10px 28px rgba(0,0,0,.35);
+  border:2px solid rgba(255,215,130,.55);
+  object-fit:cover;aspect-ratio:3/4;background:#3a1528;cursor:pointer;
 }
 .mata-banner{
-  width:100%;max-height:220px;object-fit:cover;border-radius:16px;
+  width:100%;max-height:240px;object-fit:cover;border-radius:16px;
   margin-bottom:14px;box-shadow:0 6px 20px rgba(0,0,0,.2);
+  border:1px solid var(--border);
 }
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:14px}
-.grid.w{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+/* Deity Galleries & Portraits */
+.darshan-strip{
+  display:flex;gap:12px;overflow-x:auto;padding:6px 2px 10px;scrollbar-width:thin;
+}
+.darshan-card{
+  flex:0 0 112px;text-align:center;cursor:pointer;
+  background:var(--chip);border:1px solid var(--border);
+  border-radius:16px;padding:10px 8px;transition:transform .18s,box-shadow .18s;
+}
+.darshan-card:hover{transform:translateY(-3px);box-shadow:0 8px 18px rgba(122,31,69,.14)}
+.darshan-card img{
+  width:76px;height:76px;border-radius:50%;object-fit:cover;
+  border:2.5px solid var(--accent);box-shadow:0 4px 12px rgba(0,0,0,.18);
+  display:block;margin:0 auto 6px;background:#2b1420;
+}
+.darshan-card span{display:block;font-size:.82em;font-weight:600;line-height:1.25}
+.darshan-card small{display:block;font-size:.7em;color:var(--muted)}
+
+.deity-pic{
+  width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:14px;
+  border:2px solid var(--accent);box-shadow:0 6px 16px rgba(0,0,0,.16);
+  background:#2a131f;display:block;margin-bottom:8px;
+}
+.deity-thumb{
+  width:64px;height:64px;border-radius:14px;object-fit:cover;
+  border:2px solid var(--accent);flex:0 0 64px;background:#2a131f;
+  cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,.15);
+}
+.modal-pic{
+  width:100%;max-width:260px;max-height:320px;object-fit:cover;
+  border-radius:16px;border:2.5px solid var(--accent);
+  display:block;margin:8px auto 14px;box-shadow:0 10px 26px rgba(0,0,0,.22);
+  background:#2a131f;
+}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));gap:14px}
+.grid.w{grid-template-columns:repeat(auto-fit,minmax(min(100%,310px),1fr))}
 .tile{text-align:center;cursor:pointer;transition:transform .18s,box-shadow .18s}
-.tile:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(90,24,48,.12)}
-.tile h3{margin:8px 0 4px}
-.emoji{font-size:40px;line-height:1.2}
+.tile:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(90,24,48,.13)}
+.tile h3{margin:6px 0 4px;font-size:1.05em}
+.emoji{font-size:38px;line-height:1.2}
 .muted{color:var(--muted)}
 .small{font-size:.85em}
 label{display:block;font-size:.9em;color:var(--muted);margin-top:8px}
 input,textarea,select{
-  padding:13px;width:100%;
+  padding:12px 14px;width:100%;
   border:1px solid var(--border);border-radius:14px;
   background:var(--card);color:var(--ink);margin:6px 0;font:inherit;
   transition:border-color .15s,box-shadow .15s;
@@ -148,102 +193,141 @@ input,textarea,select{
 input:focus,textarea:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(212,160,74,.2)}
 input[type=checkbox]{width:auto;margin:0 8px 0 0;transform:scale(1.2)}
 .mantra{
-  font-size:1.5em;text-align:center;line-height:1.85;
-  padding:16px;background:linear-gradient(180deg,var(--bg),var(--chip));
+  font-size:1.35em;text-align:center;line-height:1.85;
+  padding:15px;background:linear-gradient(180deg,var(--bg),var(--chip));
   border-radius:16px;white-space:pre-line;overflow-wrap:anywhere;
-  border:1px solid var(--border);
+  border:1px solid var(--border);margin:8px 0;
 }
-.ro{font-size:.9em;color:var(--muted);font-style:italic;text-align:center;white-space:pre-line;overflow-wrap:anywhere}
+.ro{font-size:.9em;color:var(--muted);font-style:italic;text-align:center;white-space:pre-line;overflow-wrap:anywhere;margin-bottom:6px}
+.arth-box{
+  background:var(--chip);border-left:3.5px solid var(--accent);
+  padding:10px 13px;border-radius:0 12px 12px 0;font-size:.9em;margin:8px 0;
+}
 .counter{text-align:center}
-.number{font-size:4.4em;color:var(--gold);font-weight:700;line-height:1.1;font-variant-numeric:tabular-nums;text-shadow:0 2px 8px rgba(184,134,11,.15)}
+.japa-ring-wrap{position:relative;width:196px;height:196px;margin:14px auto;display:grid;place-items:center}
+.japa-ring{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg);pointer-events:none}
+.japa-ring circle{fill:none;stroke-width:9}
+.japa-ring .track{stroke:var(--border)}
+.japa-ring .prog{stroke:var(--accent);stroke-linecap:round;transition:stroke-dashoffset .25s ease}
+.number{font-size:3.9em;color:var(--gold);font-weight:700;line-height:1.08;font-variant-numeric:tabular-nums;text-shadow:0 2px 8px rgba(184,134,11,.15)}
 .mala{
-  width:156px;height:156px;border-radius:50%;font-size:1.5em;color:#fff;
+  width:152px;height:152px;border-radius:50%;font-size:1.35em;color:#fff;
   background:radial-gradient(circle at 35% 30%,#f0d080,#c47a3a 45%,#7a1f45);
   touch-action:manipulation;
-  box-shadow:0 0 0 10px var(--chip),0 8px 24px rgba(122,31,69,.3);
-  margin:16px 0;transition:transform .12s;
+  box-shadow:0 8px 24px rgba(122,31,69,.32);
+  margin:0;transition:transform .1s;position:relative;z-index:1;
 }
-.mala:active{transform:scale(.96)}
+.mala:active{transform:scale(.94)}
 .bar{height:12px;background:var(--border);border-radius:20px;overflow:hidden}
 .bar div{height:100%;background:linear-gradient(90deg,var(--accent),#e8c070);width:0;transition:width .25s}
-.row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-start}
-.row>*{flex:1 1 140px;min-width:0}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.row>*{flex:1 1 130px;min-width:0}
 .chips{display:flex;gap:8px;overflow-x:auto;padding:4px 0 12px;scrollbar-width:none}
 .chips button{flex:none;background:var(--chip);color:var(--ink);font-weight:500;border-radius:999px;padding:8px 15px;box-shadow:none}
 .chips button.on{background:var(--primary);color:var(--on-primary);box-shadow:0 3px 10px rgba(122,31,69,.22)}
-.lbl{font-size:.72em;letter-spacing:.08em;color:var(--gold);font-weight:700;text-transform:uppercase}
-.badge{display:inline-block;font-size:.75em;padding:3px 10px;border-radius:999px;background:var(--chip);color:var(--muted)}
+.lbl{font-size:.73em;letter-spacing:.07em;color:var(--gold);font-weight:700;text-transform:uppercase}
+.badge{display:inline-block;font-size:.75em;padding:3px 10px;border-radius:999px;background:var(--chip);color:var(--muted);margin:2px 2px 0 0}
 .badge.guru{background:#fde3d6;color:#8a2b0e}
 body.dark .badge.guru{background:#4a2418;color:#ffb89c}
+.badge.charitra{background:rgba(122,31,69,.12);color:var(--primary);font-weight:600}
+body.dark .badge.charitra{background:rgba(224,122,158,.18);color:var(--primary)}
 .stat{text-align:center}
-.stat b{display:block;font-size:1.7em;color:var(--gold);font-variant-numeric:tabular-nums}
+.stat b{display:block;font-size:1.65em;color:var(--gold);font-variant-numeric:tabular-nums}
 details.card summary{cursor:pointer;font-weight:600}
 .check{display:flex;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border)}
 .check:last-child{border-bottom:0}
 .check.done span{text-decoration:line-through;color:var(--muted)}
-.modal{display:none;position:fixed;inset:0;background:rgba(20,8,15,.72);overflow:auto;padding:14px;z-index:9;backdrop-filter:blur(4px)}
+.modal{display:none;position:fixed;inset:0;background:rgba(16,6,12,.76);overflow:auto;padding:14px;z-index:12;backdrop-filter:blur(5px)}
 .modal.show{display:block}
-.modalbox{max-width:720px;margin:28px auto;background:var(--card);border-radius:22px;padding:22px;box-shadow:0 20px 50px rgba(0,0,0,.3)}
-.toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom));transform:translateX(-50%);background:#2c1520;color:#fff;padding:12px 20px;border-radius:999px;z-index:20;opacity:0;pointer-events:none;transition:opacity .2s;max-width:90vw;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.modalbox{max-width:780px;margin:20px auto;background:var(--card);border-radius:22px;padding:22px;box-shadow:0 20px 54px rgba(0,0,0,.38);border:1px solid var(--border)}
+.modal-head{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom));transform:translateX(-50%);background:#2c1520;color:#fff;padding:12px 20px;border-radius:999px;z-index:20;opacity:0;pointer-events:none;transition:opacity .2s;max-width:90vw;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.3)}
 .toast.show{opacity:1}
 .res{display:block;width:100%;text-align:left;background:var(--card);color:var(--ink);border:1px solid var(--border);margin:6px 0;font-weight:500;border-radius:14px}
 .res small{display:block;color:var(--muted);font-weight:400}
-.note{margin-top:22px;padding:16px;border:1px dashed var(--border);border-radius:14px;color:var(--muted);font-size:.9em;background:var(--chip)}
+.note{margin-top:20px;padding:15px;border:1px dashed var(--border);border-radius:14px;color:var(--muted);font-size:.9em;background:var(--chip)}
 .today{outline:2px solid var(--accent);outline-offset:1px}
 table{border-collapse:collapse;width:100%}
 td,th{border-bottom:1px solid var(--border);padding:10px 8px;text-align:left}
 .scroll{overflow-x:auto}
 footer{text-align:center;padding:24px;color:var(--muted);font-size:.9em}
-.ch-summary{margin:10px 0;line-height:1.7}
+.ch-summary{margin:10px 0;line-height:1.78}
 .ch-summary b{color:var(--primary)}
 body.dark .ch-summary b{color:var(--accent)}
-img.lazy-deity{width:72px;height:72px;object-fit:cover;border-radius:50%;margin:0 auto 6px;display:block;border:3px solid var(--accent);box-shadow:0 4px 12px rgba(0,0,0,.15)}
+.shloka-block{
+  background:var(--bg);border:1px solid var(--border);border-radius:16px;
+  padding:14px;margin:12px 0;
+}
+.shloka-skt{font-size:1.15em;font-weight:600;color:var(--primary);white-space:pre-line;text-align:center;line-height:1.8}
+body.dark .shloka-skt{color:var(--accent)}
+.meta-pills{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.reader-body{font-size:var(--rfs,16px);line-height:1.8}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
 <header>
   <h1>🪔 Divya Sadhana</h1>
-  <p>भक्ति • मंत्र • जप • ध्यान • पूजा</p>
-  <small>Premium Edition V5 · माँ दुर्गा · दश महाविद्या · 51 शक्तिपीठ · दुर्गा सप्तशती · पर्व कैलेंडर</small>
+  <p>भक्ति • मंत्र • जप • ध्यान • दुर्गा सप्तशती • देव दर्शन</p>
+  <small>Premium Edition V6 · माँ दुर्गा · दश महाविद्या · 51 शक्तिपीठ · संपूर्ण 13 अध्याय सप्तशती</small>
 </header>
 <nav id="nav" aria-label="मुख्य मेनू"></nav>
 <main>
 
+<!-- HOME -->
 <section id="home" class="tab on">
   <div class="hero">
-    <img class="mata-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Durga_Mahisasuramardini.JPG/500px-Durga_Mahisasuramardini.JPG" alt="माँ दुर्गा महिषासुरमर्दिनी" loading="lazy" width="280" height="370">
-    <h2>जय माँ दुर्गा · दिव्य साधना</h2>
-    <p id="todayLine"></p>
-    <label for="gq" style="color:#fff">पूरे ऐप में खोजें</label>
-    <input id="gq" type="search" placeholder="काली, क्रीं, हिंगलाज, गायत्री, अध्याय 8…" autocomplete="off">
-    <div id="gres"></div>
+    <div class="hero-grid">
+      <img class="mata-img" id="heroImg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Durga_Mahisasuramardini.JPG/500px-Durga_Mahisasuramardini.JPG" alt="माँ दुर्गा महिषासुरमर्दिनी" data-act="zoomImg" data-title="माँ दुर्गा महिषासुरमर्दिनी" width="220" height="293">
+      <div>
+        <h2 style="margin-top:0">जय माँ दुर्गा · दिव्य साधना</h2>
+        <p id="todayLine"></p>
+        <label for="gq" style="color:#fff">पूरे ऐप में खोजें (मंत्र, महाविद्या, शक्तिपीठ, सप्तशती अध्याय)</label>
+        <input id="gq" type="search" placeholder="काली, क्रीं, कुञ्जिका, हिंगलाज, गायत्री, अध्याय 11…" autocomplete="off">
+        <div id="gres"></div>
+      </div>
+    </div>
   </div>
+
+  <!-- All Gods & Goddesses Darshan Strip -->
+  <div class="card">
+    <div class="row" style="justify-content:space-between;align-items:center;margin-bottom:6px">
+      <h3 style="margin:0">🛕 श्री देव-देवी दिव्य दर्शन (All Gods Gallery)</h3>
+      <span class="small muted">चित्र पर टैप कर दर्शन व मंत्र देखें</span>
+    </div>
+    <div class="darshan-strip" id="darshanStrip"></div>
+  </div>
+
   <div class="grid w">
     <div class="card"><h3>📿 आज की साधना</h3>
       <div class="row">
         <div class="stat"><b id="hToday">0</b>आज के जप</div>
         <div class="stat"><b id="hStreak">0</b>दिन की लय</div>
       </div>
-      <p><button data-act="tab" data-id="japa">जप शुरू करें</button></p>
+      <div class="row" style="margin-top:10px">
+        <button data-act="tab" data-id="japa">जप शुरू करें</button>
+        <button class="alt" data-act="bell">🔔 घंटी बजाएँ</button>
+      </div>
     </div>
     <div class="card"><h3>🌅 आज का मंत्र</h3>
       <div id="dailyM"></div>
     </div>
-    <div class="card"><h3>आज का चिंतन</h3><p id="quote"></p></div>
-    <div class="card"><h3>🔱 आगे बढ़ें</h3>
+    <div class="card"><h3>✨ आज का चिंतन</h3><p id="quote"></p></div>
+    <div class="card"><h3>🔱 त्वरित प्रवेश</h3>
       <div class="chips" style="flex-wrap:wrap;overflow:visible">
-        <button data-act="tab" data-id="vidya">दश महाविद्या</button>
-        <button data-act="tab" data-id="peeth">शक्तिपीठ</button>
-        <button data-act="tab" data-id="saptashati">सप्तशती</button>
-        <button data-act="tab" data-id="puja">पूजा विधि</button>
+        <button data-act="tab" data-id="saptashati">📖 सप्तशती (13 अध्याय)</button>
+        <button data-act="tab" data-id="vidya">🔱 दश महाविद्या</button>
+        <button data-act="tab" data-id="mantra">🕉️ मंत्र संग्रह</button>
+        <button data-act="tab" data-id="peeth">🛕 51 शक्तिपीठ</button>
+        <button data-act="tab" data-id="puja">🪔 पूजा विधि</button>
       </div>
     </div>
   </div>
 </section>
 
+<!-- DASHA MAHAVIDYA -->
 <section id="vidya" class="tab">
-  <h2>🔱 दश महाविद्या</h2>
+  <h2>🔱 दश महाविद्या (चित्र एवं साधना विवरण)</h2>
   <img class="mata-banner" src="https://upload.wikimedia.org/wikipedia/commons/7/77/Dasha_Mahavidya.jpg" alt="दश महाविद्या (राजस्थानी चित्र)" loading="lazy" style="max-height:320px;object-fit:contain;background:#1a0a12">
   <label for="vf">देवी खोजें</label>
   <input id="vf" type="search" placeholder="नाम, बीज, मंत्र या ग्रह…">
@@ -253,29 +337,40 @@ img.lazy-deity{width:72px;height:72px;object-fit:cover;border-radius:50%;margin:
   <div class="grid" id="beejs"></div>
   <h3>तंत्र साधना: बुनियाद</h3>
   <div class="grid w" id="tantra"></div>
-  <p class="note">छिन्नमस्ता, बगलामुखी, भैरवी, धूमावती जैसी उग्र विद्याओं की साधना योग्य गुरु से दीक्षा लेकर ही करने की परंपरा है। यह पन्ना उपासना और अध्ययन के लिए है, किसी फल की गारंटी नहीं।</p>
+  <p class="note">छिन्नमस्ता, बगलामुखी, भैरवी, धूमावती जैसी उग्र विद्याओं की साधना योग्य गुरु से दीक्षा लेकर ही करने की परंपरा है। यह पन्ना उपासना और अध्ययन के लिए है।</p>
 </section>
 
+<!-- MANTRAS -->
 <section id="mantra" class="tab">
-  <h2>🕉️ मंत्र संग्रह</h2>
-  <label for="mf">मंत्र खोजें</label>
-  <input id="mf" type="search" placeholder="गायत्री, शिव, गणेश, शनि…">
+  <h2>🕉️ अद्यतन मंत्र संग्रह (चित्र, अर्थ एवं विधि सहित)</h2>
+  <label for="mf">मंत्र, देवता या फल खोजें</label>
+  <input id="mf" type="search" placeholder="गायत्री, शिव, गणेश, दुर्गा, कुञ्जिका, शनि…">
   <div class="chips" id="mchips" role="group" aria-label="श्रेणी"></div>
   <div class="grid w" id="mlist"></div>
 </section>
 
+<!-- JAPA COUNTER -->
 <section id="japa" class="tab">
   <div class="card counter">
-    <h2>📿 मंत्र जप</h2>
+    <h2>📿 उन्नत मंत्र जप गणक</h2>
     <label for="mantraSelect">मंत्र चुनें</label>
     <select id="mantraSelect"></select>
+    <div id="japaMantraPreview" class="mantra" style="font-size:1.1em"></div>
     <label for="sankalp">संकल्प (वैकल्पिक)</label>
-    <input id="sankalp" maxlength="120" placeholder="जैसे: आज एक माला शांति के लिए">
+    <input id="sankalp" maxlength="120" placeholder="जैसे: आज एक माला शांति और सद्बुद्धि के लिए">
+    <div class="japa-ring-wrap">
+      <svg class="japa-ring" viewBox="0 0 120 120" aria-hidden="true">
+        <circle class="track" cx="60" cy="60" r="54"></circle>
+        <circle class="prog" id="ringProg" cx="60" cy="60" r="54" stroke-dasharray="339.29" stroke-dashoffset="339.29"></circle>
+      </svg>
+      <button class="mala" id="tapBtn" data-act="inc" aria-label="एक जप जोड़ें">जप +1</button>
+    </div>
     <div class="number" id="num" aria-live="polite">0</div>
     <div class="muted" id="malaTxt"></div>
-    <button class="mala" id="tapBtn" data-act="inc" aria-label="एक जप जोड़ें">जप +1</button>
+    <p class="small muted">टिप: डेस्कटॉप पर <b>Space</b> कुंजी से भी जप कर सकते हैं।</p>
     <div class="row">
       <button class="alt" data-act="undo">↩ Undo</button>
+      <button class="alt" data-act="bell">🔔 घंटी</button>
       <button class="alt" id="resetBtn" data-act="reset">Reset</button>
     </div>
     <hr style="border:0;border-top:1px solid var(--border);margin:16px 0">
@@ -296,6 +391,7 @@ img.lazy-deity{width:72px;height:72px;object-fit:cover;border-radius:50%;margin:
   <div class="card"><h3>जप इतिहास</h3><div id="history"></div></div>
 </section>
 
+<!-- PUJA -->
 <section id="puja" class="tab">
   <h2>🪔 पूजा विधि</h2>
   <p class="muted">देवी पूजन का सामान्य क्रम, नवरात्रि विधि और हर महाविद्या के लिए प्रचलित सामग्री।</p>
@@ -307,6 +403,7 @@ img.lazy-deity{width:72px;height:72px;object-fit:cover;border-radius:50%;margin:
   <p class="note">पूजा-विधि परंपरा और संप्रदाय के अनुसार भिन्न हो सकती है। तिथि और मुहूर्त के लिए पंचांग या योग्य पंडित से पूछें।</p>
 </section>
 
+<!-- 51 SHAKTI PEETH -->
 <section id="peeth" class="tab">
   <h2>🛕 51 शक्तिपीठ</h2>
   <details class="card"><summary>सती और शक्तिपीठ की कथा</summary><p id="spHi"></p><p class="muted" lang="en" id="spEn"></p></details>
@@ -316,26 +413,46 @@ img.lazy-deity{width:72px;height:72px;object-fit:cover;border-radius:50%;margin:
   </div>
   <div class="chips" id="pchips" role="group" aria-label="क्षेत्र"></div>
   <div class="grid w" id="plist"></div>
-  <p class="note">सूची परंपरा और ग्रंथ के अनुसार बदलती है (पीठनिर्णय, तंत्रचूड़ामणि आदि)। कुछ पीठों के अंग, स्थान या भैरव में मतभेद मिलते हैं। उपयोग से पहले किसी प्रामाणिक ग्रंथ या पंडित से मिलान करें।</p>
+  <p class="note">सूची परंपरा और ग्रंथ के अनुसार बदलती है (पीठनिर्णय, तंत्रचूड़ामणि आदि)। कुछ पीठों के अंग, स्थान या भैरव में मतभेद मिलते हैं।</p>
 </section>
 
+<!-- DURGA SAPTASHATI COMPLETE -->
 <section id="saptashati" class="tab">
-  <h2>📖 दुर्गा सप्तशती · देवी माहात्म्य</h2>
+  <h2>📖 श्री दुर्गा सप्तशती · संपूर्ण 13 अध्याय एवं अंग-स्तोत्र</h2>
   <img class="mata-banner" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/11th_12th_century_Durga_Mahisasuramardini%2C_Alampur%2C_Telangana.jpg/800px-11th_12th_century_Durga_Mahisasuramardini%2C_Alampur%2C_Telangana.jpg" alt="माँ दुर्गा महिषासुरमर्दिनी (अलमपुर)" loading="lazy">
-  <p class="muted">700 श्लोक · 13 अध्याय · तीन चरित्र (प्रथम, मध्यम, उत्तम)। प्रत्येक अध्याय का सार हिन्दी व English में।</p>
-  <div class="card stat"><b id="dsProg">0 / 13</b>अध्याय पढ़े गए</div>
-  <h3>तीन चरित्र · 13 अध्याय</h3>
-  <div class="grid w" id="dsCh"></div>
-  <h3>पाठ क्रम</h3>
+  <p class="muted">मार्कण्डेय पुराण के 700 श्लोक · 13 अध्याय · तीन चरित्र (महाकाली, महालक्ष्मी, महासरस्वती) · सप्तश्लोकी, कवच, अर्गला, कीलक, सिद्ध कुञ्जिका एवं क्षमा प्रार्थना सहित।</p>
+
+  <div class="row" style="margin-bottom:12px">
+    <div class="card stat" style="margin:0"><b id="dsProg">0 / 13</b>अध्याय पूर्ण</div>
+    <div class="card stat" style="margin:0"><b>700</b>कुल श्लोक (13 अध्याय)</div>
+    <div class="card stat" style="margin:0"><b>3</b>चरित्र (काली·लक्ष्मी·सरस्वती)</div>
+  </div>
+
+  <div class="chips" id="dsChips" role="group" aria-label="सप्तशती अनुभाग"></div>
+
+  <div id="dsAngaWrap">
+    <h3>🔱 सप्तशती अंग स्तोत्र एवं सप्तश्लोकी (पाठ से पूर्व व पश्चात्)</h3>
+    <div class="grid w" id="dsAnga"></div>
+  </div>
+
+  <div id="dsChWrap">
+    <h3>📜 संपूर्ण 13 अध्याय (प्रत्येक अध्याय पर टैप कर पूरा पाठ-सार व श्लोक पढ़ें)</h3>
+    <div class="grid w" id="dsCh"></div>
+  </div>
+
+  <h3>📅 नवरात्रि एवं सप्तदिवसीय पाठ क्रम</h3>
+  <div class="card scroll"><table id="dsSchedule"></table></div>
   <div class="card"><p id="dsOrdHi"></p><p class="muted" lang="en" id="dsOrdEn"></p></div>
-  <h3>प्रमुख श्लोक</h3>
+
+  <h3>✨ प्रमुख सिद्ध मंत्र एवं श्लोक</h3>
   <div class="grid w" id="dsMt"></div>
-  <p class="note">यह अध्याय-सार अध्ययन और भक्ति के लिए है। पूरा पाठ किसी प्रामाणिक संस्करण (जैसे गीताप्रेस) से करें। परंपरा में नवरात्रि में अध्याय बाँटकर पाठ किया जाता है।</p>
+  <p class="note">यहाँ सभी 13 अध्यायों का विस्तृत कथा-पाठ, ऋषि-छन्द-देवता, ध्यान एवं प्रमुख प्रामाणिक श्लोक अर्थ सहित दिए गए हैं। संपूर्ण 700 संस्कृत श्लोकों के पारंपरिक अनुष्ठान हेतु गीताप्रेस या प्रामाणिक पुस्तक का उपयोग करें।</p>
 </section>
 
+<!-- CALENDAR -->
 <section id="calendar" class="tab">
   <h2>🗓️ पर्व एवं विशेष दिवस</h2>
-  <p class="muted">पारंपरिक तिथि दी गई है। चंद्र-पंचांग के अनुसार अंग्रेज़ी तारीख हर वर्ष बदलती है, इसलिए तारीख पंचांग से देखें।</p>
+  <p class="muted">पारंपरिक तिथि दी गई है। चंद्र-पंचांग के अनुसार अंग्रेज़ी तारीख हर वर्ष बदलती है।</p>
   <h3>वार और देवता</h3>
   <div class="card scroll"><table id="dayTable"></table></div>
   <h3>मासिक तिथियाँ</h3>
@@ -344,10 +461,11 @@ img.lazy-deity{width:72px;height:72px;object-fit:cover;border-radius:50%;margin:
   <div class="grid w" id="festivals"></div>
 </section>
 
+<!-- MEDITATE -->
 <section id="meditate" class="tab">
   <h2>🧘 ध्यान टाइमर</h2>
   <div class="card counter">
-    <p class="muted">शांत बैठें, सहज श्वास लें और ध्यान करें।</p>
+    <p class="muted">शांत बैठें, सहज श्वास लें और इष्ट देव/देवी का ध्यान करें। पूर्ण होने पर मधुर घंटी बजेगी।</p>
     <div class="chips" id="medGoals"><button data-act="medset" data-sec="300">5 मिनट</button><button data-act="medset" data-sec="600">10 मिनट</button><button data-act="medset" data-sec="900">15 मिनट</button><button data-act="medset" data-sec="1800">30 मिनट</button></div>
     <div class="number" id="medTime">10:00</div><div class="bar"><div id="medFill"></div></div>
     <div class="row" style="margin-top:14px"><button id="medStart" data-act="medstart">▶ शुरू</button><button class="alt" data-act="medreset">↻ रीसेट</button></div>
@@ -355,6 +473,7 @@ img.lazy-deity{width:72px;height:72px;object-fit:cover;border-radius:50%;margin:
   </div>
 </section>
 
+<!-- PLANNER -->
 <section id="planner" class="tab">
   <h2>📅 साधना Planner</h2>
   <div class="card">
@@ -366,11 +485,13 @@ img.lazy-deity{width:72px;height:72px;object-fit:cover;border-radius:50%;margin:
   </div>
 </section>
 
+<!-- SAVED -->
 <section id="saved" class="tab">
   <h2>❤️ पसंदीदा</h2>
   <div class="grid w" id="fav"></div>
 </section>
 
+<!-- SETTINGS -->
 <section id="settings" class="tab">
   <div class="card">
     <h2>⚙️ Settings</h2>
@@ -380,6 +501,7 @@ img.lazy-deity{width:72px;height:72px;object-fit:cover;border-radius:50%;margin:
       <button class="alt" data-act="fontup" aria-label="अक्षर बड़े करें">A+</button>
     </div>
     <label><input type="checkbox" id="vibOn"> जप पर कंपन (vibration)</label>
+    <label><input type="checkbox" id="bellOn"> 108 जप / ध्यान पूर्ण होने पर घंटी ध्वनि</label>
     <hr style="border:0;border-top:1px solid var(--border);margin:16px 0">
     <div class="row">
       <button class="alt" data-act="export">Data Export</button>
@@ -391,60 +513,471 @@ img.lazy-deity{width:72px;height:72px;object-fit:cover;border-radius:50%;margin:
   </div>
   <div class="card">
     <h3>सूचना</h3>
-    <p class="small">यह ऐप भक्ति और अध्ययन के लिए है। किसी भी तांत्रिक प्रयोग या टोटके के लिए योग्य गुरु से मार्गदर्शन लें। ऐप कोई परिणाम की गारंटी नहीं देता। स्वास्थ्य और कानूनी विषयों में पेशेवर सलाह लें।</p>
+    <p class="small">यह ऐप भक्ति, पठन और ध्यान के लिए है। किसी भी उग्र तांत्रिक प्रयोग के लिए योग्य गुरु से मार्गदर्शन लें।</p>
   </div>
 </section>
 
 </main>
-<footer>Divya Sadhana Premium V5 · माँ दुर्गा · श्रद्धा, अध्ययन और ध्यान</footer>
+<footer>Divya Sadhana Premium V6 · माँ दुर्गा · सभी देवी-देवता · संपूर्ण दुर्गा सप्तशती</footer>
 
-<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="विवरण"><div class="modalbox"><button class="alt" data-act="closemodal" aria-label="बंद करें">✕</button><div id="detail"></div></div></div>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="विवरण">
+  <div class="modalbox">
+    <div class="modal-head">
+      <span class="lbl" id="modalTag">दिव्य विवरण</span>
+      <button class="alt sm" data-act="closemodal" aria-label="बंद करें">✕ बंद करें</button>
+    </div>
+    <div id="detail"></div>
+  </div>
+</div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
-const DATA={"MV":[{"n":1,"name":"काली","rm":"Kālī","beej":"क्रीं","roop":"काल की अधिष्ठात्री। श्याम वर्ण, मुण्डमाला, खड्ग। समय, मृत्यु और अहंकार के नाश का प्रतीक।","mantra":"ॐ क्रीं कालिकायै नमः","ro":"Oṃ Krīṃ Kālikāyai Namaḥ","graha":"शनि","bhav":"भय, काल और बंधन से मुक्ति का भाव।"},{"n":2,"name":"तारा","rm":"Tārā","beej":"स्त्रीं","roop":"नील वर्ण। संकट से तारने वाली माँ। बौद्ध और हिन्दू दोनों परंपराओं में पूज्य।","mantra":"ॐ ह्रीं स्त्रीं हूं फट्","ro":"Oṃ Hrīṃ Strīṃ Hūṃ Phaṭ","graha":"गुरु (बृहस्पति)","bhav":"ज्ञान, वाणी और संकट से पार जाने का भाव।"},{"n":3,"name":"त्रिपुर सुन्दरी (षोडशी)","rm":"Tripura Sundarī / Ṣoḍaśī","beej":"सौः","roop":"सोलह कलाओं से पूर्ण, सौंदर्य की परम देवी। श्रीविद्या की मुख्य देवी, श्रीयंत्र उनका यंत्र।","mantra":"ऐं क्लीं सौः","ro":"Aiṃ Klīṃ Sauḥ","graha":"बुध","bhav":"सौंदर्य, बुद्धि और पूर्णता का भाव। षोडशी मंत्र दीक्षा से मिलता है; ऊपर का बाला त्रिपुरा बीज-त्रय है।"},{"n":4,"name":"भुवनेश्वरी","rm":"Bhuvaneśvarī","beej":"ह्रीं","roop":"भुवनों की स्वामिनी। आकाश तत्त्व, दिशा और काल की अधिष्ठात्री। सौम्य और ऐश्वर्यमयी।","mantra":"ॐ ह्रीं भुवनेश्वर्यै नमः","ro":"Oṃ Hrīṃ Bhuvaneśvaryai Namaḥ","graha":"चन्द्रमा","bhav":"स्थिरता, विस्तार और मानसिक शांति का भाव।"},{"n":5,"name":"भैरवी (त्रिपुर भैरवी)","rm":"Bhairavī","beej":"ह्सैं","roop":"उग्र और तपस्विनी। रक्त वर्ण, तप और भीतरी ऊर्जा का रूप। भैरव की शक्ति।","mantra":"ॐ ह्रीं भैरव्यै नमः","ro":"Oṃ Hrīṃ Bhairavyai Namaḥ","graha":"लग्न / मंगल (परंपरा में मतभेद)","bhav":"तप, अनुशासन और ऊर्जा के नियमन का भाव।"},{"n":6,"name":"छिन्नमस्ता","rm":"Chinnamastā","beej":"ह्रीं","roop":"अपना मस्तक स्वयं काटे हुए, तीन रक्तधाराएँ। त्याग, आत्म-नियंत्रण और काम-क्रोध पर विजय का प्रतीक।","mantra":"श्रीं ह्रीं क्लीं ऐं वज्रवैरोचनीये हूं हूं फट् स्वाहा","ro":"Śrīṃ Hrīṃ Klīṃ Aiṃ Vajravairocanīye Hūṃ Hūṃ Phaṭ Svāhā","graha":"राहु","bhav":"आत्म-त्याग और जीवन-मृत्यु के चक्र की समझ। उग्र साधना, गुरु आवश्यक।"},{"n":7,"name":"धूमावती","rm":"Dhūmāvatī","beej":"धूं","roop":"धूम्र वर्ण, विधवा रूप, काकध्वज रथ। अभाव, वैराग्य और अज्ञान के नाश की देवी।","mantra":"ॐ धूं धूं धूमावती ठः ठः","ro":"Oṃ Dhūṃ Dhūṃ Dhūmāvatī Ṭhaḥ Ṭhaḥ","graha":"केतु","bhav":"वैराग्य और जीवन की नश्वरता की समझ।"},{"n":8,"name":"बगलामुखी","rm":"Bagalāmukhī","beej":"ह्लीं","roop":"पीताम्बरा। पीले वस्त्र, हल्दी की माला। वाणी और विघ्न को स्तंभित करने वाली शक्ति।","mantra":"ॐ ह्लीं बगलामुख्यै नमः","ro":"Oṃ Hlīṃ Bagalāmukhyai Namaḥ","graha":"मंगल","bhav":"वाणी पर संयम और बाधाओं के शमन का भाव।"},{"n":9,"name":"मातंगी","rm":"Mātaṅgī","beej":"ऐं","roop":"तंत्र की सरस्वती। हरित वर्ण, वीणा। वाणी, संगीत और कला की अधिष्ठात्री।","mantra":"ॐ ह्रीं क्लीं हूं मातंग्यै फट् स्वाहा","ro":"Oṃ Hrīṃ Klīṃ Hūṃ Mātaṅgyai Phaṭ Svāhā","graha":"सूर्य","bhav":"वाणी, कला और विद्या का भाव।"},{"n":10,"name":"कमला","rm":"Kamalā","beej":"श्रीं","roop":"कमल पर विराजमान, हाथी अभिषेक करते हुए। लक्ष्मी का तांत्रिक रूप।","mantra":"ॐ श्रीं ह्रीं श्रीं कमले कमलालये प्रसीद प्रसीद श्रीं ह्रीं श्रीं ॐ महालक्ष्म्यै नमः","ro":"Oṃ Śrīṃ Hrīṃ Śrīṃ Kamale Kamalālaye Prasīda Prasīda Śrīṃ Hrīṃ Śrīṃ Oṃ Mahālakṣmyai Namaḥ","graha":"शुक्र","bhav":"समृद्धि, सौंदर्य और संतोष का भाव।"}],"BJ":[["ॐ","प्रणव। सब मंत्रों का आदि"],["ऐं","वाग्बीज। सरस्वती, मातंगी"],["ह्रीं","मायाबीज। भुवनेश्वरी"],["श्रीं","लक्ष्मी बीज। कमला"],["क्लीं","कामबीज। आकर्षण शक्ति"],["क्रीं","काली बीज"],["हूं","कवच / भैरव बीज"],["गं","गणेश बीज"],["दुं","दुर्गा बीज"],["ह्लीं","बगलामुखी बीज"],["धूं","धूमावती बीज"],["स्त्रीं","तारा बीज"],["सौः","त्रिपुरा / शक्ति बीज"],["ह्रौं","शिव बीज"],["हं","हनुमान / आकाश बीज"],["फट्","अस्त्र बीज"]],"MT":[["वैदिक",[["गायत्री मंत्र","ॐ भूर्भुवः स्वः तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि धियो यो नः प्रचोदयात्","Oṃ Bhūr Bhuvaḥ Svaḥ Tat Savitur Vareṇyaṃ Bhargo Devasya Dhīmahi Dhiyo Yo Naḥ Pracodayāt"],["महामृत्युंजय मंत्र","ॐ त्र्यम्बकं यजामहे सुगन्धिं पुष्टिवर्धनम् । उर्वारुकमिव बन्धनान्मृत्योर्मुक्षीय माऽमृतात् ॥","Oṃ Tryambakaṃ Yajāmahe Sugandhiṃ Puṣṭivardhanam, Urvārukamiva Bandhanān Mṛtyormukṣīya Mā'mṛtāt"]]],["शिव",[["पंचाक्षरी","ॐ नमः शिवाय","Oṃ Namaḥ Śivāya"]]],["गणेश",[["गणेश बीज मंत्र","ॐ गं गणपतये नमः","Oṃ Gaṃ Gaṇapataye Namaḥ"]]],["विष्णु",[["द्वादशाक्षर","ॐ नमो भगवते वासुदेवाय","Oṃ Namo Bhagavate Vāsudevāya"]]],["देवी",[["नवार्ण मंत्र","ॐ ऐं ह्रीं क्लीं चामुण्डायै विच्चे","Oṃ Aiṃ Hrīṃ Klīṃ Cāmuṇḍāyai Vicce"],["दुर्गा","ॐ दुं दुर्गायै नमः","Oṃ Duṃ Durgāyai Namaḥ"],["लक्ष्मी","ॐ श्रीं महालक्ष्म्यै नमः","Oṃ Śrīṃ Mahālakṣmyai Namaḥ"],["सरस्वती","ॐ ऐं सरस्वत्यै नमः","Oṃ Aiṃ Sarasvatyai Namaḥ"]]],["हनुमान और भैरव",[["हनुमान","ॐ हं हनुमते नमः","Oṃ Haṃ Hanumate Namaḥ"],["काल भैरव","ॐ काल भैरवाय नमः","Oṃ Kāla Bhairavāya Namaḥ"],["बटुक भैरव","ॐ ह्रीं बटुकाय आपदुद्धारणाय कुरु कुरु बटुकाय ह्रीं","Oṃ Hrīṃ Baṭukāya Āpaduddhāraṇāya Kuru Kuru Baṭukāya Hrīṃ"]]],["नवग्रह बीज मंत्र",[["सूर्य","ॐ ह्रां ह्रीं ह्रौं सः सूर्याय नमः","Oṃ Hrāṃ Hrīṃ Hrauṃ Saḥ Sūryāya Namaḥ"],["चन्द्र","ॐ श्रां श्रीं श्रौं सः चन्द्रमसे नमः","Oṃ Śrāṃ Śrīṃ Śrauṃ Saḥ Candramase Namaḥ"],["मंगल","ॐ क्रां क्रीं क्रौं सः भौमाय नमः","Oṃ Krāṃ Krīṃ Krauṃ Saḥ Bhaumāya Namaḥ"],["बुध","ॐ ब्रां ब्रीं ब्रौं सः बुधाय नमः","Oṃ Brāṃ Brīṃ Brauṃ Saḥ Budhāya Namaḥ"],["गुरु","ॐ ग्रां ग्रीं ग्रौं सः गुरवे नमः","Oṃ Grāṃ Grīṃ Grauṃ Saḥ Gurave Namaḥ"],["शुक्र","ॐ द्रां द्रीं द्रौं सः शुक्राय नमः","Oṃ Drāṃ Drīṃ Drauṃ Saḥ Śukrāya Namaḥ"],["शनि","ॐ प्रां प्रीं प्रौं सः शनैश्चराय नमः","Oṃ Prāṃ Prīṃ Prauṃ Saḥ Śanaiścarāya Namaḥ"],["राहु","ॐ भ्रां भ्रीं भ्रौं सः राहवे नमः","Oṃ Bhrāṃ Bhrīṃ Bhrauṃ Saḥ Rāhave Namaḥ"],["केतु","ॐ स्रां स्रीं स्रौं सः केतवे नमः","Oṃ Srāṃ Srīṃ Srauṃ Saḥ Ketave Namaḥ"]]]],"TN":[["गुरु और दीक्षा","तंत्र परंपरा में मंत्र गुरु-मुख से मिलता है। दीक्षा के बिना उग्र विद्याओं की साधना वर्जित मानी गई है।"],["संकल्प","साधना शुरू करने से पहले उद्देश्य, संख्या और अवधि का मन में निश्चय। जल हाथ में लेकर किया जाता है।"],["आसन, दिशा, काल","एक ही आसन, एक ही दिशा और एक ही समय पर नित्य बैठना। ब्रह्म मुहूर्त और रात्रि का मध्य काल प्रचलित हैं।"],["न्यास","अंगों में मंत्राक्षर स्थापित करने की क्रिया। करन्यास और अंगन्यास जप से पहले किए जाते हैं।"],["विनियोग","मंत्र का ऋषि, छंद, देवता, बीज और शक्ति बताने वाला संकल्प वाक्य।"],["जप और माला","जप वाचिक, उपांशु या मानसिक होता है। माला 108 मनकों की। रुद्राक्ष, स्फटिक, हल्दी (बगलामुखी) आदि मंत्र के अनुसार।"],["पुरश्चरण","मंत्र के जितने अक्षर, उतने लाख जप का अनुष्ठान। इसका दशांश हवन, उसका दशांश तर्पण, फिर मार्जन और भोजन।"],["यंत्र","देवी का ज्यामितीय रूप। श्रीयंत्र (षोडशी), बगलामुखी यंत्र आदि। प्राण-प्रतिष्ठा के बाद पूजा।"],["नियम और संयम","सात्त्विक आहार, ब्रह्मचर्य, मौन और सत्य। साधना के दौरान नींद और स्वास्थ्य का ध्यान रखना भी नियम का हिस्सा है।"],["मार्ग","दक्षिणाचार (सात्त्विक, वैदिक-निकट) और वामाचार (गुप्त, कठिन)। आरंभ के लिए पहला मार्ग ही परंपरा में बताया गया है।"]],"SP":[["हिंगलाज","बलूचिस्तान, पाकिस्तान","ब्रह्मरंध्र (सिर का ऊपरी भाग)","कोट्टरी","भीमलोचन"],["शिवहरकरय (शर्कररे)","कराची, पाकिस्तान","नेत्र","महिषमर्दिनी","क्रोधीश"],["सुगंधा","शिकारपुर, बांग्लादेश","नासिका","सुनंदा","त्र्यंबक"],["अमरनाथ","कश्मीर, भारत","कंठ","महामाया","त्रिसंध्येश्वर"],["ज्वालामुखी","कांगड़ा, हिमाचल, भारत","जिह्वा","सिद्धिदा (अम्बिका)","उन्मत्त"],["जालंधर (त्रिपुरमालिनी)","पंजाब, भारत","बायाँ स्तन","त्रिपुरमालिनी","भीषण"],["वैद्यनाथ","देवघर, झारखंड, भारत","हृदय","जयदुर्गा","वैद्यनाथ"],["गुह्येश्वरी","पशुपतिनाथ, नेपाल","दोनों घुटने","महामाया","कपाली"],["मानस","मानसरोवर, तिब्बत","दायाँ हाथ","दाक्षायणी","अमर"],["बिरजा","जाजपुर, ओडिशा, भारत","नाभि","विमला","जगन्नाथ"],["गंडकी","मुक्तिनाथ, नेपाल","दायाँ कपोल","गंडकी चंडी","चक्रपाणि"],["बहुला","केतुग्राम, बंगाल, भारत","बायाँ हाथ","बहुला","भीरुक"],["मंगल चंडिका","उजानी, बंगाल, भारत","दायीं कलाई","मंगल चंडिका","कपिलांबर"],["त्रिपुर सुंदरी","उदयपुर, त्रिपुरा, भारत","दायाँ पैर","त्रिपुरसुंदरी","त्रिपुरेश"],["भवानी","सीताकुंड, बांग्लादेश","दायाँ हाथ","भवानी","चंद्रशेखर"],["भ्रामरी","जलपाईगुड़ी, बंगाल, भारत","बायाँ पैर","भ्रामरी","अंबर"],["कामाख्या","गुवाहाटी, असम, भारत","योनि","कामाख्या","उमानंद"],["युगाद्या","क्षीरग्राम, बंगाल, भारत","दाएँ पैर का अंगूठा","युगाद्या","क्षीरकंटक"],["कालीघाट","कोलकाता, भारत","दाएँ पैर की उंगलियाँ","कालिका","नकुलेश"],["ललिता","प्रयागराज, उत्तर प्रदेश, भारत","हाथ की उंगलियाँ","ललिता","भव"],["जयंती","नर्तियांग, मेघालय, भारत","बायीं जांघ","जयंती","क्रमदीश्वर"],["किरीट","मुर्शिदाबाद, बंगाल, भारत","मुकुट","विमला","संवर्त"],["विशालाक्षी (मणिकर्णिका)","वाराणसी, भारत","कर्णकुंडल / मणि","विशालाक्षी","कालभैरव"],["कन्याश्रम (कन्याकुमारी)","तमिलनाडु, भारत","पीठ","शर्वाणी","निमिष"],["सावित्री (भद्रकाली)","कुरुक्षेत्र, हरियाणा, भारत","एड़ी (टखना)","सावित्री","स्थाणु"],["गायत्री (मणिबंध)","पुष्कर, राजस्थान, भारत","दोनों कलाइयाँ","गायत्री","सर्वानंद"],["महालक्ष्मी (श्रीशैल)","सिलहट, बांग्लादेश","गर्दन","महालक्ष्मी","संबरानंद"],["देवगर्भा (कंकालिताला)","बीरभूम, बंगाल, भारत","कटि (श्रोणि)","देवगर्भा","रुरु"],["नर्मदा (शोणदेश)","अमरकंटक, मध्य प्रदेश, भारत","दायाँ नितंब","नर्मदा","भद्रसेन"],["शिवानी (रामगिरि)","चित्रकूट, भारत","दायाँ स्तन","शिवानी","चंड"],["उमा","वृंदावन, उत्तर प्रदेश, भारत","केश","उमा","भूतेश"],["नारायणी (शुचि)","सुचींद्रम, तमिलनाडु, भारत","ऊपरी दाँत","नारायणी","संहार"],["वाराही (पंचसागर)","पंचसागर (स्थान पर मतभेद)","निचले दाँत","वाराही","महारुद्र"],["जयदुर्गा (कर्णाट)","कर्णाट (स्थान पर मतभेद)","दोनों कान","जयदुर्गा","अभीरु"],["श्रीसुंदरी","श्रीपर्वत, लद्दाख, भारत","दायाँ पायल / टखना","श्रीसुंदरी","सुंदरानंद"],["कपालिनी (विभाष)","तमलुक, बंगाल, भारत","बायाँ टखना","कपालिनी (भीमरूपा)","सर्वानंद"],["चंद्रभागा (प्रभास)","सोमनाथ, गुजरात, भारत","उदर","चंद्रभागा","वक्रतुंड"],["अवंती (भैरवपर्वत)","उज्जैन, मध्य प्रदेश, भारत","ऊपरी होंठ / कोहनी","अवंती","लंबकर्ण"],["जशोरेश्वरी","जेशोर, बांग्लादेश","हथेलियाँ और तलवे","जशोरेश्वरी","चंड"],["फुल्लरा (अट्टहास)","लाभपुर, बंगाल, भारत","निचला होंठ","फुल्लरा","विश्वेश"],["नंदिनी","सैंथिया, बंगाल, भारत","हार","नंदिनी","नंदिकेश्वर"],["इंद्राक्षी","लंका, श्रीलंका","पायल","इंद्राक्षी","राक्षसेश्वर"],["विश्वेश्वरी (सर्वशैल)","राजमहेंद्रवरम, आंध्र प्रदेश, भारत","बायाँ कपोल","विश्वेश्वरी","दंडपाणि"],["काली (कालमाधव)","मध्य प्रदेश, भारत","बायाँ नितंब","काली","असितांग"],["कुमारी (रत्नावली)","खानाकुल, बंगाल, भारत","दायाँ कंधा","कुमारी","घंटेश्वर"],["उमा (मिथिला)","जनकपुर, नेपाल/भारत सीमा","बायाँ कंधा","उमा","महोदर"],["कालिका (नलहाटी)","नलहाटी, बंगाल, भारत","कंठ-नली","कालिका","योगेश"],["अंबाजी","बनासकांठा, गुजरात, भारत","हृदय (परंपरा के अनुसार)","अंबाजी","बटुक"],["तारापीठ","बीरभूम, बंगाल, भारत","नेत्र की पुतली","तारा","चंद्रचूड़"],["शांकरी","त्रिंकोमाली, श्रीलंका","कटि / जघन","शांकरी","राक्षसेश्वर"],["अंबिका (विराट)","बैराट, राजस्थान, भारत","बाएँ पैर की उंगलियाँ","अंबिका","अमृत"]],"SPSTORY_HI":"प्रजापति दक्ष की पुत्री सती ने शिव से विवाह किया। दक्ष ने एक महायज्ञ किया और शिव को नहीं बुलाया। सती बिना बुलाए पहुँचीं, पर वहाँ शिव का अपमान सुनकर उन्होंने यज्ञ-अग्नि में प्राण त्याग दिए। शिव शोक और क्रोध में सती का शरीर कंधे पर लेकर तांडव करने लगे। सृष्टि को बचाने के लिए विष्णु ने सुदर्शन चक्र से शरीर के टुकड़े किए। वे अंग और आभूषण जहाँ-जहाँ गिरे, वहाँ शक्तिपीठ बने। हर पीठ पर देवी का एक रूप (शक्ति) और शिव का एक रूप (भैरव) रक्षक माने जाते हैं।","SPSTORY_EN":"Sati, daughter of Daksha, married Shiva. Daksha held a great sacrifice and did not invite him. Sati went uninvited, heard Shiva insulted, and gave up her life in the sacrificial fire. Shiva, mad with grief, carried her body and began the cosmic dance. To protect the world, Vishnu cut the body into pieces with his Sudarshana discus. The places where the limbs and ornaments fell became the Shakti Peethas. Each is guarded by a form of the Goddess (Shakti) and a form of Shiva (Bhairava).","PJ":[["1. संकल्प और शुद्धि","स्नान, स्वच्छ वस्त्र, आसन पर पूर्व या उत्तर मुख बैठना। आचमन, पवित्रीकरण और हाथ में जल लेकर संकल्प।","Bathe, sit facing east or north, sip water, and state your resolve with water in hand."],["2. गणेश और कलश पूजन","पहले गणेश, फिर जल से भरा कलश। कलश में देवताओं का आवाहन।","Worship Ganesha first, then the water pot (kalash)."],["3. आवाहन और आसन","देवी का ध्यान करके उन्हें बुलाना और आसन अर्पित करना।","Invite the Goddess in meditation and offer a seat."],["4. पाद्य, अर्घ्य, आचमन","चरण धोने, हाथ धोने और आचमन के लिए जल अर्पण।","Offer water for feet, hands and sipping."],["5. स्नान","जल, फिर पंचामृत (दूध, दही, घी, शहद, शक्कर) से स्नान, फिर शुद्ध जल।","Bathe the image: water, panchamrit, water again."],["6. वस्त्र और आभूषण","लाल चुनरी, सिंदूर, चूड़ी, आभूषण।","Red cloth, vermilion, bangles, ornaments."],["7. गंध, पुष्प, माला","चंदन, कुमकुम, ताज़े फूल। देवी को लाल गुड़हल प्रिय माना जाता है।","Sandal paste, kumkum, fresh flowers. Red hibiscus is favoured."],["8. धूप, दीप","धूप या अगरबत्ती और घी का दीपक।","Incense and a ghee lamp."],["9. नैवेद्य और ताम्बूल","फल, मिठाई, खीर, हलवा, पान-सुपारी।","Fruit, sweets, kheer, halwa, betel."],["10. मंत्र जप और पाठ","नित्य संख्या तय करके माला से जप। चाहें तो दुर्गा सप्तशती या चालीसा।","Chant a fixed number of rounds on a mala, or recite Saptashati."],["11. आरती और प्रदक्षिणा","आरती, परिक्रमा और पुष्पांजलि।","Aarti, circumambulation, flower offering."],["12. क्षमा प्रार्थना","भूल-चूक के लिए क्षमा माँगना और प्रसाद बाँटना।","Ask forgiveness for errors and distribute prasad."]],"NAV":[["घटस्थापना (प्रतिपदा)","शुभ मुहूर्त में मिट्टी में जौ बोकर कलश स्थापित करें। नारियल, आम के पत्ते और लाल चुनरी लगाएँ।","On day one, sow barley in soil, install the kalash with coconut and mango leaves."],["अखंड ज्योति","घी का दीपक नौ दिन जलाए रखने की परंपरा है। न हो सके तो सुबह-शाम का दीप भी मान्य।","A lamp is kept lit for nine days by custom; morning and evening lamps are also accepted."],["नौ दिन, नौ रूप","शैलपुत्री, ब्रह्मचारिणी, चंद्रघंटा, कूष्मांडा, स्कंदमाता, कात्यायनी, कालरात्रि, महागौरी, सिद्धिदात्री।","Shailaputri, Brahmacharini, Chandraghanta, Kushmanda, Skandamata, Katyayani, Kalaratri, Mahagauri, Siddhidatri."],["नित्य पाठ","हर दिन कलश पूजन, जप और सप्तशती का पाठ या कवच-अर्गला-कीलक।","Daily: kalash puja, japa, and Saptashati or Kavach-Argala-Keelak."],["कन्या पूजन","अष्टमी या नवमी पर कन्याओं के पाँव धोकर भोजन, वस्त्र और दक्षिणा।","On Ashtami or Navami, honour young girls with a meal and gifts."],["हवन और विसर्जन","नवमी को हवन। दशमी को कलश के जल का छिड़काव और जौ का प्रसाद।","Havan on Navami; on Dashami sprinkle the kalash water and share the barley sprouts."]],"PJM":[["काली","लाल गुड़हल, काले तिल, नारियल, गुड़"],["तारा","नीले फूल, खीर, सफेद मिठाई"],["त्रिपुर सुंदरी","लाल कमल, श्रीयंत्र, खीर, लाल वस्त्र"],["भुवनेश्वरी","लाल और सफेद फूल, दूध-चावल की खीर"],["भैरवी","लाल फूल, लाल चंदन, गुड़"],["छिन्नमस्ता","लाल फूल, गुड़। केवल दीक्षित गुरु के निर्देश में"],["धूमावती","काले तिल, सादा सूखा नैवेद्य, सफेद या धूसर वस्त्र"],["बगलामुखी","पीले फूल, हल्दी की माला, पीला वस्त्र, बेसन का लड्डू"],["मातंगी","हरे वस्त्र, हरे फल-पत्ते, शहद"],["कमला","कमल का फूल, खीर, गुलाबी या पीला वस्त्र"]],"DSCH":[
-["1","प्रथम चरित्र · महाकाली","मधु-कैटभ वध","Slaying of Madhu & Kaitabha",
-"कल्प के अंत में विष्णु योगनिद्रा में शेषनाग पर शयन करते हैं। उनके कान के मैल से मधु और कैटभ असुर उत्पन्न होते हैं और ब्रह्मा को मारने लगते हैं। ब्रह्मा देवी योगनिद्रा की स्तुति करते हैं। देवी जागृत होती हैं, विष्णु उठते हैं और दोनों असुरों का वध करते हैं। यह अध्याय बताता है कि स्वयं विष्णु भी माँ की शक्ति से ही जागते हैं।",
-"At the end of a cosmic cycle Vishnu lies in yogic sleep. From the dirt of his ears arise the demons Madhu and Kaitabha who attack Brahma. Brahma praises the Goddess as Yoganidra. She withdraws, Vishnu awakens and destroys the demons. Even Vishnu acts through the Mother's power."],
-["2","मध्यम चरित्र · महालक्ष्मी","महिषासुर की सेना का वध","Destruction of Mahisha's army",
-"महिषासुर देवताओं को हराकर स्वर्ग पर अधिकार कर लेता है। देवताओं के क्रोध और तेज से देवी दुर्गा का प्रादुर्भाव होता है। प्रत्येक देवता उन्हें अपना आयुध देते हैं। सिंह पर सवार होकर माँ महिषासुर की विशाल सेना का संहार करती हैं।",
-"Mahishasura defeats the gods and seizes heaven. From the combined fury and radiance of the gods the Goddess Durga is born. Each god gives her a weapon. Riding a lion she destroys Mahisha's vast army."],
-["3","मध्यम चरित्र · महालक्ष्मी","महिषासुर वध","Slaying of Mahishasura",
-"महिषासुर रूप बदल-बदलकर लड़ता है — भैंसा, सिंह, मनुष्य आदि। अंत में माँ उसके गले में पैर रखकर त्रिशूल से उसका वध करती हैं। महिषासुरमर्दिनी रूप यहाँ पूर्ण प्रकट होता है।",
-"Mahishasura changes forms — buffalo, lion, man — during the battle. Finally the Goddess pins him down and slays him with her trident. This is the classic Mahishasuramardini episode."],
-["4","मध्यम चरित्र · महालक्ष्मी","देवताओं द्वारा देवी की स्तुति","Hymn of the gods (Shakradi Stuti)",
-"महिषासुर के वध के बाद इंद्र आदि देवता माँ की स्तुति करते हैं। यह स्तुति देवी की सर्वव्यापकता, करुणा और शक्ति का वर्णन करती है। मध्यम चरित्र यहाँ समाप्त होता है।",
-"After Mahishasura's death the gods led by Indra praise the Goddess. The hymn celebrates her all-pervading power and compassion. The middle charita ends here."],
-["5","उत्तम चरित्र · महासरस्वती","देवी और दूत का संवाद · या देवी स्तुति","Messenger's dialogue & Ya Devi hymn",
-"शुम्भ-निशुम्भ ने फिर स्वर्ग छीन लिया। देवता हिमालय में माँ की स्तुति करते हैं — 'या देवी सर्वभूतेषु...'। शुम्भ दूत भेजकर माँ से विवाह प्रस्ताव रखता है। माँ कहती हैं — जो मुझे युद्ध में जीते, वही मेरा पति होगा।",
-"Shumbha and Nishumbha again seize heaven. The gods praise the Goddess in the Himalayas with the famous Ya Devi Sarvabhuteshu hymn. Shumbha sends a messenger proposing marriage. She replies that only one who defeats her in battle may win her."],
-["6","उत्तम चरित्र · महासरस्वती","धूम्रलोचन वध","Slaying of Dhumralochana",
-"शुम्भ का सेनापति धूम्रलोचन माँ को पकड़ने आता है। माँ के हुंकार मात्र से वह भस्म हो जाता है। उसकी सेना भी नष्ट हो जाती है।",
-"Shumbha's general Dhumralochana comes to seize the Goddess. She reduces him to ashes with a mere roar (humkara). His army is also destroyed."],
-["7","उत्तम चरित्र · महासरस्वती","चंड-मुंड वध · चामुंडा","Slaying of Chanda & Munda · Chamunda",
-"चंड और मुंड माँ पर आक्रमण करते हैं। माँ के ललाट से काली प्रकट होती हैं और दोनों का वध करके उनके सिर माँ को अर्पित करती हैं। तभी से काली को चामुंडा कहा जाता है।",
-"Chanda and Munda attack. From the Goddess's forehead Kali springs forth, slays both and presents their heads. From that day Kali is called Chamunda."],
-["8","उत्तम चरित्र · महासरस्वती","रक्तबीज वध","Slaying of Raktabija",
-"रक्तबीज का वरदान है कि उसके रक्त की हर बूँद से नया असुर पैदा हो। काली और मातृकाएँ (ब्राह्मी, माहेश्वरी आदि) उसके रक्त को पी जाती हैं ताकि नई सेना न बने। अंत में रक्तबीज का वध होता है।",
-"Raktabija has the boon that every drop of his blood creates a new demon. Kali and the Matrikas drink every drop so no new army can rise. Finally Raktabija is slain."],
-["9","उत्तम चरित्र · महासरस्वती","निशुम्भ वध","Slaying of Nishumbha",
-"निशुम्भ स्वयं युद्ध में आता है। लंबा और भयंकर युद्ध होता है। अंत में माँ निशुम्भ का वध करती हैं।",
-"Nishumbha himself enters the battle. After a fierce fight the Goddess slays him."],
-["10","उत्तम चरित्र · महासरस्वती","शुम्भ वध","Slaying of Shumbha",
-"शुम्भ अकेला माँ से लड़ता है और कहता है कि अन्य शक्तियाँ माँ की ही हैं। माँ सभी मातृकाओं को अपने में समाहित कर लेती हैं और शुम्भ का वध करती हैं। तीनों लोकों में शांति स्थापित होती है।",
-"Shumbha fights alone and claims the other powers are only parts of the Goddess. She draws all the Matrikas back into herself and slays Shumbha. Peace returns to the three worlds."],
-["11","उत्तम चरित्र · महासरस्वती","नारायणी स्तुति","Narayani Stuti",
-"देवता माँ की भव्य स्तुति करते हैं — नारायणी स्तुति। माँ वचन देती हैं कि जब-जब अधर्म बढ़ेगा, वे प्रकट होंगी। यह अध्याय देवी की करुणा और भविष्य की रक्षा का आश्वासन देता है।",
-"The gods offer the majestic Narayani Stuti. The Goddess promises to appear whenever dharma declines. This chapter affirms her compassion and future protection."],
-["12","उत्तम चरित्र · महासरस्वती","फलश्रुति","Fruits of reciting the text",
-"माँ स्वयं बताती हैं कि इस माहात्म्य का पाठ, श्रवण या चिंतन करने से भय, रोग, शत्रु और आपदा दूर होते हैं। नवरात्रि में विशेष फल कहा गया है।",
-"The Goddess herself declares the fruits of reading, hearing or contemplating this Mahatmya: freedom from fear, disease, enemies and calamity. Special merit is given for recitation in Navratri."],
-["13","उत्तम चरित्र · महासरस्वती","सुरथ और समाधि को वरदान","Boons to Suratha & Samadhi",
-"राजा सुरथ (जिसने राज्य खोया) और वैश्य समाधि (जिसका परिवार ने त्याग दिया) माँ की आराधना करते हैं। माँ सुरथ को फिर राज्य और भविष्य में सावर्णि मनु बनने का वर देती हैं; समाधि को ज्ञान और मुक्ति का वर मिलता है।",
-"King Suratha (who lost his kingdom) and the merchant Samadhi (abandoned by his family) worship the Goddess. She grants Suratha restoration of his kingdom and future birth as Savarni Manu; Samadhi receives knowledge and liberation."]
-],"DSORDER_HI":"सामान्य क्रम: संकल्प, गणेश-कलश पूजन, फिर देवी कवच, अर्गला स्तोत्र, कीलक स्तोत्र, नवार्ण जप, रात्रि सूक्त, इसके बाद तेरह अध्याय, देवी सूक्त, तीनों रहस्य (प्राधानिक, वैकृतिक, मूर्ति) और अंत में क्षमा प्रार्थना। नवरात्रि में नौ दिन में बाँटकर पाठ की परंपरा है। संप्रदाय के अनुसार क्रम बदल सकता है।","DSORDER_EN":"Usual order: resolve, Ganesha and kalash puja, then Devi Kavacha, Argala, Keelaka, Navarna japa, Ratri Sukta, the thirteen chapters, Devi Sukta, the three Rahasyas, and a closing prayer for forgiveness. Many split the chapters across the nine nights of Navratri. Lineages differ in the details.","DSMT":[["या देवी सर्वभूतेषु शक्तिरूपेण संस्थिता ।\nनमस्तस्यै नमस्तस्यै नमस्तस्यै नमो नमः ॥","Yā devī sarvabhūteṣu śaktirūpeṇa saṃsthitā |\nNamastasyai namastasyai namastasyai namo namaḥ ||","जो देवी सब प्राणियों में शक्ति रूप से स्थित हैं, उन्हें बारंबार नमस्कार।","Salutations again and again to the Goddess who dwells in all beings in the form of power.","अध्याय 5"],["सर्वमङ्गलमाङ्गल्ये शिवे सर्वार्थसाधिके ।\nशरण्ये त्र्यम्बके गौरि नारायणि नमोऽस्तु ते ॥","Sarvamaṅgalamāṅgalye śive sarvārthasādhike |\nŚaraṇye tryambake gauri nārāyaṇi namo'stu te ||","हे सब मंगलों की मंगल, कल्याणी, सब कार्य सिद्ध करने वाली, शरण देने वाली, त्रिनेत्री गौरी नारायणी, आपको नमस्कार।","O auspiciousness of all that is auspicious, giver of every aim, refuge, three-eyed Gauri, Narayani, I bow to you.","अध्याय 11"],["सर्वस्वरूपे सर्वेशे सर्वशक्तिसमन्विते ।\nभयेभ्यस्त्राहि नो देवि दुर्गे देवि नमोऽस्तु ते ॥","Sarvasvarūpe sarveśe sarvaśaktisamanvite |\nBhayebhyastrāhi no devi durge devi namo'stu te ||","हे सर्वरूपा, सबकी स्वामिनी, सर्वशक्तिमयी दुर्गा देवी, हमें भय से बचाइए। आपको नमस्कार।","O Durga, all-formed, sovereign of all, endowed with every power, protect us from fear. I bow to you.","अध्याय 11"],["रूपं देहि जयं देहि यशो देहि द्विषो जहि ।","Rūpaṃ dehi jayaṃ dehi yaśo dehi dviṣo jahi |","मुझे रूप दें, विजय दें, यश दें और मेरे शत्रुओं (विकारों) का नाश करें। (अर्गला स्तोत्र की टेक)","Grant me beauty, victory, fame, and destroy my adversaries. (Refrain of the Argala Stotra)","अर्गला स्तोत्र"],["ॐ ऐं ह्रीं क्लीं चामुण्डायै विच्चे","Oṃ Aiṃ Hrīṃ Klīṃ Cāmuṇḍāyai Vicce","नवार्ण मंत्र। ऐं (सरस्वती), ह्रीं (महालक्ष्मी), क्लीं (महाकाली) के बीज, चामुण्डा को संबोधन, विच्चे का अर्थ विज्ञान-शक्ति बताया जाता है।","The nine-syllable mantra. Aiṃ, Hrīṃ, Klīṃ are seeds of Sarasvati, Lakshmi and Kali, addressed to Chamunda.","पाठ से पहले जप"]]};
+/* ---------- Verified Wikimedia Commons Images + Sacred SVG Fallback ---------- */
+const IMGS={
+  durga:'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Durga_Mahisasuramardini.JPG/500px-Durga_Mahisasuramardini.JPG',
+  durga2:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/11th_12th_century_Durga_Mahisasuramardini%2C_Alampur%2C_Telangana.jpg/800px-11th_12th_century_Durga_Mahisasuramardini%2C_Alampur%2C_Telangana.jpg',
+  kali:'https://upload.wikimedia.org/wikipedia/commons/4/4b/Goddess_Kali_in_cremation_ground.jpg',
+  tara:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Tara_lithograph.jpg/300px-Tara_lithograph.jpg',
+  tripura:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Lalita_sm.JPG/300px-Lalita_sm.JPG',
+  bhuvaneshwari:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Bhuvaneshvari_Devi.jpg/300px-Bhuvaneshvari_Devi.jpg',
+  bhairavi:'https://upload.wikimedia.org/wikipedia/commons/e/ee/Goddess_Bhairavi.jpg',
+  chinnamasta:'https://upload.wikimedia.org/wikipedia/commons/c/c4/Chinnamasta_devi.jpg',
+  dhumavati:'https://upload.wikimedia.org/wikipedia/commons/0/01/Dhumavati_devi.jpg',
+  bagalamukhi:'https://upload.wikimedia.org/wikipedia/commons/b/b7/Bagulamki.jpg',
+  matangi:'https://upload.wikimedia.org/wikipedia/commons/8/87/Matangi.jpg',
+  kamala:'https://upload.wikimedia.org/wikipedia/commons/b/bc/Kamala_Devi_%281895-1923%29.jpg',
+  ganesha:'https://upload.wikimedia.org/wikipedia/commons/6/6b/Rebirth_of_Ganesha.jpg',
+  shiva:'https://upload.wikimedia.org/wikipedia/commons/3/32/Lord_Shiva.jpg',
+  vishnu:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Vishnu_Avatars.jpg/300px-Vishnu_Avatars.jpg',
+  lakshmi:'https://upload.wikimedia.org/wikipedia/commons/a/a6/Raja_Ravi_Varma%2C_Goddess_Lakshmi%2C_1896.jpg',
+  saraswati:'https://upload.wikimedia.org/wikipedia/commons/d/df/Saraswati_by_Raja_Ravi_Varma.jpg',
+  hanuman:'https://upload.wikimedia.org/wikipedia/commons/a/a1/Hanuman_taking_Sita%27s_ring.jpg',
+  bhairava:'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Shiva_as_Bhairava_LACMA_M.70.42.4_%282_of_7%29.jpg/300px-Shiva_as_Bhairava_LACMA_M.70.42.4_%282_of_7%29.jpg',
+  surya:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Surya_with_Adityas_and_attendants.jpg/300px-Surya_with_Adityas_and_attendants.jpg'
+};
+function svgFallback(sym='ॐ'){
+  const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240"><defs><radialGradient id="g" cx="50%" cy="40%"><stop offset="0%" stop-color="#c47a3a"/><stop offset="100%" stop-color="#4a122c"/></radialGradient></defs><rect width="200" height="240" fill="url(#g)"/><circle cx="100" cy="110" r="68" fill="none" stroke="#f0d080" stroke-width="2" stroke-dasharray="5 4"/><circle cx="100" cy="110" r="52" fill="rgba(255,215,130,.12)" stroke="#f0d080" stroke-width="1.5"/><text x="100" y="128" text-anchor="middle" font-size="56" fill="#ffe6a8" font-family="serif">${sym}</text></svg>`;
+  return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+}
+window.imgErr=function(img,sym){
+  if(img.dataset.fb)return;
+  img.dataset.fb='1';
+  img.src=svgFallback(sym||'ॐ');
+};
 
-/* ---------- helpers ---------- */
+/* ---------- Core Data ---------- */
+const DATA={
+MV:[
+  {n:1,name:'काली',rm:'Kālī',beej:'क्रीं',roop:'काल की अधिष्ठात्री। श्याम वर्ण, मुण्डमाला, खड्ग। समय, मृत्यु और अहंकार के नाश का प्रतीक।',mantra:'ॐ क्रीं कालिकायै नमः',ro:'Oṃ Krīṃ Kālikāyai Namaḥ',graha:'शनि',bhav:'भय, काल और बंधन से मुक्ति का भाव।',img:IMGS.kali},
+  {n:2,name:'तारा',rm:'Tārā',beej:'स्त्रीं',roop:'नील वर्ण। संकट से तारने वाली माँ। बौद्ध और हिन्दू दोनों परंपराओं में पूज्य।',mantra:'ॐ ह्रीं स्त्रीं हूं फट्',ro:'Oṃ Hrīṃ Strīṃ Hūṃ Phaṭ',graha:'गुरु (बृहस्पति)',bhav:'ज्ञान, वाणी और संकट से पार जाने का भाव।',img:IMGS.tara},
+  {n:3,name:'त्रिपुर सुन्दरी (षोडशी)',rm:'Tripura Sundarī / Ṣoḍaśī',beej:'सौः',roop:'सोलह कलाओं से पूर्ण, सौंदर्य की परम देवी। श्रीविद्या की मुख्य देवी, श्रीयंत्र उनका यंत्र।',mantra:'ऐं क्लीं सौः',ro:'Aiṃ Klīṃ Sauḥ',graha:'बुध',bhav:'सौंदर्य, बुद्धि और पूर्णता का भाव।',img:IMGS.tripura},
+  {n:4,name:'भुवनेश्वरी',rm:'Bhuvaneśvarī',beej:'ह्रीं',roop:'भुवनों की स्वामिनी। आकाश तत्त्व, दिशा और काल की अधिष्ठात्री। सौम्य और ऐश्वर्यमयी।',mantra:'ॐ ह्रीं भुवनेश्वर्यै नमः',ro:'Oṃ Hrīṃ Bhuvaneśvaryai Namaḥ',graha:'चन्द्रमा',bhav:'स्थिरता, विस्तार और मानसिक शांति का भाव।',img:IMGS.bhuvaneshwari},
+  {n:5,name:'भैरवी (त्रिपुर भैरवी)',rm:'Bhairavī',beej:'ह्सैं',roop:'उग्र और तपस्विनी। रक्त वर्ण, तप और भीतरी ऊर्जा का रूप। भैरव की शक्ति।',mantra:'ॐ ह्रीं भैरव्यै नमः',ro:'Oṃ Hrīṃ Bhairavyai Namaḥ',graha:'लग्न / मंगल',bhav:'तप, अनुशासन और ऊर्जा के नियमन का भाव।',img:IMGS.bhairavi},
+  {n:6,name:'छिन्नमस्ता',rm:'Chinnamastā',beej:'ह्रीं',roop:'अपना मस्तक स्वयं काटे हुए, तीन रक्तधाराएँ। त्याग, आत्म-नियंत्रण और काम-क्रोध पर विजय का प्रतीक।',mantra:'श्रीं ह्रीं क्लीं ऐं वज्रवैरोचनीये हूं हूं फट् स्वाहा',ro:'Śrīṃ Hrīṃ Klīṃ Aiṃ Vajravairocanīye Hūṃ Hūṃ Phaṭ Svāhā',graha:'राहु',bhav:'आत्म-त्याग और जीवन-मृत्यु के चक्र की समझ।',img:IMGS.chinnamasta},
+  {n:7,name:'धूमावती',rm:'Dhūmāvatī',beej:'धूं',roop:'धूम्र वर्ण, विधवा रूप, काकध्वज रथ। अभाव, वैराग्य और अज्ञान के नाश की देवी।',mantra:'ॐ धूं धूं धूमावती ठः ठः',ro:'Oṃ Dhūṃ Dhūṃ Dhūmāvatī Ṭhaḥ Ṭhaḥ',graha:'केतु',bhav:'वैराग्य और जीवन की नश्वरता की समझ।',img:IMGS.dhumavati},
+  {n:8,name:'बगलामुखी',rm:'Bagalāmukhī',beej:'ह्लीं',roop:'पीताम्बरा। पीले वस्त्र, हल्दी की माला। वाणी और विघ्न को स्तंभित करने वाली शक्ति।',mantra:'ॐ ह्लीं बगलामुख्यै नमः',ro:'Oṃ Hlīṃ Bagalāmukhyai Namaḥ',graha:'मंगल',bhav:'वाणी पर संयम और बाधाओं के शमन का भाव।',img:IMGS.bagalamukhi},
+  {n:9,name:'मातंगी',rm:'Mātaṅgī',beej:'ऐं',roop:'तंत्र की सरस्वती। हरित वर्ण, वीणा। वाणी, संगीत और कला की अधिष्ठात्री।',mantra:'ॐ ह्रीं क्लीं हूं मातंग्यै फट् स्वाहा',ro:'Oṃ Hrīṃ Klīṃ Hūṃ Mātaṅgyai Phaṭ Svāhā',graha:'सूर्य',bhav:'वाणी, कला और विद्या का भाव।',img:IMGS.matangi},
+  {n:10,name:'कमला',rm:'Kamalā',beej:'श्रीं',roop:'कमल पर विराजमान, हाथी अभिषेक करते हुए। लक्ष्मी का तांत्रिक रूप।',mantra:'ॐ श्रीं ह्रीं श्रीं कमले कमलालये प्रसीद प्रसीद श्रीं ह्रीं श्रीं ॐ महालक्ष्म्यै नमः',ro:'Oṃ Śrīṃ Hrīṃ Śrīṃ Kamale Kamalālaye Prasīda Prasīda Śrīṃ Hrīṃ Śrīṃ Oṃ Mahālakṣmyai Namaḥ',graha:'शुक्र',bhav:'समृद्धि, सौंदर्य और संतोष का भाव।',img:IMGS.kamala}
+],
+BJ:[
+  ['ॐ','प्रणव। सब मंत्रों का आदि'],['ऐं','वाग्बीज। सरस्वती, मातंगी'],['ह्रीं','मायाबीज। भुवनेश्वरी'],['श्रीं','लक्ष्मी बीज। कमला'],
+  ['क्लीं','कामबीज। आकर्षण शक्ति'],['क्रीं','काली बीज'],['हूं','कवच / भैरव बीज'],['गं','गणेश बीज'],
+  ['दुं','दुर्गा बीज'],['ह्लीं','बगलामुखी बीज'],['धूं','धूमावती बीज'],['स्त्रीं','तारा बीज'],
+  ['सौः','त्रिपुरा / शक्ति बीज'],['ह्रौं','शिव बीज'],['हं','हनुमान / आकाश बीज'],['फट्','अस्त्र बीज']
+],
+MT:[
+  ['वैदिक एवं शांति',IMGS.surya,[
+    ['गायत्री मंत्र','ॐ भूर्भुवः स्वः तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि धियो यो नः प्रचोदयात्','Oṃ Bhūr Bhuvaḥ Svaḥ Tat Savitur Vareṇyaṃ Bhargo Devasya Dhīmahi Dhiyo Yo Naḥ Pracodayāt','हम उस परम तेजस्वी सविता देव का ध्यान करते हैं, जो हमारी बुद्धि को सन्मार्ग की ओर प्रेरित करें।','प्रातः व मध्याह्न में रुद्राक्ष या तुलसी माला से 108 बार।',IMGS.surya],
+    ['महामृत्युंजय मंत्र','ॐ त्र्यम्बकं यजामहे सुगन्धिं पुष्टिवर्धनम् ।\nउर्वारुकमिव बन्धनान्मृत्योर्मुक्षीय माऽमृतात् ॥','Oṃ Tryambakaṃ Yajāmahe Sugandhiṃ Puṣṭivardhanam |\nUrvārukamiva Bandhanān Mṛtyormukṣīya Mā\'mṛtāt ||','हम तीन नेत्रों वाले सुगन्धित भगवान शिव का पूजन करते हैं; जैसे पका ककड़ी बेल से सहज अलग हो जाता है, वैसे ही हमें मृत्यु के भय से मुक्त कर अमरता प्रदान करें।','स्वास्थ्य, दीर्घायु व भय-मुक्ति हेतु रुद्राक्ष माला से 108 जप।',IMGS.shiva],
+    ['शांति एवं सद्बुद्धि पाठ','ॐ असतो मा सद्गमय । तमसो मा ज्योतिर्गमय ।\nमृत्योर्मा अमृतं गमय । ॐ शान्तिः शान्तिः शान्तिः ॥','Oṃ Asato Mā Sadgamaya | Tamaso Mā Jyotirgamaya |\nMṛtyormā Amṛtaṃ Gamaya | Oṃ Śāntiḥ Śāntiḥ Śāntiḥ ||','हमें असत्य से सत्य की ओर, अन्धकार से प्रकाश की ओर तथा मृत्यु से अमरता की ओर ले चलें।','ध्यान और पूजा के आरंभ या अंत में मन को शांत करने हेतु।',IMGS.surya],
+    ['विश्व कल्याण मंत्र','ॐ सर्वे भवन्तु सुखिनः सर्वे सन्तु निरामयाः ।\nसर्वे भद्राणि पश्यन्तु मा कश्चिद्दुःखभाग्भवेत् ॥','Oṃ Sarve Bhavantu Sukhinaḥ Sarve Santu Nirāmayāḥ |\nSarve Bhadrāṇi Paśyantu Mā Kaścidduḥkhabhāgbhavet ||','सभी सुखी हों, सभी रोगमुक्त रहें, सभी मंगलमय घटनाओं के साक्षी बनें और कोई भी दुःखी न हो।','पूजा के समापन पर सर्वमंगल प्रार्थना।',IMGS.vishnu]
+  ]],
+  ['देवी एवं दुर्गा',IMGS.durga,[
+    ['नवार्ण महामंत्र','ॐ ऐं ह्रीं क्लीं चामुण्डायै विच्चे','Oṃ Aiṃ Hrīṃ Klīṃ Cāmuṇḍāyai Vicce','महासरस्वती (ऐं), महालक्ष्मी (ह्रीं) और महाकाली (क्लीं) की संयुक्त शक्ति चामुण्डा को प्रणाम।','दुर्गा सप्तशती पाठ से पहले व बाद में 108 बार (रुद्राक्ष या लाल चन्दन माला)।',IMGS.durga],
+    ['दुर्गा बीज मंत्र','ॐ दुं दुर्गायै नमः','Oṃ Duṃ Durgāyai Namaḥ','दुर्गति नाशिनी माँ दुर्गा को नमस्कार।','भय, संकट और बाधा निवारण हेतु मंगलवार/शुक्रवार या नित्य 108 जप।',IMGS.durga],
+    ['दुर्गा शरण मंत्र','या देवी सर्वभूतेषु शक्तिरूपेण संस्थिता ।\nनमस्तस्यै नमस्तस्यै नमस्तस्यै नमो नमः ॥','Yā Devī Sarvabhūteṣu Śaktirūpeṇa Saṃsthitā |\nNamastasyai Namastasyai Namastasyai Namo Namaḥ ||','जो देवी समस्त प्राणियों में शक्ति के रूप में विराजमान हैं, उन्हें बारंबार नमस्कार है।','नित्य शक्ति व आत्मबल के लिए 11 या 21 बार।',IMGS.durga2],
+    ['महालक्ष्मी महामंत्र','ॐ श्रीं ह्रीं श्रीं कमले कमलालये प्रसीद प्रसीद\nॐ श्रीं ह्रीं श्रीं महालक्ष्म्यै नमः','Oṃ Śrīṃ Hrīṃ Śrīṃ Kamale Kamalālaye Prasīda Prasīda\nOṃ Śrīṃ Hrīṃ Śrīṃ Mahālakṣmyai Namaḥ','कमल पर विराजमान माँ महालक्ष्मी, हम पर प्रसन्न हों, आपको नमस्कार।','शुक्रवार को कमलगट्टे की माला से 108 जप।',IMGS.lakshmi],
+    ['सरस्वती वंदना एवं मंत्र','ॐ ऐं महासरस्वत्यै नमः\n(या कुन्देन्दुतुषारहारधवला या शुभ्रवस्त्रावृता)','Oṃ Aiṃ Mahāsarasvatyai Namaḥ','विद्या, वाणी और विवेक की अधिष्ठात्री माँ सरस्वती को प्रणाम।','विद्यार्थियों व साधकों हेतु प्रातः 21 या 108 बार।',IMGS.saraswati]
+  ]],
+  ['शिव',IMGS.shiva,[
+    ['पंचाक्षरी महामंत्र','ॐ नमः शिवाय','Oṃ Namaḥ Śivāya','मैं कल्याणकारी भगवान शिव को नमन करता हूँ।','रुद्राक्ष माला से नित्य 108 बार; सोमवार व प्रदोष में विशेष।',IMGS.shiva],
+    ['रुद्र गायत्री मंत्र','ॐ तत्पुरुषाय विद्महे महादेवाय धीमहि ।\nतन्नो रुद्रः प्रचोदयात् ॥','Oṃ Tatpuruṣāya Vidmahe Mahādevāya Dhīmahi |\nTanno Rudraḥ Pracodayāt ||','हम परम पुरुष महादेव का चिंतन करते हैं; भगवान रुद्र हमारी बुद्धि को प्रेरित करें।','शिव अभिषेक व ध्यान में 11 या 108 बार।',IMGS.shiva]
+  ]],
+  ['गणेश',IMGS.ganesha,[
+    ['गणेश बीज मंत्र','ॐ गं गणपतये नमः','Oṃ Gaṃ Gaṇapataye Namaḥ','प्रथम पूज्य, विघ्नहर्ता श्री गणेश को नमस्कार।','किसी भी कार्य या पूजा के आरंभ में 11 या 108 बार।',IMGS.ganesha],
+    ['वक्रतुण्ड स्तुति मंत्र','वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ ।\nनिर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा ॥','Vakratuṇḍa Mahākāya Sūryakoṭi Samaprabha |\nNirvighnaṃ Kuru Me Deva Sarvakāryeṣu Sarvadā ||','हे विशालकाय, करोड़ों सूर्यों के समान तेजस्वी गणेश जी, मेरे सभी कार्य सदैव विघ्नरहित पूर्ण करें।','प्रातः स्मरण व शुभ कार्य आरंभ में।',IMGS.ganesha]
+  ]],
+  ['विष्णु एवं राम-कृष्ण',IMGS.vishnu,[
+    ['द्वादशाक्षर मंत्र','ॐ नमो भगवते वासुदेवाय','Oṃ Namo Bhagavate Vāsudevāya','समस्त चराचर में वास करने वाले भगवान वासुदेव (विष्णु) को प्रणाम।','तुलसी की माला से 108 जप; गुरुवार व एकादशी को उत्तम।',IMGS.vishnu],
+    ['श्री कृष्ण महामंत्र','ॐ क्लीं कृष्णाय नमः','Oṃ Klīṃ Kṛṣṇāya Namaḥ','आनन्दस्वरूप भगवान श्री कृष्ण को नमस्कार।','प्रेम, शांति व भक्ति हेतु तुलसी माला से जप।',IMGS.vishnu],
+    ['श्री राम तारक मंत्र','श्री राम जय राम जय जय राम','Śrī Rāma Jaya Rāma Jaya Jaya Rāma','मर्यादा पुरुषोत्तम श्रीराम की जय हो — कलियुग का सरल तारक नाम।','चलते-फिरते या आसन पर मानसिक जप।',IMGS.hanuman]
+  ]],
+  ['हनुमान एवं भैरव',IMGS.hanuman,[
+    ['हनुमान बीज मंत्र','ॐ हं हनुमते नमः','Oṃ Haṃ Hanumate Namaḥ','बल, बुद्धि और भक्ति के दाता श्री हनुमान को प्रणाम।','मंगलवार व शनिवार को 108 बार।',IMGS.hanuman],
+    ['हनुमान वंदना मंत्र','मनोजवं मारुततुल्यवेगं जितेन्द्रियं बुद्धिमतां वरिष्ठम् ।\nवातात्मजं वानरयूथमुख्यं श्रीरामदूतं शरणं प्रपद्ये ॥','Manojavaṃ Mārutatulyavegaṃ Jitendriyaṃ Buddhimatāṃ Variṣṭham |\nVātātmajaṃ Vānarayūthamukhyaṃ Śrīrāmadūtaṃ Śaraṇaṃ Prapadye ||','मन के समान वेग वाले, पवनपुत्र, जितेन्द्रिय, बुद्धिमानों में श्रेष्ठ श्रीरामदूत हनुमान की मैं शरण लेता हूँ।','भय व आलस्य दूर करने हेतु नित्य पाठ।',IMGS.hanuman],
+    ['काल भैरव मंत्र','ॐ ह्रीं बटुकाय आपदुद्धारणाय कुरु कुरु बटुकाय ह्रीं','Oṃ Hrīṃ Baṭukāya Āpaduddhāraṇāya Kuru Kuru Baṭukāya Hrīṃ','आपदाओं से उद्धार करने वाले श्री बटुक भैरव को नमस्कार।','भय, संकट व रक्षा हेतु (अष्टमी व रविवार)।',IMGS.bhairava]
+  ]],
+  ['नवग्रह बीज मंत्र',IMGS.surya,[
+    ['सूर्य (रविवार)','ॐ ह्रां ह्रीं ह्रौं सः सूर्याय नमः','Oṃ Hrāṃ Hrīṃ Hrauṃ Saḥ Sūryāya Namaḥ','तेज, आरोग्य और आत्मविश्वास के लिए सूर्य देव को प्रणाम।','प्रातः अर्घ्य के बाद पूर्व मुख बैठकर।',IMGS.surya],
+    ['चन्द्र (सोमवार)','ॐ श्रां श्रीं श्रौं सः चन्द्रमसे नमः','Oṃ Śrāṃ Śrīṃ Śrauṃ Saḥ Candramase Namaḥ','मन की शांति और भावनात्मक संतुलन के लिए चन्द्र देव को प्रणाम।','संध्या काल में या सोमवार को।',IMGS.shiva],
+    ['मंगल (मंगलवार)','ॐ क्रां क्रीं क्रौं सः भौमाय नमः','Oṃ Krāṃ Krīṃ Krauṃ Saḥ Bhaumāya Namaḥ','साहस, ऊर्जा और धैर्य के लिए मंगल देव को प्रणाम।','मंगलवार को लाल आसन पर।',IMGS.hanuman],
+    ['बुध (बुधवार)','ॐ ब्रां ब्रीं ब्रौं सः बुधाय नमः','Oṃ Brāṃ Brīṃ Brauṃ Saḥ Budhāya Namaḥ','वाणी, विवेक और विद्या के लिए बुध देव को प्रणाम।','बुधवार प्रातः।',IMGS.ganesha],
+    ['गुरु (गुरुवार)','ॐ ग्रां ग्रीं ग्रौं सः गुरवे नमः','Oṃ Grāṃ Grīṃ Grauṃ Saḥ Gurave Namaḥ','ज्ञान, धर्म और शुभता के लिए बृहस्पति देव को प्रणाम।','गुरुवार प्रातः पीले आसन पर।',IMGS.vishnu],
+    ['शुक्र (शुक्रवार)','ॐ द्रां द्रीं द्रौं सः शुक्राय नमः','Oṃ Drāṃ Drīṃ Drauṃ Saḥ Śukrāya Namaḥ','सौंदर्य, कला और समृद्धि के लिए शुक्र देव को प्रणाम।','शुक्रवार प्रातः।',IMGS.lakshmi],
+    ['शनि (शनिवार)','ॐ प्रां प्रीं प्रौं सः शनैश्चराय नमः','Oṃ Prāṃ Prīṃ Prauṃ Saḥ Śanaiścarāya Namaḥ','कर्मफल, अनुशासन और धैर्य के लिए शनि देव को प्रणाम।','शनिवार संध्या समय।',IMGS.bhairava],
+    ['राहु','ॐ भ्रां भ्रीं भ्रौं सः राहवे नमः','Oṃ Bhrāṃ Bhrīṃ Bhrauṃ Saḥ Rāhave Namaḥ','भ्रम निवारण और स्पष्टता के लिए राहु देव को प्रणाम।','संध्या या रात्रि में।',IMGS.kali],
+    ['केतु','ॐ स्रां स्रीं स्रौं सः केतवे नमः','Oṃ Srāṃ Srīṃ Srauṃ Saḥ Ketave Namaḥ','आध्यात्मिक अंतर्दृष्टि और वैराग्य संतुलन के लिए केतु देव को प्रणाम।','प्रातः या संध्या समय।',IMGS.ganesha]
+  ]]
+],
+TN:[
+  ['गुरु और दीक्षा','तंत्र परंपरा में मंत्र गुरु-मुख से मिलता है। दीक्षा के बिना उग्र विद्याओं की साधना वर्जित मानी गई है।'],
+  ['संकल्प','साधना शुरू करने से पहले उद्देश्य, संख्या और अवधि का मन में निश्चय। जल हाथ में लेकर किया जाता है।'],
+  ['आसन, दिशा, काल','एक ही आसन, एक ही दिशा और एक ही समय पर नित्य बैठना। ब्रह्म मुहूर्त और रात्रि का मध्य काल प्रचलित हैं।'],
+  ['न्यास एवं विनियोग','अंगों में मंत्राक्षर स्थापित करने की क्रिया (करन्यास-अंगन्यास) और ऋषि-छंद-देवता का स्मरण जप से पहले होता है।'],
+  ['जप और माला','जप वाचिक, उपांशु या मानसिक होता है। माला 108 मनकों की — रुद्राक्ष, स्फटिक, हल्दी या लाल चंदन मंत्रानुसार।'],
+  ['पुरश्चरण एवं संयम','नित्य जप के साथ सात्त्विक आहार, सत्य, मौन और ब्रह्मचर्य पालन साधना को बल देता है।']
+],
+SP:[
+  ['हिंगलाज','बलूचिस्तान, पाकिस्तान','ब्रह्मरंध्र (सिर का ऊपरी भाग)','कोट्टरी','भीमलोचन'],['शिवहरकरय (शर्कररे)','कराची, पाकिस्तान','नेत्र','महिषमर्दिनी','क्रोधीश'],['सुगंधा','शिकारपुर, बांग्लादेश','नासिका','सुनंदा','त्र्यंबक'],['अमरनाथ','कश्मीर, भारत','कंठ','महामाया','त्रिसंध्येश्वर'],['ज्वालामुखी','कांगड़ा, हिमाचल, भारत','जिह्वा','सिद्धिदा (अम्बिका)','उन्मत्त'],['जालंधर (त्रिपुरमालिनी)','पंजाब, भारत','बायाँ स्तन','त्रिपुरमालिनी','भीषण'],['वैद्यनाथ','देवघर, झारखंड, भारत','हृदय','जयदुर्गा','वैद्यनाथ'],['गुह्येश्वरी','पशुपतिनाथ, नेपाल','दोनों घुटने','महामाया','कपाली'],['मानस','मानसरोवर, तिब्बत','दायाँ हाथ','दाक्षायणी','अमर'],['बिरजा','जाजपुर, ओडिशा, भारत','नाभि','विमला','जगन्नाथ'],
+  ['गंडकी','मुक्तिनाथ, नेपाल','दायाँ कपोल','गंडकी चंडी','चक्रपाणि'],['बहुला','केतुग्राम, बंगाल, भारत','बायाँ हाथ','बहुला','भीरुक'],['मंगल चंडिका','उजानी, बंगाल, भारत','दायीं कलाई','मंगल चंडिका','कपिलांबर'],['त्रिपुर सुंदरी','उदयपुर, त्रिपुरा, भारत','दायाँ पैर','त्रिपुरसुंदरी','त्रिपुरेश'],['भवानी','सीताकुंड, बांग्लादेश','दायाँ हाथ','भवानी','चंद्रशेखर'],['भ्रामरी','जलपाईगुड़ी, बंगाल, भारत','बायाँ पैर','भ्रामरी','अंबर'],['कामाख्या','गुवाहाटी, असम, भारत','योनि','कामाख्या','उमानंद'],['युगाद्या','क्षीरग्राम, बंगाल, भारत','दाएँ पैर का अंगूठा','युगाद्या','क्षीरकंटक'],['कालीघाट','कोलकाता, भारत','दाएँ पैर की उंगलियाँ','कालिका','नकुलेश'],['ललिता','प्रयागराज, उत्तर प्रदेश, भारत','हाथ की उंगलियाँ','ललिता','भव'],
+  ['जयंती','नर्तियांग, मेघालय, भारत','बायीं जांघ','जयंती','क्रमदीश्वर'],['किरीट','मुर्शिदाबाद, बंगाल, भारत','मुकुट','विमला','संवर्त'],['विशालाक्षी (मणिकर्णिका)','वाराणसी, भारत','कर्णकुंडल / मणि','विशालाक्षी','कालभैरव'],['कन्याश्रम (कन्याकुमारी)','तमिलनाडु, भारत','पीठ','शर्वाणी','निमिष'],['सावित्री (भद्रकाली)','कुरुक्षेत्र, हरियाणा, भारत','एड़ी (टखना)','सावित्री','स्थाणु'],['गायत्री (मणिबंध)','पुष्कर, राजस्थान, भारत','दोनों कलाइयाँ','गायत्री','सर्वानंद'],['महालक्ष्मी (श्रीशैल)','सिलहट, बांग्लादेश','गर्दन','महालक्ष्मी','संबरानंद'],['देवगर्भा (कंकालिताला)','बीरभूम, बंगाल, भारत','कटि (श्रोणि)','देवगर्भा','रुरु'],['नर्मदा (शोणदेश)','अमरकंटक, मध्य प्रदेश, भारत','दायाँ नितंब','नर्मदा','भद्रसेन'],['शिवानी (रामगिरि)','चित्रकूट, भारत','दायाँ स्तन','शिवानी','चंड'],
+  ['उमा','वृंदावन, उत्तर प्रदेश, भारत','केश','उमा','भूतेश'],['नारायणी (शुचि)','सुचींद्रम, तमिलनाडु, भारत','ऊपरी दाँत','नारायणी','संहार'],['वाराही (पंचसागर)','पंचसागर (स्थान पर मतभेद)','निचले दाँत','वाराही','महारुद्र'],['जयदुर्गा (कर्णाट)','कर्णाट (स्थान पर मतभेद)','दोनों कान','जयदुर्गा','अभीरु'],['श्रीसुंदरी','श्रीपर्वत, लद्दाख, भारत','दायाँ पायल / टखना','श्रीसुंदरी','सुंदरानंद'],['कपालिनी (विभाष)','तमलुक, बंगाल, भारत','बायाँ टखना','कपालिनी (भीमरूपा)','सर्वानंद'],['चंद्रभागा (प्रभास)','सोमनाथ, गुजरात, भारत','उदर','चंद्रभागा','वक्रतुंड'],['अवंती (भैरवपर्वत)','उज्जैन, मध्य प्रदेश, भारत','ऊपरी होंठ / कोहनी','अवंती','लंबकर्ण'],['जशोरेश्वरी','जेशोर, बांग्लादेश','हथेलियाँ और तलवे','जशोरेश्वरी','चंड'],['फुल्लरा (अट्टहास)','लाभपुर, बंगाल, भारत','निचला होंठ','फुल्लरा','विश्वेश'],
+  ['नंदिनी','सैंथिया, बंगाल, भारत','हार','नंदिनी','नंदिकेश्वर'],['इंद्राक्षी','लंका, श्रीलंका','पायल','इंद्राक्षी','राक्षसेश्वर'],['विश्वेश्वरी (सर्वशैल)','राजमहेंद्रवरम, आंध्र प्रदेश, भारत','बायाँ कपोल','विश्वेश्वरी','दंडपाणि'],['काली (कालमाधव)','मध्य प्रदेश, भारत','बायाँ नितंब','काली','असितांग'],['कुमारी (रत्नावली)','खानाकुल, बंगाल, भारत','दायाँ कंधा','कुमारी','घंटेश्वर'],['उमा (मिथिला)','जनकपुर, नेपाल/भारत सीमा','बायाँ कंधा','उमा','महोदर'],['कालिका (नलहाटी)','नलहाटी, बंगाल, भारत','कंठ-नली','कालिका','योगेश'],['अंबाजी','बनासकांठा, गुजरात, भारत','हृदय (परंपरा के अनुसार)','अंबाजी','बटुक'],['तारापीठ','बीरभूम, बंगाल, भारत','नेत्र की पुतली','तारा','चंद्रचूड़'],['शांकरी','त्रिंकोमाली, श्रीलंका','कटि / जघन','शांकरी','राक्षसेश्वर'],['अंबिका (विराट)','बैराट, राजस्थान, भारत','बाएँ पैर की उंगलियाँ','अंबिका','अमृत']
+],
+SPSTORY_HI:'प्रजापति दक्ष की पुत्री सती ने शिव से विवाह किया। दक्ष ने एक महायज्ञ किया और शिव को नहीं बुलाया। सती बिना बुलाए पहुँचीं, पर वहाँ शिव का अपमान सुनकर उन्होंने यज्ञ-अग्नि में प्राण त्याग दिए। शिव शोक और क्रोध में सती का शरीर कंधे पर लेकर तांडव करने लगे। सृष्टि को बचाने के लिए विष्णु ने सुदर्शन चक्र से शरीर के टुकड़े किए। वे अंग और आभूषण जहाँ-जहाँ गिरे, वहाँ शक्तिपीठ बने।',
+SPSTORY_EN:'Sati, daughter of Daksha, married Shiva. Daksha held a great sacrifice and did not invite him. Sati went uninvited, heard Shiva insulted, and gave up her life in the sacrificial fire. Shiva carried her body in grief and began the cosmic dance. To protect the world, Vishnu divided the body with his Sudarshana discus. Where the limbs fell, Shakti Peethas arose.',
+PJ:[
+  ['1. संकल्प और शुद्धि','स्नान, स्वच्छ वस्त्र, आसन पर पूर्व या उत्तर मुख बैठना। आचमन, पवित्रीकरण और हाथ में जल लेकर संकल्प।','Bathe, sit facing east or north, sip water, and state your resolve.'],
+  ['2. गणेश और कलश पूजन','पहले गणेश, फिर जल से भरा कलश। कलश में देवताओं का आवाहन।','Worship Ganesha first, then the water pot (kalash).'],
+  ['3. आवाहन और आसन','देवी का ध्यान करके उन्हें बुलाना और आसन अर्पित करना।','Invite the Goddess in meditation and offer a seat.'],
+  ['4. पाद्य, अर्घ्य, आचमन','चरण धोने, हाथ धोने और आचमन के लिए जल अर्पण।','Offer water for feet, hands and sipping.'],
+  ['5. स्नान','जल, फिर पंचामृत (दूध, दही, घी, शहद, शक्कर) से स्नान, फिर शुद्ध जल।','Bathe the image: water, panchamrit, water again.'],
+  ['6. वस्त्र और आभूषण','लाल चुनरी, सिंदूर, चूड़ी, आभूषण।','Red cloth, vermilion, bangles, ornaments.'],
+  ['7. गंध, पुष्प, माला','चंदन, कुमकुम, ताज़े फूल। देवी को लाल गुड़हल प्रिय माना जाता है।','Sandal paste, kumkum, fresh flowers (red hibiscus).'],
+  ['8. धूप, दीप','धूप या अगरबत्ती और घी का दीपक।','Incense and a ghee lamp.'],
+  ['9. नैवेद्य और ताम्बूल','फल, मिठाई, खीर, हलवा, पान-सुपारी।','Fruit, sweets, kheer, halwa, betel.'],
+  ['10. मंत्र जप और पाठ','नित्य संख्या तय करके माला से जप। चाहें तो दुर्गा सप्तशती या चालीसा।','Chant a fixed number of rounds or recite Saptashati.'],
+  ['11. आरती और प्रदक्षिणा','आरती, परिक्रमा और पुष्पांजलि।','Aarti, circumambulation, flower offering.'],
+  ['12. क्षमा प्रार्थना','भूल-चूक के लिए क्षमा माँगना और प्रसाद बाँटना।','Ask forgiveness for errors and distribute prasad.']
+],
+NAV:[
+  ['घटस्थापना (प्रतिपदा)','शुभ मुहूर्त में मिट्टी में जौ बोकर कलश स्थापित करें। नारियल, आम के पत्ते और लाल चुनरी लगाएँ।','On day one, sow barley in soil and install the kalash.'],
+  ['अखंड ज्योति','घी का दीपक नौ दिन जलाए रखने की परंपरा है। न हो सके तो सुबह-शाम का दीप भी मान्य।','A ghee lamp is kept lit for nine days by custom.'],
+  ['नौ दिन, नौ रूप','शैलपुत्री, ब्रह्मचारिणी, चंद्रघंटा, कूष्मांडा, स्कंदमाता, कात्यायनी, कालरात्रि, महागौरी, सिद्धिदात्री।','The nine forms of Navadurga across nine nights.'],
+  ['नित्य पाठ','हर दिन कलश पूजन, जप और सप्तशती का पाठ या कवच-अर्गला-कीलक।','Daily kalash puja, japa, and Saptashati recitation.'],
+  ['कन्या पूजन','अष्टमी या नवमी पर कन्याओं के पाँव धोकर भोजन, वस्त्र और दक्षिणा।','On Ashtami or Navami, honour young girls with food and gifts.'],
+  ['हवन और विसर्जन','नवमी को हवन। दशमी को कलश के जल का छिड़काव और जौ का प्रसाद।','Havan on Navami; on Dashami share the kalash water and sprouts.']
+],
+PJM:[
+  ['काली','लाल गुड़हल, काले तिल, नारियल, गुड़'],['तारा','नीले फूल, खीर, सफेद मिठाई'],['त्रिपुर सुंदरी','लाल कमल, श्रीयंत्र, खीर, लाल वस्त्र'],
+  ['भुवनेश्वरी','लाल और सफेद फूल, दूध-चावल की खीर'],['भैरवी','लाल फूल, लाल चंदन, गुड़'],['छिन्नमस्ता','लाल फूल, गुड़ (केवल दीक्षित गुरु के निर्देश में)'],
+  ['धूमावती','काले तिल, सादा सूखा नैवेद्य, सफेद या धूसर वस्त्र'],['बगलामुखी','पीले फूल, हल्दी की माला, पीला वस्त्र, बेसन का लड्डू'],
+  ['मातंगी','हरे वस्त्र, हरे फल-पत्ते, शहद'],['कमला','कमल का फूल, खीर, गुलाबी या पीला वस्त्र']
+],
+/* Complete Durga Saptashati Angas + All 13 Chapters */
+DSANGA:[
+  {
+    id:'saptashloki',title:'सप्तश्लोकी दुर्गा स्तोत्रम्',sub:'7 श्लोक · संपूर्ण सप्तशती का सार (शिव-पार्वती संवाद)',
+    img:IMGS.durga,
+    meta:'ऋषि: नारायण · छन्द: अनुष्टुप् · देवता: महाकाली, महालक्ष्मी, महासरस्वती',
+    intro:'समय के अभाव में भगवान शिव द्वारा बताया गया सात श्लोकों का वह अद्भुत स्तोत्र, जिसमें संपूर्ण दुर्गा सप्तशती का सार निहित है।',
+    verses:[
+      ['शिव उवाच:\nदेवि त्वं भक्तसुलभे सर्वकार्यविधायिनी ।\nकलौ हि कार्यसिद्ध्यर्थमुपायं ब्रूहि यत्नतः ॥\nदेव्युवाच:\nशृणु देव प्रवक्ष्यामि कलौ सर्वेष्टसाधनम् ।\nमया तवैव स्नेहेनाप्यम्बास्तुतिः प्रकाश्यते ॥','शिवजी बोले — हे देवि! आप भक्तों के लिए सुलभ हैं। कलियुग में कार्यसिद्धि का उपाय बताइए। देवी बोलीं — हे देव, मैं अम्बास्तुति प्रकाशित करती हूँ।'],
+      ['१. ॐ ज्ञानिनामपि चेतांसि देवी भगवती हि सा ।\nबलादाकृष्य मोहाय महामाया प्रयच्छति ॥','वे भगवती महामाया ज्ञानियों के चित्त को भी बलपूर्वक खींचकर मोह में डाल देती हैं।'],
+      ['२. दुर्गे स्मृता हरसि भीतिमशेषजन्तोः\nस्वस्थैः स्मृता मतिमतीव शुभां ददासि ।\nदारिद्र्यदुःखभयहारिणि का त्वदन्या\nसर्वोपकारकरणाय सदार्द्रचित्ता ॥','हे दुर्गे! स्मरण करने पर आप सब प्राणियों का भय हर लेती हैं और स्वस्थ चित्त से स्मरण करने पर परम कल्याणमयी बुद्धि देती हैं।'],
+      ['३. सर्वमङ्गलमाङ्गल्ये शिवे सर्वार्थसाधिके ।\nशरण्ये त्र्यम्बके गौरि नारायणि नमोऽस्तु ते ॥','सब मंगलों की मंगल, कल्याणी, सब पुरुषार्थ सिद्ध करने वाली, शरणदायिनी त्रिनेत्री गौरी नारायणी को नमस्कार।'],
+      ['४. शरणागतदीनार्तपरित्राणपरायणे ।\nसर्वस्यार्तिहरे देवि नारायणि नमोऽस्तु ते ॥','शरण में आए दीन-दुःखियों की रक्षा में तत्पर तथा सबकी पीड़ा हरने वाली नारायणी देवी को नमस्कार।'],
+      ['५. सर्वस्वरूपे सर्वेशे सर्वशक्तिसमन्विते ।\nभयेभ्यस्त्राहि नो देवि दुर्गे देवि नमोऽस्तु ते ॥','हे सर्वरूपा, सर्वेश्वरी, सर्वशक्तिमयी माँ दुर्गे! सब प्रकार के भयों से हमारी रक्षा कीजिए।'],
+      ['६. रोगानशेषानपहंसि तुष्टा\nरुष्टा तु कामान् सकलानभीष्टान् ।\nत्वामाश्रितानां न विपन्नराणां\nत्वामाश्रिता ह्याश्रयतां प्रयान्ति ॥','प्रसन्न होने पर आप समस्त रोगों को नष्ट कर देती हैं; आपके आश्रित मनुष्यों पर विपत्ति नहीं आती और वे दूसरों को भी आश्रय देने वाले बन जाते हैं।'],
+      ['७. सर्वाबाधाप्रशमनं त्रैलोक्यस्याखिलेश्वरि ।\nएवमेव त्वया कार्यमस्मद्वैरिविनाशनम् ॥','हे त्रैलोक्य की अधीश्वरी! इसी प्रकार आप समस्त बाधाओं को शांत करें और हमारे भीतर के शत्रुओं (काम, क्रोध आदि) का नाश करें।']
+    ]
+  },
+  {
+    id:'kavach',title:'श्री देवी कवचम्',sub:'56 श्लोक · नवदुर्गा एवं सर्वांग रक्षा स्तोत्र',
+    img:IMGS.durga2,
+    meta:'ऋषि: ब्रह्मा · छन्द: अनुष्टुप् · देवता: चामुण्डा · अंगरक्षा पाठ',
+    intro:'सप्तशती पाठ से पूर्व ब्रह्माजी द्वारा मार्कण्डेय ऋषि को बताया गया रक्षा-कवच। इसमें नवदुर्गा के नौ रूपों तथा शरीर के प्रत्येक अंग की रक्षा विभिन्न देवियों से माँगी गई है।',
+    verses:[
+      ['मार्कण्डेय उवाच:\nयद्गुह्यं परमं लोके सर्वरक्षाकरं नृणाम् ।\nयन्न कस्यचिदाख्यातं तन्मे ब्रूहि पितामह ॥','मार्कण्डेय ने पूछा — हे पितामह! जो संसार में परम गोपनीय और मनुष्यों की सब ओर से रक्षा करने वाला हो, वह उपाय मुझे बताइए।'],
+      ['ब्रह्मोवाच:\nअस्ति गुह्यतमं विप्र सर्वभूतोपकारकम् ।\nदेव्यास्तु कवचं पुण्यं तच्छृणुष्व महामुने ॥','ब्रह्माजी बोले — हे मुने! सभी प्राणियों का उपकार करने वाला देवी का परम पवित्र कवच सुनो।'],
+      ['प्रथमं शैलपुत्री च द्वितीयं ब्रह्मचारिणी ।\nतृतीयं चन्द्रघण्टेति कूष्माण्डेति चतुर्थकम् ॥\nपञ्चमं स्कन्दमातेति षष्ठं कात्यायनीति च ।\nसप्तमं कालरात्रीति महागौरीति चाष्टमम् ॥\nनवमं सिद्धिदात्री च नवदुर्गाः प्रकीर्तिताः ॥','नवदुर्गा के नौ दिव्य नाम — शैलपुत्री, ब्रह्मचारिणी, चंद्रघंटा, कूष्मांडा, स्कंदमाता, कात्यायनी, कालरात्रि, महागौरी और सिद्धिदात्री।'],
+      ['रक्षा-सार (अंगन्यास):','ब्रह्माणी पूर्व दिशा में, वैष्णवी उत्तर में, माहेश्वरी दक्षिण में, चामुण्डा ऊपर और वाराही नीचे से रक्षा करें; तथा चण्डिका सिर से पैर तक प्रत्येक अंग की रक्षा करें।']
+    ]
+  },
+  {
+    id:'argala',title:'श्री अर्गला स्तोत्रम्',sub:'25 श्लोक · "रूपं देहि जयं देहि यशो देहि द्विषो जहि"',
+    img:IMGS.lakshmi,
+    meta:'ऋषि: विष्णु · छन्द: अनुष्टुप् · देवता: श्री महालक्ष्मी',
+    intro:'"अर्गला" का अर्थ द्वार की सिटकनी खोलना है। यह स्तोत्र माँ के पराक्रम की स्तुति करते हुए रूप (आध्यात्मिक सौंदर्य), विजय, यश और आंतरिक-बाह्य शत्रुओं के नाश की प्रार्थना करता है।',
+    verses:[
+      ['ॐ जयन्ती मङ्गला काली भद्रकाली कपालिनी ।\nदुर्गा क्षमा शिवा धात्री स्वाहा स्वधा नमोऽस्तु ते ॥ १ ॥','सर्वोपरि जयन्ती, मंगला, काली, भद्रकाली, कपालिनी, दुर्गा, क्षमा, शिवा, धात्री, स्वाहा और स्वधा रूपिणी देवी को नमस्कार।'],
+      ['जय त्वं देवि चामुण्डे जय भूतार्तिहारिणि ।\nजय सर्वगते देवि कालरात्रि नमोऽस्तु ते ॥ २ ॥','सब प्राणियों की पीड़ा हरने वाली चामुण्डा और सर्वव्यापिनी कालरात्रि की जय हो।'],
+      ['मधुकैटभविद्रावि विधातृवरदे नमः ।\nरूपं देहि जयं देहि यशो देहि द्विषो जहि ॥ ३ ॥\nमहिषासुरनिर्णाशि भक्तानां सुखदे नमः ।\nरूपं देहि जयं देहि यशो देहि द्विषो जहि ॥ ४ ॥','मधु-कैटभ व महिषासुर का संहार करने वाली देवि! मुझे दिव्य रूप, विजय, यश प्रदान करें और मेरे द्वेषियों/विकारों का नाश करें।']
+    ]
+  },
+  {
+    id:'keelak',title:'श्री कीलक स्तोत्रम्',sub:'14 श्लोक · सप्तशती मंत्रों का उत्कीलन',
+    img:IMGS.shiva,
+    meta:'ऋषि: शिव · छन्द: अनुष्टुप् · देवता: महासरस्वती',
+    intro:'भगवान शिव ने सप्तशती के मंत्रों के दुरुपयोग को रोकने के लिए उन्हें कीलित किया था। निष्काम भाव से कीलक स्तोत्र का पाठ उस बंधन को खोलकर पूर्ण फल प्रदान करता है।',
+    verses:[
+      ['विशुद्धज्ञानदेहाय त्रिवेदीदिव्यचक्षुषे ।\nश्रेयःप्राप्तिनिमित्ताय नमः सोमार्धधारिणे ॥ १ ॥','विशुद्ध ज्ञानमय शरीर वाले, तीनों वेदों रूपी दिव्य नेत्र वाले, कल्याण के हेतु अर्धचन्द्रधारी भगवान शिव को नमस्कार।'],
+      ['संपूर्ण सार:','जो साधक निष्काम और पवित्र भाव से देवी के इस स्तोत्र का पाठ करता है, उसके लिए कीलक स्वतः खुल जाता है और उसे महामाया की अपार कृपा व शांति प्राप्त होती है।']
+    ]
+  },
+  {
+    id:'kunjika',title:'श्री सिद्ध कुञ्जिका स्तोत्रम्',sub:'रुद्रयामल तंत्र · सप्तशती की दिव्य कुञ्जी',
+    img:IMGS.kali,
+    meta:'ऋषि: सदाशिव · छन्द: अनुष्टुप् · देवता: श्री त्रिगुणात्मिका चामुण्डा',
+    intro:'भगवान शिव ने पार्वती जी से कहा कि सिद्ध कुञ्जिका स्तोत्र सप्तशती पाठ को जाग्रत करने वाली कुञ्जी (चाबी) है। इसके पाठ से चण्डी जप तुरंत शुभ व फलदायी होता है।',
+    verses:[
+      ['शिव उवाच:\nशृणु देवि प्रवक्ष्यामि कुञ्जिकास्तोत्रमुत्तमम् ।\nयेन मन्त्रप्रभावेण चण्डीजापः शुभो भवेत् ॥ १ ॥','शिवजी बोले — हे देवि! उत्तम कुञ्जिका स्तोत्र सुनो, जिसके मंत्र-प्रभाव से चण्डी-जाप शुभ और सिद्ध होता है।'],
+      ['न कवचं नार्गलास्तोत्रं कीलकं न रहस्यकम् ।\nन सूक्तं नापि ध्यानं च न न्यासो न च वार्चनम् ॥ २ ॥\nकुञ्जिकापाठमात्रेण दुर्गापाठफलं लभेत् ।\nअति गुह्यतरं देवि देवानामपि दुर्लभम् ॥ ३ ॥','केवल कुञ्जिका के श्रद्धापूर्वक पाठ से ही दुर्गा पाठ का फल प्राप्त हो जाता है; यह देवताओं के लिए भी दुर्लभ और परम गोपनीय है।'],
+      ['अथ मूल कुञ्जिका मंत्र:\nॐ ऐं ह्रीं क्लीं चामुण्डायै विच्चे । ॐ ग्लौं हुं क्लीं जूं सः\nज्वालय ज्वालय ज्वल ज्वल प्रज्वल प्रज्वल\nऐं ह्रीं क्लीं चामुण्डायै विच्चे ज्वल हं सं लं क्षं फट् स्वाहा ॥','यह नवार्ण व अग्नितत्त्व बीजों से युक्त कुञ्जिका मंत्र है, जो सप्तशती की शक्ति को जाग्रत करता है।']
+    ]
+  },
+  {
+    id:'kshama',title:'क्षमा-प्रार्थना स्तोत्रम्',sub:'पाठ के अंत में त्रुटि क्षमापन प्रार्थना',
+    img:IMGS.saraswati,
+    meta:'पाठ समापन स्तुति · समर्पण भाव',
+    intro:'पूजा या सप्तशती पाठ में उच्चारण, विधि या ध्यान में जाने-अनजाने हुई भूलों के लिए माँ से विनम्र क्षमा माँगने हेतु अंतिम प्रार्थना।',
+    verses:[
+      ['अपराधसहस्राणि क्रियन्तेऽहर्निशं मया ।\nदासोऽयमिति मां मत्वा क्षमस्व परमेश्वरि ॥ १ ॥','हे परमेश्वरी! मेरे द्वारा दिन-रात हजारों अपराध होते रहते हैं। मुझे अपना दास जानकर क्षमा कीजिए।'],
+      ['आवाहनं न जानामि न जानामि विसर्जनम् ।\nपूजां चैव न जानामि क्षम्यतां परमेश्वरि ॥ २ ॥','मैं आपका आवाहन, विसर्जन और पूजन-विधान नहीं जानता; हे माँ, मुझे क्षमा करें।'],
+      ['मन्त्रहीनं क्रियाहीनं भक्तिहीनं सुरेश्वरि ।\nयत्पूजितं मया देवि परिपूर्णं तदस्तु मे ॥ ३ ॥','हे सुरेश्वरी! मंत्र, क्रिया और भक्ति से हीन मैंने जो कुछ पूजन किया है, आपकी कृपा से वह परिपूर्ण हो।'],
+      ['अपराधशतं कृत्वा जगदम्बेति चोच्चरेत् ।\nयां गतिं समवाप्नोति न तां ब्रह्मादयः सुराः ॥ ४ ॥','सैकड़ों अपराध करके भी जो मनुष्य "जगदम्बे" पुकारता है, वह उस परम गति को पाता है जो ब्रह्मा आदि देवताओं के लिए भी दुर्लभ है।']
+    ]
+  }
+],
+DSCH:[
+  {
+    n:'1',charitra:'प्रथम चरित्र · महाकाली',verses:104,
+    title:'मधु-कैटभ वध',en:'Slaying of Madhu & Kaitabha',
+    meta:'ऋषि: ब्रह्मा · छन्द: गायत्री · देवता: महाकाली · शक्ति: नन्दा · बीज: रक्तदन्तिका · तत्त्व: अग्नि',
+    img:IMGS.kali,
+    dhyana:'ॐ खड्गं चक्रगदेषुचापपरिघाञ्छूलं भुशुण्डीं शिरः\nशङ्खं सन्दधतीं करैस्त्रिनयनां सर्वाङ्गभूषावृताम् ।\nनीलाश्मद्युतिमास्यपाददशकां सेवे महाकालिकां\nयामस्तौत्स्वपिते हरौ कमलजो हन्तुं मधुं कैटभम् ॥',
+    dhyanaArth:'हाथों में खड्ग, चक्र, गदा, बाण, धनुष, परिघ, शूल, भुशुण्डी, मस्तक और शंख धारण करने वाली, दस मुख व दस चरणों वाली नीलमणि प्रभास्वर महाकाली का हम ध्यान करते हैं।',
+    hi:'सावर्णि मन्वन्तर की कथा मार्कण्डेय ऋषि अपने शिष्य क्रौष्टुकि को सुनाते हैं। प्राचीन काल में चैत्रवंशी राजा सुरथ शत्रुओं से पराजित होकर और मंत्रियों द्वारा छले जाकर वन में चले गए। वहाँ उनकी भेंट समाधि नामक वैश्य से हुई, जिसे पत्नी और पुत्रों ने धन के लोभ में घर से निकाल दिया था। दोनों दुःखी थे और अपने स्वजनों के मोह में व्यथित रहते थे। वे दोनों महर्षि मेधा के आश्रम में गए और पूछा कि अन्यायी स्वजनों के प्रति भी मोह क्यों होता है?\n\nमेधा ऋषि ने समझाया कि यह भगवती महामाया का प्रभाव है जो ज्ञानियों के मन को भी मोह में बाँधती हैं और प्रसन्न होने पर मोक्ष देती हैं। तब राजा के पूछने पर ऋषि ने महामाया के प्राकट्य की प्रथम कथा सुनाई: प्रलयकाल में जब सारा जगत जलमग्न था और भगवान विष्णु शेषनाग पर योगनिद्रा में लीन थे, तब उनके कान के मैल से मधु और कैटभ नामक दो भयंकर असुर उत्पन्न हुए। वे ब्रह्माजी को मारने दौड़े। ब्रह्माजी ने विष्णुजी को जगाने के लिए उनके नेत्रों में स्थित योगनिद्रा (महामाया) की भव्य स्तुति की।\n\nस्तुति से प्रसन्न होकर तामसी महाकाली विष्णुजी के शरीर से बाहर प्रकट हुईं। विष्णुजी जाग उठे और पांच हजार वर्षों तक दोनों असुरों से बाहुयुद्ध किया। महामाया से मोहित होकर असुरों ने विष्णुजी से वर माँगने को कहा। श्रीहरि ने वर माँगा कि "तुम दोनों मेरे हाथों मारे जाओ।" असुरों ने चतुराई से कहा—"जहाँ जल न हो, वहाँ हमारा वध करो।" तब भगवान विष्णु ने उन दोनों को अपनी जाँघों पर रखकर सुदर्शन चक्र से उनके मस्तक काट दिए।',
+    enText:'Sage Markandeya begins the narration of Savarni Manu. Deprived of his kingdom by enemies and treacherous ministers, King Suratha wanders into a forest and meets Samadhi, a merchant abandoned by his greedy family. Perplexed why their hearts still ache with attachment for those who wronged them, they seek Sage Medhas. He reveals it is the cosmic power of Mahamaya who binds beings in illusion and, when pleased, grants liberation. Medhas then narrates the first episode: during cosmic dissolution, while Vishnu slept in Yoganidra upon Shesha, two fierce demons, Madhu and Kaitabha, emerged from Vishnu’s ears to devour Brahma. Brahma chanted a sublime hymn to Yoganidra. Emerging from Vishnu’s body as Mahakali, she awakened the Lord. After 5,000 years of battle, deluded by Mahamaya, the demons offered Vishnu a boon; Vishnu asked for their death, placed them upon his thighs above the waters, and severed their heads with his discus.',
+    shlokas:[
+      ['सावर्णिः सूर्यतनयो यो मनुः कथ्यतेऽष्टमः ।\nनिशामय तदुत्पत्तिं विस्तराद् गदतो मम ॥ २ ॥','Sāvarṇiḥ sūryatanayo yo manuḥ kathyate\'ṣṭamaḥ | Niśāmaya tadutpattiṃ vistarād gadato mama ||','सूर्यपुत्र सावर्णि जो आठवें मनु कहलाते हैं, उनकी उत्पत्ति का वृत्तान्त मुझसे विस्तार से सुनो।'],
+      ['त्वं स्वाहा त्वं स्वधा त्वं हि वषट्कारः स्वरात्मिका ।\nसुधा त्वमक्षरे नित्ये त्रिधा मात्रात्मिका स्थिता ॥ ७३ ॥','Tvaṃ svāhā tvaṃ svadhā tvaṃ hi vaṣaṭkāraḥ svarātmikā | Sudhā tvamakṣare nitye tridhā mātrātmikā sthitā ||','(ब्रह्मा स्तुति) हे देवि! आप ही स्वाहा, स्वधा, वषट्कार, स्वर और ओंकार की तीन मात्राओं के रूप में नित्य स्थित हैं।']
+    ],
+    fruit:'परंपरागत मान्यता: मानसिक अशांति, भय, मोह और अनिश्चय से मुक्ति के लिए इस अध्याय का पाठ किया जाता है।'
+  },
+  {
+    n:'2',charitra:'मध्यम चरित्र · महालक्ष्मी',verses:69,
+    title:'महिषासुर की सेना का संहार',en:'Destruction of Mahisha’s Army',
+    meta:'ऋषि: विष्णु · छन्द: उष्णिक् · देवता: महालक्ष्मी · शक्ति: शाकम्भरी · बीज: दुर्गा · तत्त्व: वायु',
+    img:IMGS.lakshmi,
+    dhyana:'ॐ अक्षस्रक्परशू गदेषुकुलिशं पद्मं धनुः कुण्डिकां\nदण्डं शक्तिमसिं च चर्म जलजं घण्टां सुराभाजनम् ।\nशूलं पाशसुदर्शने च दधतीं हस्तैः प्रसन्नाननां\nसेवे सैरिभमर्दिनीमिह महालक्ष्मीं सरोजस्थिताम् ॥',
+    dhyanaArth:'अठारह भुजाओं में माला, फरसा, गदा, बाण, वज्र, कमल, धनुष, कमण्डलु, दण्ड, शक्ति, खड्ग, ढाल, शंख, घण्टा, पात्र, त्रिशूल, पाश व सुदर्शन धारण करने वाली महिषमर्दिनी महालक्ष्मी का ध्यान करें।',
+    hi:'यहाँ से मध्यम चरित्र आरंभ होता है। प्राचीन काल में देवताओं के राजा इन्द्र और असुरों के स्वामी महिषासुर के बीच सौ वर्षों तक भीषण युद्ध हुआ। देवताओं की सेना हार गई और महिषासुर स्वयं इन्द्र बन बैठा। पराजित देवता ब्रह्माजी को आगे कर भगवान विष्णु और शिवजी के पास गए तथा सारा दुःख सुनाया। यह सुनकर विष्णु और शिव के मुख से अत्यंत क्रोध प्रकट हुआ, और उसी समय अन्य देवताओं के शरीर से भी एक महान तेज निकला।\n\nसमस्त देवताओं का वह दिव्य तेज एकत्र होकर एक पर्वत के समान देदीप्यमान नारी-स्वरूप में परिणत हो गया, जिसका प्रकाश तीनों लोकों में व्याप्त हो गया। शिव के तेज से मुख, यम से केश, विष्णु से भुजाएँ, चन्द्रमा से वक्ष, इन्द्र से कटि, ब्रह्मा से चरण और सूर्य से चरणों की अँगुलियाँ बनीं। फिर सभी देवताओं ने उन्हें अपने-अपने श्रेष्ठ आयुध भेंट किए: शिव ने त्रिशूल, विष्णु ने सुदर्शन चक्र, वरुण ने शंख, अग्नि ने शक्ति, वायु ने धनुष-बाण, इन्द्र ने वज्र, यम ने दण्ड, हिमालय ने सिंह और विश्वकर्मा ने अभेद्य कवच दिया।\n\nअठारह भुजाओं वाली देवी ने घोर अट्टहास किया जिससे धरती-आकाश काँप उठे। महिषासुर की सेना के महाबली सेनापति चिक्षुर, चामर, उदग्र, महाहनु, असिलोमा, बाष्कल और बिडाल लाखों रथों-हाथियों के साथ युद्ध करने आए। सिंह पर आरूढ़ होकर माता अम्बिका ने अपनी भुजाओं व शस्त्रों से तथा उनके सिंह ने अपने नखों से असुरों की विशाल सेना को क्षणभर में नष्ट कर दिया।',
+    enText:'The Madhyama Charitra begins. After a century-long war, the buffalo-demon Mahishasura defeats the gods and usurps heaven. Defeated, the gods approach Brahma, Vishnu, and Shiva. Outraged, streams of brilliant radiance issue from the faces of Vishnu, Shiva, and all the gods, merging into a single blinding mountain of light that crystallizes into the eighteen-armed Goddess Mahalakshmi (Durga). Every deity bestows upon her their supreme weapon: Shiva gives his trident, Vishnu his discus, Indra his thunderbolt, Himalaya a majestic lion. Her thunderous laughter shakes the three worlds. Mahishasura’s generals—Chikshura, Chamara, Udagra, and others—advance with vast armies, and the Goddess together with her fierce lion decimates their legions.',
+    shlokas:[
+      ['अतुलं तत्र तत्तेजः सर्वदेवशरीरजम् ।\nएकस्थं तदभून्नारी व्याप्तलोकत्रयं त्विषा ॥ १२ ॥','Atulaṃ tatra tattejaḥ sarvadevaśarīrajam | Ekasthaṃ tadabhūnnārī vyāptalokatrayaṃ tviṣā ||','सब देवताओं के शरीरों से प्रकट वह अतुलनीय तेज एकत्र होकर एक दिव्य नारी रूप में बदल गया, जिसने तीनों लोकों को प्रकाशित कर दिया।'],
+      ['विभ्रती शूलमाहत्य वाराहं च सुदर्शनम् ।\nसिंहनादं ततः कृत्वा दैत्यसैन्यं बभञ्ज सा ॥','(कथा सार)','त्रिशूल, चक्र आदि दिव्य शस्त्रों को धारण कर और सिंहनाद करके देवी ने असुरों की चतुरङ्गिणी सेना को छिन्न-भिन्न कर दिया।']
+    ],
+    fruit:'परंपरागत मान्यता: कोर्ट-कचहरी, विवाद, शत्रु-बाधा और कठिन संघर्षों से पार पाने हेतु इस अध्याय का पाठ किया जाता है।'
+  },
+  {
+    n:'3',charitra:'मध्यम चरित्र · महालक्ष्मी',verses:44,
+    title:'महिषासुर वध',en:'Slaying of Mahishasura',
+    meta:'ऋषि: विष्णु · छन्द: अनुष्टुप् · देवता: महालक्ष्मी · शक्ति: शांकरी',
+    img:IMGS.durga,
+    dhyana:'ॐ उद्यद्भानुसहस्रकान्तिमरुणक्षौमां शिरोमालिकां\nरक्तालिप्तपयोधरां जपवटीं विद्यामभीतिं वरम् ।\nहस्ताब्जैर्दधतीं त्रिनेत्रविलसद्वक्त्रारविन्दश्रियं\nदेवीं बद्धहिमांशुरत्नमुकुटां वन्देऽरविन्दस्थिताम् ॥',
+    dhyanaArth:'उगते हुए हजारों सूर्यों जैसी कान्ति वाली, लाल वस्त्र व रत्नमुकुट धारण करने वाली, माला, पुस्तक, अभय व वरद मुद्रा से सुशोभित त्रिनेत्री देवी को हम प्रणाम करते हैं।',
+    hi:'अपनी सेना का संहार होते देख महापराक्रमी दैत्य सेनापति चिक्षुर और चामर स्वयं रणभूमि में आए, किंतु देवी ने त्रिशूल, शूल और चक्र से उन सभी का वध कर दिया। उदग्र, कराल, उद्धत, बाष्कल, ताम्र और अंधक जैसे सभी महायोद्धा देवी और उनके सिंह के द्वारा धराशायी हो गए।\n\nतब क्रोधित होकर स्वयं महिषासुर भयानक भैंसे का रूप धरकर आया और अपने सींगों, खुरों तथा पूँछ से पर्वतों को उखाड़कर फेंकने लगा। देवी ने पाश से उसे बाँधा तो वह सिंह बन गया; देवी ने मस्तक काटा तो वह खड्गधारी पुरुष बन गया; फिर वह मदमस्त हाथी बनकर सिंह को खींचने लगा; तब देवी ने उसकी सूँड़ काट दी।\n\nमहिषासुर फिर से भयंकर भैंसे का रूप लेकर तीन लोकों को कँपाने लगा। तब चण्डिका ने दिव्य मधुपान कर गरजते हुए कहा—"अरे मूढ़! जब तक मैं पान कर रही हूँ, तब तक तू क्षणभर गरज ले; मेरे द्वारा तेरा वध होते ही देवता जयघोष करेंगे।" यह कहकर देवी उछलकर महिषासुर के ऊपर चढ़ गईं, अपने चरण से उसका कंठ दबाया और शूल से उसकी छाती भेद दी। जब वह आधे शरीर से बाहर निकलने लगा, तब देवी ने खड्ग से उसका मस्तक काट डाला।',
+    enText:'Seeing his army fall, Mahishasura’s greatest commanders—Chikshura, Chamara, Udagra, Baskala, Tamra—rush forward and are slain. Enraged, Mahishasura himself charges in the colossal form of a buffalo, tearing up mountains with his horns and hooves. Bound by the Goddess’s noose, he shape-shifts into a lion, a sword-wielding warrior, a giant elephant, and back into the mighty buffalo. Mounting him, the Goddess presses his neck beneath her foot, pierces him with her trident, and as he tries to emerge in half-human form, severs his head with her great sword. All heaven rejoices.',
+    shlokas:[
+      ['गर्ज गर्ज क्षणं मूढ मधु यावत्पिबाम्यहम् ।\nमया त्वयि हतेऽत्रैव गर्जिष्यन्त्याशु देवताः ॥ ३३ ॥','Garja garja kṣaṇaṃ mūḍha madhu yāvatpibāmyaham | Mayā tvayi hate\'traiva garjiṣyantyāśu devatāḥ ||','अरे मूढ़! जब तक मैं यह दिव्य मधु पी रही हूँ, तब तक क्षणभर गरज ले; तेरे मरते ही यहाँ देवता गर्जना करेंगे।'],
+      ['एवमुक्त्वा समुत्पत्य साऽऽरूढा तं महासुरम् ।\nपादेन चाक्रम्य कण्ठे शूलेनैनमताडयत् ॥ ३५ ॥','Evamuktvā samutpatya sā\'\'rūḍhā taṃ mahāsuram | Pādena cākramya kaṇṭhe śūlenainamatāḍayat ||','ऐसा कहकर देवी उछलकर उस महासुर पर चढ़ गईं और चरण से उसका गला दबाकर शूल से प्रहार किया।']
+    ],
+    fruit:'परंपरागत मान्यता: विरोधियों, नकारात्मक शक्तियों और भयंकर संकटों से रक्षा के लिए इस अध्याय का पाठ किया जाता है।'
+  },
+  {
+    n:'4',charitra:'मध्यम चरित्र · महालक्ष्मी',verses:42,
+    title:'शक्रादि देवताओं द्वारा देवी की स्तुति',en:'Hymn of Indra & the Gods (Shakradi Stuti)',
+    meta:'ऋषि: विष्णु · छन्द: त्रिष्टुप् आदि · देवता: महालक्ष्मी · स्तुति अध्याय',
+    img:IMGS.lakshmi,
+    dhyana:'ॐ कालाभ्राभां कटाक्षैररिकुलभयदां मौलिबद्धेन्दुरेखां\nशङ्खं चक्रं कृपाणं त्रिशिखमपि करैरुद्वहन्तीं त्रिनेत्राम् ।\nसिंहस्कन्धाधिरूढां त्रिभुवनमखिलं तेजसा पूरयन्तीं\nध्यायेद् दुर्गां जयाख्यां त्रिदशपरिवृतां सेवितां सिद्धिकामैः ॥',
+    dhyanaArth:'काले मेघ जैसी कांति वाली, मस्तक पर चंद्रकला धारण किए, शंख-चक्र-खड्ग-त्रिशूल वाली सिंहवाहिनी जया दुर्गा का ध्यान करें।',
+    hi:'महिषासुर के वध के पश्चात् इन्द्र आदि समस्त देवता हर्ष से भरकर मस्तक झुकाए देवी के सामने खड़े हो गए और अत्यंत भावपूर्ण "शक्रादि स्तुति" से उनकी आराधना करने लगे। देवताओं ने कहा कि हे देवी! आपकी शक्ति से ही यह जगत व्याप्त है। आप ही ब्रह्मा, विष्णु और महेश की शक्ति हैं; आप ही पुण्यात्माओं के घर में लक्ष्मी हैं, सज्जनों के हृदय में श्रद्धा और लज्जा हैं; और युद्ध में असुरों का संहार करके भी आप उनके प्रति करुणा ही रखती हैं ताकि वे शुद्ध होकर सद्गति प्राप्त करें।\n\nदेवताओं ने माँ के शस्त्रों से अपनी रक्षा की प्रार्थना की: "हे अम्बिके! अपने शूल से, खड्ग से, घण्टा की ध्वनि से और धनुष की टंकार से सब दिशाओं में हमारी रक्षा करें।" स्तुति से प्रसन्न होकर देवी ने देवताओं को वर माँगने को कहा। देवताओं ने कहा—"माँ, आपने हमारे शत्रुओं को नष्ट कर सब कुछ दे दिया है; बस इतना वर दें कि जब भी हम पर संकट आए और हम आपका स्मरण करें, आप तुरंत प्रकट होकर हमारी रक्षा करें।" देवी ने "एवमस्तु" (ऐसा ही हो) कहकर अंतर्धान हो गईं।',
+    enText:'Upon the fall of Mahishasura, Indra and all the celestials bow in deep gratitude and sing the celebrated Shakradi Stuti. They praise the Devi as the sole power animating the cosmos—prosperity in the homes of the virtuous, modesty, intelligence, and compassion even toward the demons she purifies in battle. They pray that her trident, sword, bell, and bow guard them from every direction. Pleased, the Goddess grants them a boon: whenever they remember her in distress, she will instantly appear to destroy their calamities.',
+    shlokas:[
+      ['या श्रीः स्वयं सुकृतिनां भवनेष्वलक्ष्मीः\nपापात्मनां कृतधियां हृदयेषु बुद्धिः ।\nश्रद्धा सतां कुलजनप्रभवस्य लज्जा\nतां त्वां नताः स्म परिपालय देवि विश्वम् ॥ ५ ॥','Yā śrīḥ svayaṃ sukṛtināṃ bhavaneṣvalakṣmīḥ pāpātmanāṃ kṛtadhiyāṃ hṛdayeṣu buddhiḥ | Śraddhā satāṃ kulajanaprabhavasya lajjā tāṃ tvāṃ natāḥ sma paripālaya devi viśvam ||','जो पुण्यात्माओं के घरों में स्वयं लक्ष्मी, सज्जनों में श्रद्धा और विवेकियों के हृदय में बुद्धि रूप में स्थित हैं, उन आपको हम प्रणाम करते हैं।'],
+      ['शूलेन पाहि नो देवि पाहि खड्गेन चाम्बिके ।\nघण्टास्वनेन नः पाहि चापज्यानिःस्वनेन च ॥ २४ ॥','Śūlena pāhi no devi pāhi khaḍgena cāmbike | Ghaṇṭāsvanena naḥ pāhi cāpajyāniḥsvanena ca ||','हे देवि! अपने शूल से, खड्ग से, घण्टे की ध्वनि से और धनुष की टंकार से हमारी रक्षा कीजिए।']
+    ],
+    fruit:'परंपरागत मान्यता: भक्ति, सुख-शांति, दैवीय सुरक्षा और सपरिवार कल्याण के लिए यह स्तुति अत्यंत फलदायी है।'
+  },
+  {
+    n:'5',charitra:'उत्तम चरित्र · महासरस्वती',verses:129,
+    title:'देव-स्तुति (या देवी सर्वभूतेषु) व कौशिकी प्राकट्य',en:'Hymn in Himalayas & Dialogue with Shumbha’s Messenger',
+    meta:'ऋषि: रुद्र · छन्द: अनुष्टुप् · देवता: महासरस्वती · शक्ति: भीमा · बीज: भ्रामरी · तत्त्व: सूर्य',
+    img:IMGS.saraswati,
+    dhyana:'ॐ घण्टाशूलहलानि शङ्खमुसले चक्रं धनुः सायकं\nहस्ताब्जैर्दधतीं घनान्तविलसच्छीतांशुतुल्यप्रभाम् ।\nगौरीदेहसमुद्भवां त्रिजगतामाधारभूतां महा-\nपूर्वामत्र सरस्वतीमनुभजे शुम्भादिदैत्यार्दिनीम् ॥',
+    dhyanaArth:'शरद पूर्णिमा के चन्द्रमा जैसी शुभ्र कांति वाली, गौरी के शरीर से प्रकट, शुम्भादि दैत्यों का नाश करने वाली महासरस्वती का ध्यान करें।',
+    hi:'यहाँ से उत्तम चरित्र प्रारंभ होता है। कुछ समय बाद शुम्भ और निशुम्भ नामक दो महाबली असुरों ने देवताओं से स्वर्ग तथा सूर्य, चन्द्र, कुबेर, यम व वरुण के अधिकार छीन लिए। त्रस्त देवता हिमालय पर गए और देवी के दिए पूर्व वरदान का स्मरण करके उनकी स्तुति करने लगे—यहीं विश्वप्रसिद्ध "अपराजिता स्तुति" (‘या देवी सर्वभूतेषु...’) प्रकट होती है, जिसमें देवता माँ को चेतना, बुद्धि, निद्रा, क्षुधा, छाया, शक्ति, तृष्णा, क्षान्ति, जाति, लज्जा, शान्ति, श्रद्धा, कान्ति, लक्ष्मी, वृत्ति, स्मृति, दया, तुष्टि, माता और भ्रान्ति आदि समस्त रूपों में नमन करते हैं।\n\nउसी समय पार्वतीजी गंगा स्नान को आईं और पूछा—"तुम सब किसकी स्तुति कर रहे हो?" तभी उनके शरीर कोश से अत्यंत सुन्दरी "कौशिकी" (अम्बिका) प्रकट हुईं, और शरीर का कालांश अलग होने से पार्वतीजी "कालिका" कहलायीं। शुम्भ के सेवक चण्ड-मुण्ड ने हिमालय पर दिव्य अम्बिका को देखा और जाकर शुम्भ से उनके अद्भुत सौंदर्य व रत्न-संपदा का वर्णन किया।\n\nअहंकारी शुम्भ ने सुग्रीव नामक दूत को भेजकर विवाह का प्रस्ताव रखा। देवी ने मधुर मुस्कान के साथ अपनी प्रतिज्ञा सुनाई—"मैंने अज्ञानवश यह प्रतिज्ञा कर ली है कि जो मुझे संग्राम में जीत लेगा, मेरा अभिमान चूर करेगा और बल में मेरे समान होगा, वही मेरा पति होगा।" दूत के बारंबार धमकाने पर भी देवी अडिग रहीं।',
+    enText:'The Uttama Charitra opens. The demon brothers Shumbha and Nishumbha strip the gods of heaven and all cosmic offices. Remembering the Goddess’s promise, the celestials gather in the Himalayas and chant the iconic Aparajita Stuti ("Ya Devi Sarvabhuteshu"), saluting her as consciousness, intelligence, sleep, hunger, shadow, power, patience, modesty, peace, faith, fortune, compassion, and motherhood in all beings. Parvati arrives to bathe in the Ganga; from her sheath emerges the radiant Kaushiki (Ambika), while Parvati turns dark as Kalika. Shumbha’s scouts Chanda and Munda report Kaushiki’s splendor. Shumbha sends his messenger Sugriva to demand she wed him. Smiling, the Goddess declares her vow: only he who defeats her in battle and humbles her pride shall be her husband.',
+    shlokas:[
+      ['या देवी सर्वभूतेषु विष्णुमायेति शब्दिता ।\nनमस्तस्यै नमस्तस्यै नमस्तस्यै नमो नमः ॥ १४–१६ ॥','Yā devī sarvabhūteṣu viṣṇumāyeti śabditā | Namastasyai namastasyai namastasyai namo namaḥ ||','जो देवी सब प्राणियों में विष्णुमाया के रूप में कही जाती हैं, उन्हें नमस्कार, नमस्कार, बारंबार नमस्कार।'],
+      ['या देवी सर्वभूतेषु शक्तिरूपेण संस्थिता ।\nया देवी सर्वभूतेषु मातृरूपेण संस्थिता ।\nनमस्तस्यै नमस्तस्यै नमस्तस्यै नमो नमः ॥','Yā devī sarvabhūteṣu śaktirūpeṇa saṃsthitā | Mātrṛūpeṇa saṃsthitā | Namastasyai... ||','जो देवी समस्त जीवों में शक्ति और माता के रूप में विराजमान हैं, उन्हें बारंबार नमस्कार।'],
+      ['यो मां जयति संग्रामे यो मे दर्पं व्यपोहति ।\nयो मे प्रतिबलो लोके स मे भर्ता भविष्यति ॥ १२० ॥','Yo māṃ jayati saṃgrāme yo me darpaṃ vyapohati | Yo me pratibalo loke sa me bhartā bhaviṣyati ||','जो मुझे युद्ध में जीतेगा, मेरा गर्व हरेगा और मेरे समान बलशाली होगा, वही मेरा स्वामी होगा।']
+    ],
+    fruit:'परंपरागत मान्यता: आत्मबल, आध्यात्मिक उन्नति, वाणी-माधुर्य व अज्ञान-निवृत्ति के लिए इस अध्याय का विशेष पाठ होता है।'
+  },
+  {
+    n:'6',charitra:'उत्तम चरित्र · महासरस्वती',verses:24,
+    title:'धूम्रलोचन वध',en:'Slaying of Dhumralochana',
+    meta:'ऋषि: रुद्र · छन्द: अनुष्टुप् · देवता: महासरस्वती · सप्तशती का सबसे छोटा अध्याय',
+    img:IMGS.durga2,
+    dhyana:'ॐ नागाधीश्वरविष्टरां फणिफणोत्तंसोरुरत्नावली-\nभास्वद्देहलतां दिवाकरनिभां नेत्रत्रयोद्भासिताम् ।\nमालाकुम्भकपालनीरजकरां चन्द्रार्धचूडाम्बरां\nसर्वेश्वरभैरवाङ्गनिलयां पद्मावतीं चिन्तये ॥',
+    dhyanaArth:'शेषनाग के आसन पर विराजमान, सूर्य जैसी प्रभा वाली, माला, कुम्भ, कपाल व कमल धारण करने वाली पद्मावती देवी का ध्यान करें।',
+    hi:'दूत सुग्रीव से देवी की प्रतिज्ञा सुनकर शुम्भ क्रोध से भर उठा। उसने अपने महापराक्रमी सेनापति धूम्रलोचन को आदेश दिया कि "साठ हजार असुरों की सेना लेकर जाओ और उस दुष्टा के केश पकड़कर घसीटते हुए यहाँ ले आओ; यदि कोई देवता या गन्धर्व उसकी रक्षा करे तो उसे भी मार डालना।"\n\nआज्ञा पाकर धूम्रलोचन विशाल सेना के साथ हिमालय पहुँचा और देवी को ललकारते हुए बोला—"शीघ्र चलकर हमारे स्वामी शुम्भ-निशुम्भ की सेवा कर, अन्यथा मैं अभी बलपूर्वक तेरे केश पकड़कर ले जाऊँगा।" देवी ने शांत किंतु गंभीर स्वर में कहा—"तुम बलवान हो और राजा द्वारा भेजे गए हो; यदि मुझे बल से ले जा सकते हो तो ले चलो, मैं क्या कर सकती हूँ!"\n\nजैसे ही धूम्रलोचन देवी को पकड़ने दौड़ा, अम्बिका ने मात्र "हुम्" (हुंकार) शब्द का उच्चारण किया और उसी क्षण वह दुर्बुद्धि असुर जलकर भस्म हो गया। इसके बाद कुपित असुर सेना ने बाणों और शक्तियों की वर्षा की, किंतु देवी के वाहन केसरी (सिंह) ने क्रोध से गर्जना कर भयानक संहार किया और पलभर में सारी असुर सेना को समाप्त कर दिया।',
+    enText:'Enraged by Sugriva’s report, Shumbha dispatches his general Dhumralochana with 60,000 demons to drag the Goddess by her hair. Arriving at the snowy peaks, Dhumralochana threatens Ambika. She calmly dares him to carry out his master’s command. As he charges forward to seize her, the Goddess utters a single resonant syllable—"Hum!"—and Dhumralochana is instantaneously reduced to ashes. Her lion then charges into the remaining army, tearing through the ranks until none are left to return except a few terrified survivors.',
+    shlokas:[
+      ['इत्युक्त्वा सा तदा देवी हुङ्कारेणैव तं क्षणात् ।\nभस्मसाच्चकार वेगेन सर्वदैत्यभयङ्करम् ॥ ११ ॥','(पाठ भाव)','ऐसा कहकर अम्बिका देवी ने केवल एक "हुंकार" ध्वनि से ही महाबली धूम्रलोचन को क्षणभर में भस्म कर दिया।']
+    ],
+    fruit:'परंपरागत मान्यता: अज्ञात भय, चिंता, नकारात्मक ऊर्जा और मानसिक बाधाओं से शीघ्र मुक्ति हेतु यह अध्याय पढ़ा जाता है।'
+  },
+  {
+    n:'7',charitra:'उत्तम चरित्र · महासरस्वती',verses:27,
+    title:'चण्ड-मुण्ड वध व चामुण्डा नामकरण',en:'Slaying of Chanda & Munda · Birth of Chamunda',
+    meta:'ऋषि: रुद्र · छन्द: अनुष्टुप् · देवता: महासरस्वती (चामुण्डा प्रसंग)',
+    img:IMGS.kali,
+    dhyana:'ॐ ध्यायेयं रत्नपीठे शुककलपठितं शृण्वतीं श्यामलाङ्गीं\nन्यस्तैकाङ्घ्रिं सरोजे शशिशकलधरां वल्लकीं वादयन्तीम् ।\nकह्लाराबद्धमालां नियमितविलसच्चोलिकां रक्तवस्त्रां\nमातङ्गीं शङ्खपात्रां मधुरमधुमदां चित्रकोद्भासिभालाम् ॥',
+    dhyanaArth:'रत्नपीठ पर विराजमान, श्यामलांगी, वीणा वादन करने वाली और तोते की मधुर वाणी सुनने वाली मातंगी देवी का ध्यान करें।',
+    hi:'धूम्रलोचन के भस्म होने का समाचार सुनकर शुम्भ ने अत्यंत पराक्रमी चण्ड और मुण्ड को चतुरङ्गिणी सेना के साथ भेजा। वे हिमालय के स्वर्णमय शिखर पर सिंहारूढ़ मुस्कुराती हुई अम्बिका देवी को देखकर आगे बढ़े और धनुष-बाण व तलवार तानकर उन्हें पकड़ने का प्रयास करने लगे।\n\nशत्रुओं का दुस्साहस देख अम्बिका को तीव्र क्रोध आया और उनका मुखमण्डल मसी (स्याही) के समान काला पड़ गया। उनकी टेढ़ी भृकुटी के मध्य ललाट से तुरंत विकराल मुख वाली, खड्ग व पाश धारण किए, खट्वांग व नरमुण्डमाला से विभूषित महाकाली प्रकट हुईं। सिंहनाद करती हुई काली ने असंख्य असुरों का संहार किया, हाथियों को निगल लिया और रथों को चबा डाला।\n\nफिर काली ने लपककर चण्ड के केश पकड़े और खड्ग से उसका सिर काट दिया। मुण्ड को भी उन्होंने धरती पर गिराकर मस्तक अलग कर दिया। तत्पश्चात् दोनों असुरों के सिर लेकर काली अम्बिका के पास आईं और बोलीं—"मैंने चण्ड-मुण्ड नामक दो महापशुओं का वध कर तुम्हें भेंट किया है, अब शुम्भ-निशुम्भ को तुम स्वयं मारना।" तब अम्बिका ने प्रसन्न होकर वर दिया—"चूँकि तुमने चण्ड और मुण्ड को लाकर मुझे दिया है, अतः संसार में तुम \'चामुण्डा\' के नाम से प्रसिद्ध होगी।"',
+    enText:'Stung by defeat, Shumbha sends Chanda and Munda with a vast four-fold army. Seeing the Goddess smiling serenely upon a golden Himalayan peak atop her lion, they rush to capture her. Ambika’s face darkens like ink in righteous wrath, and from the furrow of her brow springs forth terrifying Kali—gaunt, wearing a garland of skulls, wielding sword and noose. Roaring, she devours elephants and charioteers alike. Seizing Chanda by the hair, she beheads him; she cuts down Munda in close combat and presents both heads to Ambika. Delighted, Ambika bestows upon her the celebrated name "Chamunda."',
+    shlokas:[
+      ['भ्रुकुटीकुटिलात्तस्या ललाटफलकाद्द्रुतम् ।\nकाली करालवदना विनिष्क्रान्तासिपाशिनी ॥ ६ ॥','Bhrukuṭīkuṭilāttasyā lalāṭaphalakāddrutam | Kālī karālavadanā viniṣkrāntāsipāśinī ||','टेढ़ी हुई भौंहों से युक्त उनके ललाट से शीघ्र ही खड्ग और पाश लिए करालमुखी काली प्रकट हुईं।'],
+      ['यस्माच्चण्डं च मुण्डं च गृहीत्वा त्वमुपागता ।\nचामुण्डेति ततो लोके ख्याता देवी भविष्यसि ॥ २५ ॥','Yasmāccaṇḍaṃ ca muṇḍaṃ ca gṛhītvā tvamupāgatā | Cāmuṇḍeti tato loke khyātā devī bhaviṣyasi ||','चूँकि तुम चण्ड और मुण्ड को पकड़कर मेरे पास लाई हो, इसलिए लोक में "चामुण्डा" नाम से विख्यात होगी।']
+    ],
+    fruit:'परंपरागत मान्यता: अकाल संकट, भय और कठिन मनोरथों की सिद्धि के लिए इस अध्याय का पाठ किया जाता है।'
+  },
+  {
+    n:'8',charitra:'उत्तम चरित्र · महासरस्वती',verses:63,
+    title:'रक्तबीज वध व सप्तमातृका प्राकट्य',en:'Slaying of Raktabija & Rise of the Matrikas',
+    meta:'ऋषि: रुद्र · छन्द: अनुष्टुप् · देवता: महासरस्वती · अष्टमातृका प्रसंग',
+    img:IMGS.bhairavi,
+    dhyana:'ॐ अरुणां करुणातरङ्गिताक्षीं\nधृतपाशाङ्कुशपुष्पबाणचापाम् ।\nअणिमादिभिरावृतां मयूखै-\nरहमित्येव विभावये भवानीम् ॥',
+    dhyanaArth:'अरुण वर्ण, करुणा से तरंगित नेत्रों वाली, पाश-अंकुश-पुष्पबाण-धनुष धारण करने वाली और अणिमा आदि सिद्धियों से आवृत भवानी का ध्यान करें।',
+    hi:'चण्ड-मुण्ड के वध का समाचार सुनकर शुम्भ अत्यंत क्रुद्ध हुआ और स्वयं निशुम्भ व समस्त असुर जातियों (उदायुध, कम्बु, कोटिवीर्य, धौम्र, कालकेय) की विशाल सेना लेकर युद्धभूमि में चल पड़ा। इस भयानक युद्ध में अम्बिका की सहायता के लिए ब्रह्मा, विष्णु, महेश, कार्तिकेय, वराह, नृसिंह और इन्द्र के शरीरों से उनकी शक्तियाँ—ब्रह्माणी, माहेश्वरी, कौमारी, वैष्णवी, वाराही, नारसिंही और ऐन्द्री—प्रकट हुईं। चण्डिका के शरीर से अत्यंत उग्र "शिवदूती" प्रकट हुईं और भगवान शिव को असुरों के पास दूत बनाकर भेजा।\n\nमहाभयंकर युद्ध छिड़ गया। जब मातृकाओं ने असुर सेना को कुचल डाला, तब महाबली "रक्तबीज" रण में आया। उसे यह विचित्र वरदान प्राप्त था कि उसके शरीर से रक्त की जितनी बूँदें धरती पर गिरेंगी, उतने ही उसके समान महाबली रक्तबीज असुर उत्पन्न हो जाएँगे। ऐन्द्री के वज्र और अन्य मातृकाओं के शस्त्रों से रक्तबीज के घावों से रक्त बहने लगा और देखते-ही-देखते हजारों रक्तबीज असुरों से सारा युद्धक्षेत्र भर गया।\n\nदेवताओं को घबराता देख अम्बिका ने चामुण्डा (काली) से कहा—"चामुण्डे! तुम अपना मुख फैलाओ और मेरे शस्त्र से घायल इस दैत्य के रक्त की एक भी बूँद धरती पर न गिरने दो; सारा रक्त पी जाओ और उत्पन्न असुरों को भक्षण कर जाओ।" तब अम्बिका ने शूल से रक्तबीज पर प्रहार किया, चामुण्डा ने उसका सारा रक्त पी लिया और अंततः रक्तहीन होकर रक्तबीज धराशायी हो गया।',
+    enText:'Enraged, Shumbha marches out with Nishumbha and endless demon legions. To aid Ambika, the Shaktis (Matrikas) emerge from the gods: Brahmani, Maheshvari, Kaumari, Vaishnavi, Varahi, Narasimhi, and Aindri, plus fierce Shivaduti. When the Matrikas rout the enemy, the formidable demon Raktabija steps forth. He holds a boon: every drop of his blood touching the earth spawns an identical, equally mighty demon. Struck by weapons, Raktabija bleeds profusely and thousands of duplicates overwhelm the battlefield. Seeing the gods dismayed, Ambika instructs Chamunda to open wide her mouth and drink every drop before it falls. As Ambika pierces Raktabija with her lance and sword, Chamunda swallows every drop and devours the duplicates until Raktabija collapses bloodless and dies.',
+    shlokas:[
+      ['रक्तबिन्दुर्यदा भूमौ पतत्यस्य शरीरतः ।\nसमुत्पतति मेदिन्यां तत्प्रमाणो महासुरः ॥ ४० ॥','Raktabinduryadā bhūmau patatyasya śarīrataḥ | Samutpatati medinyāṃ tatpramāṇo mahāsuraḥ ||','जब इसके शरीर से रक्त की बूँद धरती पर गिरती है, तब पृथ्वी पर उसी के समान महाबली असुर उत्पन्न हो जाता है।'],
+      ['चामुण्डे विवृतं वक्त्रं त्वं कुरुष्व महाबले ।\nमया हतस्य दैत्यस्य रक्तं त्वं पिब वेगतः ॥','(कथा सार)','हे महाबले चामुण्डे! तुम अपना मुख फैलाओ और मेरे शस्त्र से घायल रक्तबीज के रक्त की बूँद को धरती पर गिरने से पहले पी जाओ।']
+    ],
+    fruit:'परंपरागत मान्यता: बार-बार उत्पन्न होने वाली समस्याओं, रोगों की पुनरावृत्ति और नकारात्मक आदतों के शमन हेतु पाठ किया जाता है।'
+  },
+  {
+    n:'9',charitra:'उत्तम चरित्र · महासरस्वती',verses:41,
+    title:'निशुम्भ वध',en:'Slaying of Nishumbha',
+    meta:'ऋषि: रुद्र · छन्द: अनुष्टुप् · देवता: महासरस्वती',
+    img:IMGS.durga,
+    dhyana:'ॐ बन्धूककाञ्चननिभं रुचिराक्षमालां\nपाशाङ्कुशौ च वरदां निजबाहुदण्डैः ।\nबिभ्राणमिन्दुशकलाभरणं त्रिनेत्र-\nमर्धाम्बिकेशमनिशं वपुराश्रयामि ॥',
+    dhyanaArth:'स्वर्ण व बन्धूक पुष्प जैसी आभा वाले, अक्षमाला-पाश-अंकुश-वरद मुद्रा से सुशोभित त्रिनेत्र अर्धनारीश्वर स्वरूप का ध्यान करें।',
+    hi:'रक्तबीज के मारे जाने पर शुम्भ और निशुम्भ दोनों भाई अत्यंत क्रोध में भरकर भयानक युद्ध के लिए आगे बढ़े। निशुम्भ ने शस्त्रों की वर्षा कर देवी और उनके सिंह पर प्रहार किया, किंतु देवी ने अपने बाणों से उसके सारे अस्त्र काट डाले और खड्ग से उसकी ढाल व तलवार के टुकड़े कर दिए।\n\nतब निशुम्भ ने शूल फेंका, जिसे अम्बिका ने अपने चक्र से चूर-चूर कर दिया। घायल होकर जब निशुम्भ पृथ्वी पर गिरा, तब उसका बड़ा भाई शुम्भ अत्यंत क्रुद्ध होकर देवी को मारने दौड़ा, और आठ भुजाओं में नाना अस्त्र लिए देवी पर टूट पड़ा। देवी ने अपने बाणों व शंखनाद से शुम्भ को व्याकुल कर दिया और शूल के प्रहार से शुम्भ मूर्च्छित होकर धरती पर गिर पड़ा।\n\nउधर निशुम्भ चेतना पाकर पुनः धनुष-बाण व गदा लेकर झपटा। देवी ने उसके धनुष को काट दिया और बाणों से उसकी छाती बेध दी। तब निशुम्भ के हृदय से उसी के जैसा एक अन्य महाबली पुरुष निकला, और देवी ने अट्टहास करते हुए खड्ग से उसका मस्तक काट डाला। अपने प्राणप्रिय भाई निशुम्भ की मृत्यु देख शुम्भ शोक और क्रोध से व्याकुल हो उठा।',
+    enText:'Enraged by Raktabija’s death, Nishumbha and Shumbha both charge into fierce combat. Ambika shatters Nishumbha’s weapons and shield. Seeing his brother struck down, Shumbha rushes forward with eight arms wielding deadly missiles, only to be pierced by Ambika’s spear and fall unconscious. Recovering, Nishumbha leaps up again with bow and mace; the Goddess shatters his bow and pierces his chest. From Nishumbha’s chest emerges another mighty warrior, whom Ambika laughing beheads with her sword, slaying Nishumbha at last.',
+    shlokas:[
+      ['तस्यापि निपतन्तं तं शिरश्चिच्छेद चण्डिका ।\nततो निशुम्भो वेगेन पपात धरणीतले ॥ ३७ ॥','(कथा सार)','निशुम्भ के हृदय से प्रकट हुए उस पुरुष का भी चण्डिका ने मस्तक काट डाला, जिससे निशुम्भ निष्प्राण होकर धरती पर गिर पड़ा।']
+    ],
+    fruit:'परंपरागत मान्यता: साहस, आत्मविश्वास और कार्यक्षेत्र के अवरोध दूर करने हेतु पठन किया जाता है।'
+  },
+  {
+    n:'10',charitra:'उत्तम चरित्र · महासरस्वती',verses:32,
+    title:'शुम्भ वध ("एकैवाहं जगत्यत्र")',en:'Slaying of Shumbha & Oneness of Shakti',
+    meta:'ऋषि: रुद्र · छन्द: अनुष्टुप् · देवता: महासरस्वती · अद्वैत दर्शन प्रसंग',
+    img:IMGS.tripura,
+    dhyana:'ॐ उत्तप्तहेमरुचिरां रविचन्द्रवह्नि-\nनेत्रां धनुश्शरयुताङ्कुशपाशशूलम् ।\nरम्यैर्भुजैश्च दधतीं शिवशक्तिरूपां\nकामेश्वरीं हृदि भजामि धृतेन्दुलेखाम् ॥',
+    dhyanaArth:'तपाए हुए स्वर्ण जैसी प्रभा वाली, सूर्य-चन्द्र-अग्नि रूपी तीन नेत्रों वाली, धनुष-बाण-अंकुश-पाश व शूल धारण करने वाली कामेश्वरी शिवशक्ति का हृदय में ध्यान करें।',
+    hi:'अपने छोटे भाई निशुम्भ को मरा देख शुम्भ ने अम्बिका को ललकारते हुए कहा—"दुष्टे दुर्गे! तू झूठा गर्व मत कर; तू दूसरी शक्तियों (मातृकाओं) के बल से लड़ रही है।" यह सुनकर जगदम्बा अम्बिका ने एक महान अद्वैत सत्य उद्घोषित किया: "अरे दुष्ट! इस संसार में मेरे सिवा दूसरी कोई शक्ति नहीं है। देख, ये सब मेरी ही विभूतियाँ हैं—ये सब मुझमें ही प्रवेश कर रही हैं।"\n\nइतना कहते ही ब्रह्माणी, माहेश्वरी, चामुण्डा आदि सभी मातृकाएँ अम्बिका देवी के शरीर में समाहित हो गईं और वे अकेली ही वहाँ खड़ी रहीं। तब देवी और शुम्भ के बीच भयंकर द्वन्द्वयुद्ध आरंभ हुआ—पृथ्वी पर, आकाश में और फिर अन्तरिक्ष में दोनों बाहुयुद्ध व दिव्यास्त्रों से लड़े। अंत में अम्बिका ने शुम्भ को आकाश में उठाकर धरती पर पटका और तीक्ष्ण शूल से उसकी छाती भेदकर उसे निष्प्राण कर दिया।\n\nशुम्भ के मरते ही समस्त दिशाएँ निर्मल हो गईं, मेघ शांत हो गए, नदियाँ अपने स्वाभाविक मार्ग पर बहने लगीं और आकाश से देवताओं ने पुष्पवर्षा की।',
+    enText:'Grief-stricken and furious, Shumbha taunts Ambika: "Do not boast, O Durga! You fight relying on the strength of other goddesses." Ambika replies with profound non-dual truth: "I alone exist in this universe; who else is there besides me? Behold these powers—all are mere projections of myself, now returning into me!" Instantly all the Matrikas dissolve back into Ambika’s body, leaving her standing alone. A cosmic duel ensues across earth and sky until Ambika hurls Shumbha down and pierces his heart with her trident. Instantly the skies clear, rivers flow calmly, auspicious winds blow, and gods shower blossoms.',
+    shlokas:[
+      ['एकैवाहं जगत्यत्र द्वितीया का ममापरा ।\nपश्यैता दुष्ट मय्येव विशन्त्यो मद्विभूतयः ॥ ३ ॥','Ekaivāhaṃ jagatyatra dvitīyā kā mamāparā | Paśyaitā duṣṭa mayyeva viśantyo madvibhūtayaḥ ||','इस जगत में एकमात्र मैं ही हूँ; मेरे अतिरिक्त दूसरी कौन है? अरे दुष्ट, देख—ये सब मेरी ही विभूतियाँ मुझमें ही प्रवेश कर रही हैं।'],
+      ['शूलेन वक्षसि तदा निर्भिद्य प्रक्षिपद् भुवि ।\nस हतः प्रापतद् भूमौ शैलशृङ्ग इवाहृतः ॥','(कथा सार)','देवी ने शूल से शुम्भ की छाती भेदकर उसे धरती पर पटक दिया; वह पर्वत के टूटे शिखर की भाँति धराशायी हो गया।']
+    ],
+    fruit:'परंपरागत मान्यता: अद्वैत बोध, मन की एकाग्रता और जीवन में पूर्ण विजय व संतुलन हेतु पठन किया जाता है।'
+  },
+  {
+    n:'11',charitra:'उत्तम चरित्र · महासरस्वती',verses:55,
+    title:'नारायणी स्तुति एवं भावी अवतार वचन',en:'Narayani Stuti & Promise of Divine Incarnations',
+    meta:'ऋषि: रुद्र · छन्द: अनेक छन्द · देवता: नारायणी · अतिप्रसिद्ध स्तुति अध्याय',
+    img:IMGS.durga2,
+    dhyana:'ॐ बालरविद्युतिमिन्दुकिरीटां\nतुङ्गकुचां नयनत्रययुक्ताम् ।\nस्मेरमुखीं वरदाङ्कुशपाशा-\nभीतिकरां प्रभजे भुवनेशीम् ॥',
+    dhyanaArth:'प्रातःकालीन सूर्य जैसी आभा वाली, चन्द्रमुकुट धारण किए, वरद-अंकुश-पाश-अभय मुद्रा युक्त त्रिनेत्री भुवनेश्वरी का ध्यान करें।',
+    hi:'शुम्भ-निशुम्भ के वध के बाद प्रसन्न होकर इन्द्रादि देवताओं और ऋषियों ने अम्बिका का पूजन कर भव्य "नारायणी स्तुति" की। इसमें माँ के "सर्वमङ्गलमाङ्गल्ये शिवे सर्वार्थसाधिके...", "शरणागतदीनार्तपरित्राणपरायणे...", "सृष्टिस्थितिविनाशानां शक्तिभूते सनातनि..." तथा "विद्याः समस्तास्तव देवि भेदाः स्त्रियः समस्ताः सकला जगत्सु" (समस्त विद्याएँ और समस्त स्त्रियाँ आपकी ही मूर्तियाँ हैं) जैसे दिव्य श्लोक आते हैं।\n\nस्तुति से प्रसन्न होकर देवी ने देवताओं को वर माँगने को कहा। देवताओं ने त्रिलोकी की पीड़ा मिटाने का अनुरोध किया। तब जगदम्बा ने करुणापूर्वक वचन दिया: "जब-जब दानवों से बाधा उपस्थित होगी, मैं अवतार लेकर शत्रुओं का नाश करूँगी।" उन्होंने अपने भावी अवतारों—वैवस्वत मन्वन्तर में विन्ध्यवासिनी (नन्दगोप की कन्या), रक्तदन्तिका, सौ वर्ष के अकाल में अनन्त नेत्रों वाली शताक्षी और शाक से पोषण करने वाली शाकम्भरी, दुर्गमासुर को मारकर दुर्गा, तथा भीमा व भ्रामरी रूपों—की घोषणा की।',
+    enText:'Overjoyed by victory, the gods and sages chant the majestic Narayani Stuti—honoring the Goddess as the auspiciousness of all auspicious things, refuge of the distressed, eternal energy of creation-preservation-destruction, and declaring that all branches of knowledge and all women in the world are her forms ("Vidyah samastastava devi bhedah, striyah samastah sakala jagatsu"). Pleased, the Goddess promises that whenever demonic tyranny arises, she will incarnate again—as Vindhyavasini, Raktadantika, Shatakshi, Shakambhari (during a 100-year drought), Durga, Bhima, and Bhramari.',
+    shlokas:[
+      ['सर्वमङ्गलमाङ्गल्ये शिवे सर्वार्थसाधिके ।\nशरण्ये त्र्यम्बके गौरि नारायणि नमोऽस्तु ते ॥ १० ॥','Sarvamaṅgalamāṅgalye śive sarvārthasādhike | Śaraṇye tryambake gauri nārāyaṇi namo\'stu te ||','हे सब मंगलों में मंगल, शिवे, सब अर्थ सिद्ध करने वाली, शरणदायिनी त्रिनेत्री गौरी नारायणी, आपको नमस्कार।'],
+      ['विद्याः समस्तास्तव देवि भेदाः स्त्रियः समस्ताः सकला जगत्सु ।\nत्वयैकया पूरितमम्बयैतत् का ते स्तुतिः स्तव्यपरा परोक्तिः ॥ ६ ॥','Vidyāḥ samastāstava devi bhedāḥ striyaḥ samastāḥ sakalā jagatsu |','हे देवि! संसार की समस्त विद्याएँ आपके ही भेद हैं और समस्त स्त्रियाँ आपकी ही मूर्तियाँ हैं।'],
+      ['इत्थं यदा यदा बाधा दानवोत्था भविष्यति ।\nतदा तदावतीर्याहं करिष्याम्यरिसंक्षयम् ॥ ५५ ॥','Itthaṃ yadā yadā bādhā dānavotthā bhaviṣyati | Tadā tadāvatīryāhaṃ kariṣyāmyarisaṃkṣayam ||','इस प्रकार जब-जब दानवी बाधा उत्पन्न होगी, तब-तब मैं अवतार लेकर शत्रुओं का संहार करूँगी।']
+    ],
+    fruit:'परंपरागत मान्यता: सर्वमंगल, रोग-दारिद्र्य निवारण, पारिवारिक सुख और दैवीय कृपा के लिए यह सर्वश्रेष्ठ स्तुति मानी जाती है।'
+  },
+  {
+    n:'12',charitra:'उत्तम चरित्र · महासरस्वती',verses:41,
+    title:'भगवती वाक्य · फलश्रुति एवं पाठ महिमा',en:'Phalashruti: Fruits & Power of Listening/Reciting',
+    meta:'ऋषि: रुद्र · छन्द: अनुष्टुप् · देवता: महासरस्वती · महिमा अध्याय',
+    img:IMGS.lakshmi,
+    dhyana:'ॐ विद्युद्दामसमप्रभां मृगपतिस्कन्धस्थितां भीषणां\nकन्याभिः करवालखेटविलसद्धस्ताभिरासेविताम् ।\nहस्तैश्चक्रगदासिखेटविशिखांश्चापं गुणं तर्जनीं\nबिभ्राणामनलात्मिकां शशिधरां दुर्गां त्रिनेत्रां भजे ॥',
+    dhyanaArth:'बिजली की रेखा जैसी कांति वाली, सिंह पर आरूढ़, चन्द्रमा धारण करने वाली त्रिनेत्री दुर्गा का ध्यान करें।',
+    hi:'इस अध्याय में स्वयं भगवती दुर्गा अपने इस पावन चरित्र (माहात्म्य) के पाठ, श्रवण और पूजन का महात्म्य बताती हैं। देवी कहती हैं—"जो व्यक्ति एकाग्र चित्त से नित्य इन स्तुतियों द्वारा मेरा स्तवन करेगा, उसके समस्त कष्ट मैं निश्चित रूप से हर लूँगी।" उन्होंने विशेष रूप से अष्टमी, चतुर्दशी तथा नवमी तिथि को, और विशेषकर शरत्काल के महापूजन (शारदीय नवरात्रि) में भक्तिपूर्वक इस माहात्म्य के श्रवण की महिमा बतायी।\n\nदेवी आश्वासन देती हैं कि जहाँ इस चरित्र का पाठ होता है वहाँ दरिद्रता, शोक, रोग, अनर्थ, अग्नि-चोर का भय, दुःस्वप्न अथवा ग्रह-पीड़ा नहीं टिकती; बालग्रह भी शांत होते हैं और परस्पर फूट मिटकर प्रेम बढ़ता है। यदि कोई व्यक्ति दावानल, घने वन, लुटेरों, हिंसक पशुओं, भयानक युद्ध या तूफानी समुद्र में भी फँस जाए और मधु-कैटभ वध, महिषासुर वध या शुम्भ-निशुम्भ वध का स्मरण करे, तो वह तुरंत संकट से मुक्त हो जाता है। इतना कहकर देवी देवताओं के देखते-देखते अंतर्धान हो गईं और देवता स्वर्ग में पुनः प्रतिष्ठित हो गए।',
+    enText:'The Goddess herself describes the fruits (Phalashruti) of reciting, hearing, and contemplating the Devi Mahatmya. She promises to remove every affliction of those who praise her with devotion, especially during Ashtami, Chaturdashi, Navami, and the great Autumn worship (Sharadiya Navratri). Wherever this scripture is read, poverty, fear, epidemics, bad dreams, and discord subside. Even one trapped in a forest fire, surrounded by robbers or wild beasts, caught in battle or a stormy sea, finds immediate protection upon remembering these sacred episodes. Having spoken thus, the Goddess vanishes and the gods resume their celestial harmony.',
+    shlokas:[
+      ['सर्वाबाधाविनिर्मुक्तो धनधान्यसुतान्वितः ।\nमनुष्यो मत्प्रसादेन भविष्यति न संशयः ॥ १३ ॥','Sarvābādhāvinirmukto dhanadhānyasutānvitaḥ | Manuṣyo matprasādena bhaviṣyati na saṃśayaḥ ||','मेरी कृपा से मनुष्य सब बाधाओं से मुक्त होकर धन, धान्य और संतान से सम्पन्न होगा, इसमें कोई संशय नहीं।'],
+      ['शरत्काले महापूजा क्रियते या च वार्षिकी ।\nतस्यां ममैतन्माहात्म्यं श्रुत्वा भक्तिसमन्वितः ॥ १२ ॥','Śaratkāle mahāpūjā kriyate yā ca vārṣikī | Tasyāṃ mamaitanmāhātmyaṃ śrutvā bhaktisamanvitaḥ ||','शरद् ऋतु में जो वार्षिक महापूजा (नवरात्रि) की जाती है, उसमें भक्तिपूर्वक इस माहात्म्य के श्रवण से मनुष्य समस्त बाधाओं से मुक्त होता है।']
+    ],
+    fruit:'परंपरागत मान्यता: पाठ की सिद्धि, सपरिवार आरोग्य, समृद्धि, निर्भयता और सद्भाव के लिए इस अध्याय का पाठ अनिवार्य माना गया है।'
+  },
+  {
+    n:'13',charitra:'उत्तम चरित्र · महासरस्वती',verses:29,
+    title:'राजा सुरथ और वैश्य समाधि को वरदान',en:'Boon to King Suratha & Merchant Samadhi',
+    meta:'ऋषि: रुद्र · छन्द: अनुष्टुप् · देवता: महासरस्वती · उपसंहार अध्याय',
+    img:IMGS.durga,
+    dhyana:'ॐ बालार्कद्युतिमिन्दुखण्डविलसत्कोटीरहारोज्ज्वलां\nरत्नाकल्पविभूषितां कुचयुगे हारावलीशोभिताम् ।\nपाशं साङ्कुशपुस्तकाक्षवलयं दधतीं करैर्योगिनीं\nवन्देऽहं परमेश्वरीं त्रिनयनां वागीश्वरीं सिद्धिदाम् ॥',
+    dhyanaArth:'उदय होते सूर्य जैसी कान्ति वाली, अर्धचन्द्र मुकुट और रत्नों से विभूषित, पाश-अंकुश-पुस्तक-माला धारण करने वाली सिद्धिदात्री परमेश्वरी को प्रणाम।',
+    hi:'मार्कण्डेय ऋषि ने कहा—हे मुने! इस प्रकार मेधा ऋषि ने राजा सुरथ और वैश्य समाधि को देवी का यह उत्तम माहात्म्य सुनाया और कहा कि इन्हीं जगदम्बा की शरण में जाओ। तब दोनों ने ऋषि को प्रणाम किया और नदी के तट पर जाकर तपस्या आरंभ कर दी। उन्होंने मिट्टी की देवी की मूर्ति बनाई और पुष्प, धूप, अग्निहोत्र व तर्पण से पूजा करते हुए देवीसूक्त का जप किया।\n\nनिराहार और अल्पाहार करते हुए तीन वर्षों तक कठोर तप करने के पश्चात् जगदम्बा चण्डिका प्रत्यक्ष प्रकट हुईं और बोलीं—"हे राजन् और वैश्य श्रेष्ठ! तुम्हारी भक्ति से मैं अत्यंत प्रसन्न हूँ, मनचाहा वर माँगो।" राजा सुरथ ने अपने खोए हुए राज्य की पुनर्प्राप्ति और अखंड साम्राज्य माँगा। किंतु वैश्य समाधि को संसार से विरक्ति हो चुकी थी; उन्होंने मोह और ममता के बंधन को काटने वाला परम "ज्ञान" माँगा।\n\nमाँ ने दोनों को वर दिया: राजा सुरथ को तत्काल अपना राज्य वापस मिला और अगले जन्म में वे सूर्य से उत्पन्न होकर "सावर्णि मनु" बनेंगे; तथा वैश्य समाधि को परम आत्मज्ञान प्राप्त हुआ, जिससे वे जन्म-मरण के बंधन से मुक्त हो गए।',
+    enText:'Sage Medhas concludes the narration and urges Suratha and Samadhi to take refuge in the Mother. Bidding farewell to the sage, both retire to a riverbank and perform intense austerities for three years—fashioning an earthen image of the Goddess, offering flowers, incense, fire-oblations, and chanting the Devi Sukta. Appearing before them in radiant splendor, Chandika offers each a boon. King Suratha asks for the restoration of his kingdom and lasting sovereignty; Merchant Samadhi, having seen the fleeting nature of worldly ties, asks for supreme knowledge that severs all attachment. The Goddess grants both: Suratha regains his throne and is destined to become Savarni Manu in his next birth, while Samadhi attains liberating Self-knowledge.',
+    shlokas:[
+      ['ततस्तुष्टे जगद्धात्री प्रत्यक्षं प्राह चण्डिका ।\nयत्प्रार्थ्यते त्वया भूप त्वया च कुलनन्दन ॥ १९ ॥','(कथा सार)','तीन वर्ष की तपस्या से संतुष्ट होकर जगद्धात्री चण्डिका ने प्रत्यक्ष प्रकट होकर कहा—तुम दोनों जो चाहो, वह वर माँग लो।'],
+      ['ततो वव्रे नृपो राज्यमविभ्रंश्याऽन्यजन्मनि ।\nवैश्यस्तु ज्ञानमात्मनो ममत्वाहमतिकृन्तम् ॥','(कथा सार)','राजा ने अखंड राज्य माँगा और वैश्य समाधि ने ममत्व व अहंकार को काटने वाला आत्मज्ञान माँगा। माँ ने दोनों की इच्छा पूर्ण की।']
+    ],
+    fruit:'परंपरागत मान्यता: आध्यात्मिक ज्ञान, वैराग्य अथवा धर्मसम्मत लौकिक प्रतिष्ठा व सिद्धि की पूर्णता के साथ पाठ का समापन।'
+  }
+],
+DSORDER_HI:'पारंपरिक सप्तशती पाठ क्रम: १. आचमन, पवित्रीकरण, संकल्प, गणेश-कलश पूजन → २. नवार्ण जप (108) → ३. देवी कवचम् → ४. अर्गला स्तोत्रम् → ५. कीलक स्तोत्रम् → ६. रात्रि सूक्तम् → ७. तेरह अध्याय (न्यास सहित) → ८. देवी सूक्तम् → ९. तीनों रहस्य (प्राधानिक, वैकृतिक, मूर्ति रहस्य) → १०. क्षमा-प्रार्थना व सिद्ध कुञ्जिका स्तोत्रम्।',
+DSORDER_EN:'Traditional Parayana order: Resolve & Ganesha-Kalash puja → Navarna japa (108) → Devi Kavacha → Argala → Keelaka → Ratri Sukta → 13 Chapters → Devi Sukta → Three Rahasyas → Kshama Prarthana & Siddha Kunjika.',
+DSSCHED:[
+  ['९ दिन (नवरात्रि क्रम)','दिन 1: अध्याय 1 · दिन 2: अध्याय 2–3 · दिन 3: अध्याय 4 · दिन 4: अध्याय 5–6 · दिन 5: अध्याय 7 · दिन 6: अध्याय 8 · दिन 7: अध्याय 9–10 · दिन 8: अध्याय 11 · दिन 9: अध्याय 12–13'],
+  ['७ दिन (सप्ताह पारायण)','दिन 1: अध्याय 1 · दिन 2: अध्याय 2–3 · दिन 3: अध्याय 4 · दिन 4: अध्याय 5–8 · दिन 5: अध्याय 9–10 · दिन 6: अध्याय 11 · दिन 7: अध्याय 12–13'],
+  ['३ चरित्र (त्रिदिवसीय)','प्रथम दिन: प्रथम चरित्र (अध्याय 1) · द्वितीय दिन: मध्यम चरित्र (अध्याय 2–4) · तृतीय दिन: उत्तम चरित्र (अध्याय 5–13)'],
+  ['१ दिन (सम्पूर्ण पाठ)','अंग-त्रय (कवच-अर्गला-कीलक) + 13 अध्याय + क्षमा प्रार्थना (अथवा समय अभाव में सप्तश्लोकी + सिद्ध कुञ्जिका)']
+],
+DSMT:[
+  ['या देवी सर्वभूतेषु शक्तिरूपेण संस्थिता ।\nनमस्तस्यै नमस्तस्यै नमस्तस्यै नमो नमः ॥','Yā devī sarvabhūteṣu śaktirūpeṇa saṃsthitā |\nNamastasyai namastasyai namastasyai namo namaḥ ||','जो देवी सब प्राणियों में शक्ति रूप से स्थित हैं, उन्हें बारंबार नमस्कार।','Salutations again and again to the Goddess who dwells in all beings as Power.','अध्याय 5'],
+  ['सर्वमङ्गलमाङ्गल्ये शिवे सर्वार्थसाधिके ।\nशरण्ये त्र्यम्बके गौरि नारायणि नमोऽस्तु ते ॥','Sarvamaṅgalamāṅgalye śive sarvārthasādhike |\nŚaraṇye tryambake gauri nārāyaṇi namo\'stu te ||','हे सब मंगलों की मंगल, कल्याणी, सब कार्य सिद्ध करने वाली नारायणी, आपको नमस्कार।','O auspiciousness of all that is auspicious, giver of every aim, Narayani, I bow to you.','अध्याय 11'],
+  ['सर्वस्वरूपे सर्वेशे सर्वशक्तिसमन्विते ।\nभयेभ्यस्त्राहि नो देवि दुर्गे देवि नमोऽस्तु ते ॥','Sarvasvarūpe sarveśe sarvaśaktisamanvite |\nBhayebhyastrāhi no devi durge devi namo\'stu te ||','हे सर्वरूपा, सर्वेश्वरी, सर्वशक्तिमयी दुर्गा देवी, हमें भय से बचाइए।','O Durga, all-formed and sovereign of all, protect us from fear.','अध्याय 11'],
+  ['रूपं देहि जयं देहि यशो देहि द्विषो जहि ।','Rūpaṃ dehi jayaṃ dehi yaśo dehi dviṣo jahi |','मुझे रूप दें, विजय दें, यश दें और मेरे आंतरिक शत्रुओं का नाश करें।','Grant me spiritual beauty, victory, fame, and destroy adversaries.','अर्गला स्तोत्र'],
+  ['ॐ ऐं ह्रीं क्लीं चामुण्डायै विच्चे','Oṃ Aiṃ Hrīṃ Klīṃ Cāmuṇḍāyai Vicce','नवार्ण महामंत्र: महासरस्वती (ऐं), महालक्ष्मी (ह्रीं), महाकाली (क्लीं) की संयुक्त चामुण्डा शक्ति को प्रणाम।','The nine-syllable mantra uniting Sarasvati, Lakshmi and Kali as Chamunda.','मूल नवार्ण मंत्र']
+]
+};
+
+/* ---------- All Gods & Goddesses Showcase ---------- */
+const DARSHAN=[
+  {name:'माँ दुर्गा',sub:'महिषासुरमर्दिनी',img:IMGS.durga,sym:'दुं',mantraId:'mt4'},
+  {name:'श्री गणेश',sub:'विघ्नहर्ता',img:IMGS.ganesha,sym:'गं',mantraId:'mt11'},
+  {name:'भगवान शिव',sub:'महादेव',img:IMGS.shiva,sym:'ॐ',mantraId:'mt9'},
+  {name:'श्री विष्णु',sub:'नारायण',img:IMGS.vishnu,sym:'ॐ',mantraId:'mt13'},
+  {name:'माँ लक्ष्मी',sub:'कमला / श्री',img:IMGS.lakshmi,sym:'श्रीं',mantraId:'mt7'},
+  {name:'माँ सरस्वती',sub:'वाग्देवी',img:IMGS.saraswati,sym:'ऐं',mantraId:'mt8'},
+  {name:'श्री हनुमान',sub:'बजरंगबली',img:IMGS.hanuman,sym:'हं',mantraId:'mt16'},
+  {name:'माँ काली',sub:'दश महाविद्या १',img:IMGS.kali,sym:'क्रीं',vidyaId:'kali'},
+  {name:'सूर्य देव',sub:'आदित्य / गायत्री',img:IMGS.surya,sym:'ॐ',mantraId:'mt0'},
+  {name:'श्री भैरव',sub:'कालभैरव',img:IMGS.bhairava,sym:'हूं',mantraId:'mt18'}
+];
+
+/* ---------- Helpers ---------- */
 const $=s=>document.querySelector(s);
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const LS={
@@ -454,7 +987,7 @@ const LS={
 const pad=n=>String(n).padStart(2,'0');
 const iso=(d=new Date())=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
 let toastT;
-function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),1800)}
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),1900)}
 async function copyText(t){
   try{await navigator.clipboard.writeText(t);toast('Copy हुआ')}
   catch(e){const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy');toast('Copy हुआ')}catch(x){toast('Copy नहीं हो सका')}a.remove()}
@@ -469,28 +1002,60 @@ function twoStep(btn,fn){
   setTimeout(()=>{if(btn.dataset.armed){delete btn.dataset.armed;btn.textContent=btn.dataset.old}},3000);
 }
 
-/* ---------- data ---------- */
+/* ---------- Web Audio Temple Bell + Speech ---------- */
+let audioCtx=null;
+function playBell(force){
+  if(!force && !bellSound)return;
+  try{
+    const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;
+    if(!audioCtx)audioCtx=new AC();
+    if(audioCtx.state==='suspended')audioCtx.resume();
+    const now=audioCtx.currentTime;
+    [528,1056,1584].forEach((freq,i)=>{
+      const osc=audioCtx.createOscillator(),gain=audioCtx.createGain();
+      osc.type='sine';osc.frequency.setValueAtTime(freq,now);
+      gain.gain.setValueAtTime(0.18/(i+1),now);
+      gain.gain.exponentialRampToValueAtTime(0.0005,now+2.2-i*0.35);
+      osc.connect(gain);gain.connect(audioCtx.destination);
+      osc.start(now);osc.stop(now+2.2);
+    });
+  }catch(e){}
+}
+function speakText(txt){
+  if(!('speechSynthesis' in window)){toast('इस ब्राउज़र में ऑडियो पाठ उपलब्ध नहीं');return}
+  try{
+    if(speechSynthesis.speaking){speechSynthesis.cancel();toast('पाठ रोका गया');return}
+    const u=new SpeechSynthesisUtterance(txt);
+    const voices=speechSynthesis.getVoices();
+    const hi=voices.find(v=>/hi|sa/i.test(v.lang));
+    if(hi)u.voice=hi;
+    u.lang='hi-IN';u.rate=0.9;
+    speechSynthesis.speak(u);toast('🔊 पाठ प्रारंभ...');
+  }catch(e){toast('ऑडियो नहीं चल सका')}
+}
+
+/* ---------- Derived Data ---------- */
 const IDS=['kali','tara','tripura','bhuvaneshwari','bhairavi','chinnamasta','dhumavati','bagalamukhi','matangi','kamala'];
 const EMO=['🖤','🔵','🌺','🌍','🔥','⚡','🌫️','🟡','🎵','🪷'];
 const SIMPLE=['ॐ क्रीं कालिकायै नमः','ॐ तारे तुत्तारे तुरे स्वाहा','ॐ श्रीं ह्रीं क्लीं','ॐ ह्रीं भुवनेश्वर्यै नमः','ॐ ह्रीं भैरव्यै नमः','ॐ ह्रीं छिन्नमस्तायै नमः','ॐ धूं धूमावत्यै नमः','ॐ ह्लीं बगलामुख्यै नमः','ॐ ह्रीं मातंग्यै नमः','ॐ श्रीं कमलायै नमः'];
 const INTRO=['काल, परिवर्तन, निर्भयता और शक्ति के प्रतीक रूप में पूजित।','करुणा, मार्गदर्शन और संकट से पार जाने के प्रतीक रूप में पूजित।','श्रीविद्या परंपरा की प्रमुख देवी।','विश्व और व्यापक चेतना की देवी के रूप में पूजित।','तप, अनुशासन और शक्ति की परंपरा से जुड़ी महाविद्या।','त्याग, आत्मबल और गहन प्रतीकवाद की महाविद्या।','वैराग्य और जीवन के कठिन अनुभवों से संबंधित महाविद्या।','वाणी, शक्ति और स्तम्भन प्रतीकवाद से संबंधित महाविद्या।','वाणी, संगीत, कला और ज्ञान से संबंधित महाविद्या।','समृद्धि, सौभाग्य और लक्ष्मी स्वरूप से संबंधित महाविद्या।'];
 const NOTE=['काली परंपरा में शक्ति और परिवर्तन का प्रतीक।','यह मंत्र बौद्ध तारा परंपरा में भी प्रसिद्ध है।','विशिष्ट श्रीविद्या मंत्रों के लिए परंपरागत गुरु मार्गदर्शन लें।','','','विशिष्ट साधना में गुरु मार्गदर्शन आवश्यक माना जाता है।','','विशिष्ट अनुष्ठान के लिए गुरु मार्गदर्शन लें।','',''];
 const GURU=[2,4,5,6,7];
-const VID=DATA.MV.map((m,i)=>({id:IDS[i],emoji:EMO[i],name:'माँ '+m.name,rm:m.rm,intro:INTRO[i],roop:m.roop,beej:m.beej,simple:SIMPLE[i],prachalit:m.mantra,ro:m.ro,graha:m.graha,bhav:m.bhav,note:NOTE[i],guru:GURU.includes(i)}));
+const VID=DATA.MV.map((m,i)=>({id:IDS[i],emoji:EMO[i],name:'माँ '+m.name,rm:m.rm,intro:INTRO[i],roop:m.roop,beej:m.beej,simple:SIMPLE[i],prachalit:m.mantra,ro:m.ro,graha:m.graha,bhav:m.bhav,note:NOTE[i],guru:GURU.includes(i),img:m.img}));
 
 const MANTRAS=[];
-DATA.MT.forEach(([cat,items])=>items.forEach(([t,dv,ro])=>MANTRAS.push({id:'mt'+MANTRAS.length,cat,title:t,dv,ro})));
+DATA.MT.forEach(([cat,catImg,items])=>items.forEach(([t,dv,ro,arth,vidhi,img])=>MANTRAS.push({id:'mt'+MANTRAS.length,cat,title:t,dv,ro,arth,vidhi,img:img||catImg})));
 const BASE_MANTRAS=MANTRAS.length;
-VID.forEach(v=>MANTRAS.push({id:'mv-'+v.id,cat:'महाविद्या',title:v.name,dv:v.simple,ro:''}));
+VID.forEach(v=>MANTRAS.push({id:'mv-'+v.id,cat:'महाविद्या',title:v.name,dv:v.simple,ro:v.ro,arth:v.bhav,vidhi:'बीज: '+v.beej+' · ग्रह: '+v.graha,img:v.img}));
 const MCATS=['सभी',...new Set(MANTRAS.map(m=>m.cat))];
 const mById=id=>MANTRAS.find(m=>m.id===id);
 
 const DAYS=[['रविवार','सूर्य देव'],['सोमवार','शिव'],['मंगलवार','हनुमान, दुर्गा'],['बुधवार','गणेश'],['गुरुवार','विष्णु'],['शुक्रवार','लक्ष्मी, दुर्गा'],['शनिवार','हनुमान, शनि देव']];
 const MONTHLY=[['एकादशी','विष्णु','शुक्ल और कृष्ण पक्ष की 11वीं तिथि'],['प्रदोष','शिव','त्रयोदशी (13वीं तिथि) की संध्या'],['संकष्टी चतुर्थी','गणेश','कृष्ण पक्ष की चतुर्थी'],['मासिक शिवरात्रि','शिव','कृष्ण पक्ष की चतुर्दशी'],['दुर्गा अष्टमी','दुर्गा','शुक्ल पक्ष की अष्टमी'],['पूर्णिमा','सत्यनारायण, चंद्र','पक्ष की पूर्ण तिथि'],['अमावस्या','पितृ, काली उपासना','कृष्ण पक्ष की अंतिम तिथि']];
-const FEST=[['चैत्र नवरात्रि','दुर्गा पूजा','चैत्र शुक्ल प्रतिपदा से नवमी'],['राम नवमी','श्रीराम पूजा','चैत्र शुक्ल नवमी'],['हनुमान जयंती','हनुमान पूजा','चैत्र पूर्णिमा (क्षेत्रीय परंपराएँ भिन्न)'],['अक्षय तृतीया','लक्ष्मी-विष्णु पूजा','वैशाख शुक्ल तृतीया'],['गुप्त नवरात्रि','दश महाविद्या साधना','आषाढ़ और माघ शुक्ल प्रतिपदा से नवमी'],['गुरु पूर्णिमा','गुरु पूजा','आषाढ़ पूर्णिमा'],['रक्षाबंधन','पर्व','श्रावण पूर्णिमा'],['जन्माष्टमी','कृष्ण पूजा','भाद्रपद कृष्ण अष्टमी'],['गणेश चतुर्थी','गणेश पूजा','भाद्रपद शुक्ल चतुर्थी'],['शारदीय नवरात्रि','दुर्गा पूजा','आश्विन शुक्ल प्रतिपदा से नवमी'],['विजयादशमी','दुर्गा, श्रीराम','आश्विन शुक्ल दशमी'],['धनतेरस','लक्ष्मी-कुबेर, धन्वंतरि','कार्तिक कृष्ण त्रयोदशी'],['दीपावली','महालक्ष्मी पूजा','कार्तिक अमावस्या'],['कार्तिक पूर्णिमा','विष्णु, शिव','कार्तिक पूर्णिमा'],['वसंत पंचमी','सरस्वती पूजा','माघ शुक्ल पंचमी'],['महाशिवरात्रि','शिव पूजा','फाल्गुन कृष्ण चतुर्दशी'],['होली','रंगोत्सव','फाल्गुन पूर्णिमा']];
-const QUOTES=['कुछ क्षण शांत होकर मंत्र स्मरण करें।','भक्ति के साथ नियमितता भी साधना है।','ध्यान, शांति और सद्भाव का अभ्यास करें।'];
+const FEST=[['चैत्र नवरात्रि','दुर्गा पूजा','चैत्र शुक्ल प्रतिपदा से नवमी'],['राम नवमी','श्रीराम पूजा','चैत्र शुक्ल नवमी'],['हनुमान जयंती','हनुमान पूजा','चैत्र पूर्णिमा'],['अक्षय तृतीया','लक्ष्मी-विष्णु पूजा','वैशाख शुक्ल तृतीया'],['गुप्त नवरात्रि','दश महाविद्या साधना','आषाढ़ और माघ शुक्ल प्रतिपदा से नवमी'],['गुरु पूर्णिमा','गुरु पूजा','आषाढ़ पूर्णिमा'],['रक्षाबंधन','पर्व','श्रावण पूर्णिमा'],['जन्माष्टमी','कृष्ण पूजा','भाद्रपद कृष्ण अष्टमी'],['गणेश चतुर्थी','गणेश पूजा','भाद्रपद शुक्ल चतुर्थी'],['शारदीय नवरात्रि','दुर्गा पूजा','आश्विन शुक्ल प्रतिपदा से नवमी'],['विजयादशमी','दुर्गा, श्रीराम','आश्विन शुक्ल दशमी'],['धनतेरस','लक्ष्मी-कुबेर, धन्वंतरि','कार्तिक कृष्ण त्रयोदशी'],['दीपावली','महालक्ष्मी पूजा','कार्तिक अमावस्या'],['कार्तिक पूर्णिमा','विष्णु, शिव','कार्तिक पूर्णिमा'],['वसंत पंचमी','सरस्वती पूजा','माघ शुक्ल पंचमी'],['महाशिवरात्रि','शिव पूजा','फाल्गुन कृष्ण चतुर्दशी'],['होली','रंगोत्सव','फाल्गुन पूर्णिमा']];
+const QUOTES=['कुछ क्षण शांत होकर माँ भगवती और इष्टदेव का स्मरण करें।','भक्ति के साथ नियमितता ही सच्ची साधना है।','करुणा, धैर्य और सद्भाव प्रत्येक पूजा का सार है।','अहंकार के क्षय में ही महाकाली की सच्ची उपासना है।'];
 
-/* ---------- state ---------- */
+/* ---------- State (Preserving V5 storage keys) ---------- */
 let favs=LS.get('dv2_favs',[]);
 let ct=Math.max(0,parseInt(LS.get('dv2_ct',0),10)||0);
 let goal=Math.max(1,parseInt(LS.get('dv2_goal',108),10)||108);
@@ -504,12 +1069,14 @@ let chk=LS.get('dv3_chk',{});
 let visited=LS.get('dv3_visited',{});
 let readCh=LS.get('dv3_read',{});
 let vib=LS.get('dv3_vib',true);
+let bellSound=LS.get('dv4_bell',true);
 let fontPx=LS.get('dv3_font',16);
-let mCat='सभी',pGroup='सभी';
+let readerFs=LS.get('dv4_rfs',16);
+let mCat='सभी',pGroup='सभी',dsFilter='सभी';
 let medTotal=600,medLeft=600,medInterval=null;
 
-/* ---------- navigation ---------- */
-const TABS=[['home','🏠 Home'],['vidya','🔱 महाविद्या'],['mantra','🕉️ मंत्र'],['japa','📿 जप'],['puja','🪔 पूजा'],['peeth','🛕 शक्तिपीठ'],['saptashati','📖 सप्तशती'],['calendar','🗓️ पर्व'],['meditate','🧘 ध्यान'],['planner','📅 Planner'],['saved','❤️ Saved'],['settings','⚙️']];
+/* ---------- Navigation ---------- */
+const TABS=[['home','🏠 Home'],['saptashati','📖 सप्तशती'],['vidya','🔱 महाविद्या'],['mantra','🕉️ मंत्र'],['japa','📿 जप'],['puja','🪔 पूजा'],['peeth','🛕 शक्तिपीठ'],['calendar','🗓️ पर्व'],['meditate','🧘 ध्यान'],['planner','📅 Planner'],['saved','❤️ Saved'],['settings','⚙️']];
 $('#nav').innerHTML=TABS.map(t=>`<button data-act="tab" data-id="${t[0]}">${t[1]}</button>`).join('');
 const R={};
 function tab(id,noScroll){
@@ -521,7 +1088,7 @@ function tab(id,noScroll){
   if(!noScroll)window.scrollTo({top:0,behavior:'smooth'});
 }
 
-/* ---------- home ---------- */
+/* ---------- Home ---------- */
 function dayOfYear(){const n=new Date();return Math.floor((n-new Date(n.getFullYear(),0,0))/864e5)}
 function streak(){
   const d=new Date();let s=0;
@@ -534,12 +1101,13 @@ R.home=()=>{
   $('#todayLine').textContent='आज '+wd[0]+' है। परंपरा में इस वार के देवता: '+wd[1]+'।';
   $('#hToday').textContent=days[iso()]||0;
   $('#hStreak').textContent=streak();
+  $('#darshanStrip').innerHTML=DARSHAN.map((d,i)=>`<div class="darshan-card" data-act="darshan" data-i="${i}" role="button" tabindex="0"><img src="${d.img}" alt="${esc(d.name)}" loading="lazy" onerror="imgErr(this,'${d.sym}')"><span>${esc(d.name)}</span><small>${esc(d.sub)}</small></div>`).join('');
   const m=MANTRAS[dayOfYear()%BASE_MANTRAS];
-  $('#dailyM').innerHTML=`<div class="lbl">${esc(m.cat)} · ${esc(m.title)}</div><div class="mantra" style="font-size:1.2em">${esc(m.dv)}</div><div class="row" style="margin-top:8px"><button class="alt sm" data-act="openM" data-id="${m.id}">विवरण</button><button class="sm" data-act="japaWith" data-id="${m.id}">जप में लें</button></div>`;
-  $('#quote').textContent=QUOTES[new Date().getDate()%3];
+  $('#dailyM').innerHTML=`<div class="row" style="align-items:center"><img class="deity-thumb" src="${m.img}" alt="${esc(m.title)}" onerror="imgErr(this,'ॐ')"><div><div class="lbl">${esc(m.cat)} · ${esc(m.title)}</div><div class="mantra" style="font-size:1.1em;margin:6px 0">${esc(m.dv)}</div></div></div><div class="row" style="margin-top:8px"><button class="alt sm" data-act="openM" data-id="${m.id}">अर्थ व विधि</button><button class="sm" data-act="japaWith" data-id="${m.id}">जप में लें</button></div>`;
+  $('#quote').textContent=QUOTES[new Date().getDate()%QUOTES.length];
 };
 
-/* ---------- global search ---------- */
+/* ---------- Global Search ---------- */
 let resFns=[];
 function search(q){
   q=q.trim().toLowerCase();resFns=[];
@@ -547,17 +1115,17 @@ function search(q){
   const out=[];
   const has=(...a)=>a.join(' ').toLowerCase().includes(q);
   VID.forEach(v=>{if(has(v.name,v.rm,v.beej,v.simple,v.prachalit,v.graha))out.push(['महाविद्या',v.name,v.beej+' · '+v.simple,()=>openD(v.id)])});
-  MANTRAS.slice(0,BASE_MANTRAS).forEach(m=>{if(has(m.title,m.dv,m.ro,m.cat))out.push(['मंत्र',m.title,m.cat,()=>openM(m.id)])});
-  DATA.SP.forEach((s,i)=>{if(has(...s))out.push(['शक्तिपीठ',s[0],s[1]+' · '+s[2],()=>{tab('peeth');$('#pf').value=s[0];pGroup='सभी';R.peeth()}])});
-  DATA.DSCH.forEach(c=>{if(has(...c))out.push(['सप्तशती','अध्याय '+c[0]+': '+c[2],c[1],()=>tab('saptashati')])});
-  DATA.DSMT.forEach(v=>{if(has(...v))out.push(['श्लोक',v[0].split('\n')[0],v[4],()=>tab('saptashati')])});
+  MANTRAS.slice(0,BASE_MANTRAS).forEach(m=>{if(has(m.title,m.dv,m.ro,m.cat,m.arth))out.push(['मंत्र',m.title,m.cat,()=>openM(m.id)])});
+  DATA.DSCH.forEach(c=>{if(has(c.n,c.title,c.en,c.charitra,c.hi))out.push(['दुर्गा सप्तशती','अध्याय '+c.n+': '+c.title,c.charitra,()=>openChapter(c.n)])});
+  DATA.DSANGA.forEach(a=>{if(has(a.title,a.sub,a.intro))out.push(['सप्तशती अंग',a.title,a.sub,()=>openAnga(a.id)])});
+  DATA.SP.forEach(s=>{if(has(...s))out.push(['शक्तिपीठ',s[0],s[1]+' · '+s[2],()=>{tab('peeth');$('#pf').value=s[0];pGroup='सभी';R.peeth()}])});
   const top=out.slice(0,12);
   resFns=top.map(o=>o[3]);
   $('#gres').innerHTML=top.length?top.map((o,i)=>`<button class="res" data-act="res" data-i="${i}">${esc(o[1])}<small>${esc(o[0])} · ${esc(o[2])}</small></button>`).join(''):'<p>कुछ नहीं मिला।</p>';
 }
 $('#gq').addEventListener('input',e=>search(e.target.value));
 
-/* ---------- favourites ---------- */
+/* ---------- Favourites ---------- */
 function isFav(id){return favs.includes(id)}
 function toggleFav(id){
   favs=isFav(id)?favs.filter(x=>x!==id):[...favs,id];
@@ -567,32 +1135,57 @@ function toggleFav(id){
 }
 const favBtn=id=>`<button class="alt" data-act="fav" data-id="${id}">${isFav(id)?'❤️ हटाएँ':'🤍 पसंद'}</button>`;
 
-/* ---------- modal ---------- */
-function showModal(html){$('#detail').innerHTML=html;$('#modal').classList.add('show');$('#modal .modalbox button').focus()}
-function closeModal(){$('#modal').classList.remove('show')}
+/* ---------- Modal ---------- */
+function showModal(html,tag='दिव्य विवरण'){
+  $('#modalTag').textContent=tag;
+  $('#detail').innerHTML=html;
+  $('#modal').classList.add('show');
+  $('#modal .modal-head button').focus();
+}
+function closeModal(){if('speechSynthesis' in window)try{speechSynthesis.cancel()}catch(e){}$('#modal').classList.remove('show')}
+
 function openD(id){
   const v=VID.find(x=>x.id===id);if(!v)return;
-  showModal(`<h2>${v.emoji} ${esc(v.name)}</h2><p class="muted">${esc(v.rm)} ${v.guru?'<span class="badge guru">गुरु मार्गदर्शन आवश्यक</span>':''}</p>
+  showModal(`<img class="modal-pic" src="${v.img}" alt="${esc(v.name)}" onerror="imgErr(this,'${esc(v.beej)}')">
+  <h2>${v.emoji} ${esc(v.name)}</h2>
+  <p class="muted">${esc(v.rm)} ${v.guru?'<span class="badge guru">गुरु मार्गदर्शन आवश्यक</span>':''}</p>
   <p>${esc(v.intro)}</p><p>${esc(v.roop)}</p>
   <div class="lbl">सरल मंत्र</div><div class="mantra">${esc(v.simple)}</div>
-  <div class="lbl" style="margin-top:10px">बीज</div><div class="mantra" style="font-size:1.6em">${esc(v.beej)}</div>
-  <div class="lbl" style="margin-top:10px">प्रचलित मंत्र</div><div class="mantra" style="font-size:1.15em">${esc(v.prachalit)}</div><div class="ro">${esc(v.ro)}</div>
+  <div class="lbl" style="margin-top:10px">बीज अक्षर</div><div class="mantra" style="font-size:1.6em">${esc(v.beej)}</div>
+  <div class="lbl" style="margin-top:10px">प्रचलित तंत्रोक्त मंत्र</div><div class="mantra" style="font-size:1.12em">${esc(v.prachalit)}</div><div class="ro">${esc(v.ro)}</div>
   <p><b>ग्रह संबंध:</b> ${esc(v.graha)}<br><b>भाव:</b> ${esc(v.bhav)}</p>
   ${v.note?`<p class="muted">${esc(v.note)}</p>`:''}
-  <div class="row"><button data-act="copy" data-t="${esc(v.simple)}">मंत्र Copy</button><button class="alt" data-act="share" data-t="${esc(v.name+': '+v.simple)}">Share</button>${favBtn(v.id)}<button data-act="japaWith" data-id="mv-${v.id}">जप में लें</button></div>
-  <p class="muted small">पाठ-विधि परंपरा के अनुसार भिन्न हो सकती है।</p>`);
+  <div class="row">
+    <button data-act="copy" data-t="${esc(v.simple)}">मंत्र Copy</button>
+    <button class="alt" data-act="speak" data-t="${esc(v.simple)}">🔊 सुनें</button>
+    <button class="alt" data-act="share" data-t="${esc(v.name+': '+v.simple)}">Share</button>
+    ${favBtn(v.id)}
+    <button data-act="japaWith" data-id="mv-${v.id}">जप में लें</button>
+  </div>`,'दश महाविद्या');
 }
+
 function openM(id){
   const m=mById(id);if(!m)return;
-  showModal(`<div class="lbl">${esc(m.cat)}</div><h2>${esc(m.title)}</h2><div class="mantra">${esc(m.dv)}</div>${m.ro?`<div class="ro">${esc(m.ro)}</div>`:''}
-  <div class="row" style="margin-top:12px"><button data-act="copy" data-t="${esc(m.dv)}">Copy</button><button class="alt" data-act="share" data-t="${esc(m.title+'\n'+m.dv)}">Share</button>${favBtn(m.id)}<button data-act="japaWith" data-id="${m.id}">जप में लें</button></div>`);
+  showModal(`<img class="modal-pic" src="${m.img||IMGS.durga}" alt="${esc(m.title)}" onerror="imgErr(this,'ॐ')">
+  <div class="lbl">${esc(m.cat)}</div><h2>${esc(m.title)}</h2>
+  <div class="mantra">${esc(m.dv)}</div>
+  ${m.ro?`<div class="ro">${esc(m.ro)}</div>`:''}
+  ${m.arth?`<div class="arth-box"><b>अर्थ:</b> ${esc(m.arth)}</div>`:''}
+  ${m.vidhi?`<p class="small"><b>जाप विधि:</b> ${esc(m.vidhi)}</p>`:''}
+  <div class="row" style="margin-top:12px">
+    <button data-act="copy" data-t="${esc(m.dv)}">Copy</button>
+    <button class="alt" data-act="speak" data-t="${esc(m.dv)}">🔊 सुनें</button>
+    <button class="alt" data-act="share" data-t="${esc(m.title+'\n'+m.dv)}">Share</button>
+    ${favBtn(m.id)}
+    <button data-act="japaWith" data-id="${m.id}">जप में लें</button>
+  </div>`,'मंत्र विवरण');
 }
 
 /* ---------- महाविद्या ---------- */
 R.vidya=()=>{
   const q=$('#vf').value.trim().toLowerCase();
   const l=VID.filter(v=>!q||[v.name,v.rm,v.beej,v.simple,v.prachalit,v.graha].join(' ').toLowerCase().includes(q));
-  $('#deities').innerHTML=l.length?l.map(v=>`<div class="card tile" data-act="openD" data-id="${v.id}" role="button" tabindex="0"><div class="emoji">${v.emoji}</div><h3>${esc(v.name)}</h3><small class="muted">बीज: ${esc(v.beej)}</small>${v.guru?'<div><span class="badge guru">गुरु मार्गदर्शन</span></div>':''}</div>`).join(''):'<p>कुछ नहीं मिला।</p>';
+  $('#deities').innerHTML=l.length?l.map(v=>`<div class="card tile" data-act="openD" data-id="${v.id}" role="button" tabindex="0"><img class="deity-pic" src="${v.img}" alt="${esc(v.name)}" loading="lazy" onerror="imgErr(this,'${esc(v.beej)}')"><h3>${v.emoji} ${esc(v.name)}</h3><small class="muted">बीज: ${esc(v.beej)} · ${esc(v.graha)}</small>${v.guru?'<div><span class="badge guru">गुरु मार्गदर्शन</span></div>':''}</div>`).join(''):'<p>कुछ नहीं मिला।</p>';
   $('#beejs').innerHTML=DATA.BJ.map(b=>`<div class="card tile" style="padding:12px"><div class="emoji" style="font-size:2em;color:var(--primary)">${esc(b[0])}</div><small class="muted">${esc(b[1])}</small></div>`).join('');
   $('#tantra').innerHTML=DATA.TN.map(t=>`<div class="card"><h3 style="margin-top:0">${esc(t[0])}</h3>${esc(t[1])}</div>`).join('');
 };
@@ -602,17 +1195,36 @@ $('#vf').addEventListener('input',R.vidya);
 R.mantra=()=>{
   $('#mchips').innerHTML=MCATS.map(c=>`<button data-act="mcat" data-c="${esc(c)}" class="${c===mCat?'on':''}">${esc(c)}</button>`).join('');
   const q=$('#mf').value.trim().toLowerCase();
-  const l=MANTRAS.filter(m=>(mCat==='सभी'||m.cat===mCat)&&(!q||[m.title,m.dv,m.ro,m.cat].join(' ').toLowerCase().includes(q)));
-  $('#mlist').innerHTML=l.length?l.map(m=>`<div class="card"><div class="lbl">${esc(m.cat)}</div><h3 style="margin:2px 0 8px">${esc(m.title)}</h3><div class="mantra" style="font-size:1.15em">${esc(m.dv)}</div>${m.ro?`<div class="ro">${esc(m.ro)}</div>`:''}<div class="row" style="margin-top:10px"><button class="sm" data-act="openM" data-id="${m.id}">मंत्र खोलें</button><button class="alt sm" data-act="copy" data-t="${esc(m.dv)}">Copy</button><button class="alt sm" data-act="fav" data-id="${m.id}">${isFav(m.id)?'❤️ हटाएँ':'🤍 पसंद'}</button><button class="sm" data-act="japaWith" data-id="${m.id}">जप में लें</button></div></div>`).join(''):'<p>कुछ नहीं मिला।</p>';
+  const l=MANTRAS.filter(m=>(mCat==='सभी'||m.cat===mCat)&&(!q||[m.title,m.dv,m.ro,m.cat,m.arth||''].join(' ').toLowerCase().includes(q)));
+  $('#mlist').innerHTML=l.length?l.map(m=>`<div class="card">
+    <div class="row" style="align-items:center;margin-bottom:8px">
+      <img class="deity-thumb" src="${m.img||IMGS.durga}" alt="${esc(m.title)}" loading="lazy" onerror="imgErr(this,'ॐ')" data-act="openM" data-id="${m.id}">
+      <div><div class="lbl">${esc(m.cat)}</div><h3 style="margin:2px 0">${esc(m.title)}</h3></div>
+    </div>
+    <div class="mantra" style="font-size:1.1em">${esc(m.dv)}</div>
+    ${m.ro?`<div class="ro">${esc(m.ro)}</div>`:''}
+    ${m.arth?`<div class="arth-box"><b>भावार्थ:</b> ${esc(m.arth)}</div>`:''}
+    ${m.vidhi?`<p class="small muted" style="margin:6px 0"><b>विधि:</b> ${esc(m.vidhi)}</p>`:''}
+    <div class="row" style="margin-top:10px">
+      <button class="sm" data-act="openM" data-id="${m.id}">खोलें</button>
+      <button class="alt sm" data-act="speak" data-t="${esc(m.dv)}">🔊 सुनें</button>
+      <button class="alt sm" data-act="copy" data-t="${esc(m.dv)}">Copy</button>
+      <button class="alt sm" data-act="fav" data-id="${m.id}">${isFav(m.id)?'❤️ हटाएँ':'🤍 पसंद'}</button>
+      <button class="sm" data-act="japaWith" data-id="${m.id}">जप में लें</button>
+    </div></div>`).join(''):'<p>कुछ नहीं मिला।</p>';
 };
 $('#mf').addEventListener('input',R.mantra);
 
-/* ---------- जप ---------- */
+/* ---------- जप गणक ---------- */
 function bumpDay(n){const k=iso();days[k]=Math.max(0,(days[k]||0)+n);if(!days[k])delete days[k];LS.set('dv3_days',days)}
 function buzz(p){if(vib&&navigator.vibrate){try{navigator.vibrate(p)}catch(e){}}}
 function updateJapa(){
   $('#num').textContent=ct;
-  $('#malaTxt').textContent='माला '+Math.floor(ct/108)+' · मनका '+(ct%108)+' / 108';
+  const bead=ct%108;
+  $('#malaTxt').textContent='माला '+Math.floor(ct/108)+' · मनका '+bead+' / 108';
+  const circ=339.29;
+  const ringRatio=(ct>0 && bead===0)?1:(bead/108);
+  $('#ringProg').style.strokeDashoffset=circ*(1-ringRatio);
   if(document.activeElement!==$('#goal'))$('#goal').value=goal;
   $('#stats').textContent=ct+' / '+goal;
   const pct=Math.min(100,ct/goal*100);
@@ -624,6 +1236,11 @@ function updateJapa(){
   $('#goals').innerHTML=[11,21,54,108,501,1008].map(g=>`<button data-act="goal" data-g="${g}" class="${g===goal?'on':''}">${g}</button>`).join('');
   $('#history').innerHTML=hist.length?hist.slice(-30).reverse().map((x,i)=>{const idx=hist.length-1-i;return `<div class="check" style="align-items:center"><span style="flex:1;min-width:0">${esc(x.date)}: <b>${esc(x.count)}</b> जप · ${esc(x.mantra)}${x.sankalp?'<br><small class="muted">'+esc(x.sankalp)+'</small>':''}</span><button class="alt sm" data-act="delh" data-i="${idx}" aria-label="हटाएँ">✕</button></div>`}).join(''):'<p class="muted">अभी इतिहास खाली है।</p>';
 }
+function showJapaMantra(){
+  const m=mById(curM);
+  $('#japaMantraPreview').textContent=m?m.dv:'';
+  $('#tapBtn').setAttribute('aria-label','एक जप जोड़ें: '+(m?m.title:''));
+}
 R.japa=()=>{
   const sel=$('#mantraSelect');
   if(!sel.options.length){
@@ -632,15 +1249,17 @@ R.japa=()=>{
   }
   sel.value=curM;$('#sankalp').value=sankalp;
   $('#jmsg').textContent='';
-  const m=mById(curM);$('#tapBtn').setAttribute('aria-label','एक जप जोड़ें: '+(m?m.title:''));
+  showJapaMantra();
   updateJapa();
 };
-$('#mantraSelect').addEventListener('change',e=>{curM=e.target.value;LS.set('dv3_mantra',curM)});
+$('#mantraSelect').addEventListener('change',e=>{curM=e.target.value;LS.set('dv3_mantra',curM);showJapaMantra()});
 $('#sankalp').addEventListener('input',e=>{sankalp=e.target.value;LS.set('dv3_sankalp',sankalp)});
 $('#goal').addEventListener('change',e=>{goal=Math.max(1,parseInt(e.target.value,10)||108);LS.set('dv2_goal',goal);updateJapa()});
 function inc(){
   ct++;LS.set('dv2_ct',ct);bumpDay(1);
-  if(ct%108===0)buzz([120,80,120]);else if(ct===goal)buzz([100,80,100]);else buzz(8);
+  if(ct%108===0){buzz([120,80,120]);playBell();toast('🙏 1 माला (108 जप) पूर्ण!')}
+  else if(ct===goal){buzz([100,80,100]);playBell();toast('🙏 लक्ष्य पूर्ण हुआ!')}
+  else buzz(8);
   updateJapa();
 }
 function undo(){if(ct>0){ct--;LS.set('dv2_ct',ct);bumpDay(-1);updateJapa()}}
@@ -672,12 +1291,119 @@ R.peeth=()=>{
 };
 $('#pf').addEventListener('input',R.peeth);
 
-/* ---------- सप्तशती ---------- */
+/* ---------- दुर्गा सप्तशती संपूर्ण ---------- */
+const DSFILTERS=['सभी (13 अध्याय + अंग)','अंग एवं कुञ्जिका','प्रथम चरित्र (1)','मध्यम चरित्र (2–4)','उत्तम चरित्र (5–13)'];
+function openChapter(chNum){
+  const idx=DATA.DSCH.findIndex(x=>x.n===String(chNum));
+  if(idx<0)return;
+  const c=DATA.DSCH[idx];
+  const prev=idx>0?DATA.DSCH[idx-1].n:null;
+  const next=idx<DATA.DSCH.length-1?DATA.DSCH[idx+1].n:null;
+  const fullSpeech=`अध्याय ${c.n}, ${c.title}. ${c.hi}`;
+  showModal(`<div class="reader-body" style="--rfs:${readerFs}px">
+    <div class="row" style="justify-content:space-between;margin-bottom:8px">
+      <div><span class="badge charitra">${esc(c.charitra)}</span> <span class="badge">${c.verses} श्लोक</span></div>
+      <div style="flex:0 0 auto;display:flex;gap:6px">
+        <button class="alt sm" data-act="rfsdn">A-</button>
+        <button class="alt sm" data-act="rfsup">A+</button>
+        <button class="alt sm" data-act="speak" data-t="${esc(fullSpeech)}">🔊 सुनें</button>
+      </div>
+    </div>
+    <img class="modal-pic" src="${c.img}" alt="${esc(c.title)}" style="max-height:200px" onerror="imgErr(this,'दुं')">
+    <h2 style="margin-bottom:2px">📖 अध्याय ${esc(c.n)}: ${esc(c.title)}</h2>
+    <p class="muted small" lang="en" style="margin-top:0">${esc(c.en)}</p>
+    <p class="small muted"><b>विनियोग तत्त्व:</b> ${esc(c.meta)}</p>
+
+    <div class="shloka-block">
+      <div class="lbl" style="text-align:center">अध्याय ध्यान मंत्र</div>
+      <div class="shloka-skt">${esc(c.dhyana)}</div>
+      <p class="small" style="margin:8px 0 0"><b>अर्थ:</b> ${esc(c.dhyanaArth)}</p>
+    </div>
+
+    <h3>📜 संपूर्ण अध्याय कथा एवं पाठ</h3>
+    <div class="ch-summary" style="white-space:pre-line">${esc(c.hi)}</div>
+
+    <h3>✨ अध्याय के प्रमुख एवं सिद्ध श्लोक</h3>
+    ${c.shlokas.map(s=>`<div class="shloka-block"><div class="shloka-skt">${esc(s[0])}</div><div class="ro">${esc(s[1])}</div><p style="margin:6px 0 0"><b>अर्थ:</b> ${esc(s[2])}</p></div>`).join('')}
+
+    <details class="card" style="background:var(--chip)"><summary>English Summary (Chapter ${esc(c.n)})</summary><p lang="en">${esc(c.enText)}</p></details>
+    <div class="arth-box"><b>${esc(c.fruit)}</b></div>
+
+    <div class="row" style="margin-top:14px">
+      <label style="margin:0;color:var(--ink)"><input type="checkbox" data-act="read" data-k="${esc(c.n)}" ${readCh[c.n]?'checked':''}> अध्याय ${esc(c.n)} पढ़ लिया</label>
+    </div>
+    <div class="row" style="margin-top:14px">
+      ${prev?`<button class="alt" data-act="dsopen" data-k="${prev}">← अध्याय ${prev}</button>`:'<span></span>'}
+      ${next?`<button data-act="dsopen" data-k="${next}">अध्याय ${next} →</button>`:'<button data-act="closemodal">🙏 सप्तशती पाठ पूर्ण</button>'}
+    </div>
+  </div>`,'दुर्गा सप्तशती · अध्याय '+c.n);
+}
+
+function openAnga(id){
+  const a=DATA.DSANGA.find(x=>x.id===id);if(!a)return;
+  const fullSpeech=a.title+'. '+a.verses.map(v=>v[0]+' '+v[1]).join(' ');
+  showModal(`<div class="reader-body" style="--rfs:${readerFs}px">
+    <div class="row" style="justify-content:space-between;margin-bottom:8px">
+      <span class="badge charitra">सप्तशती अंग स्तोत्र</span>
+      <div style="flex:0 0 auto;display:flex;gap:6px">
+        <button class="alt sm" data-act="rfsdn">A-</button>
+        <button class="alt sm" data-act="rfsup">A+</button>
+        <button class="alt sm" data-act="speak" data-t="${esc(fullSpeech)}">🔊 सुनें</button>
+      </div>
+    </div>
+    <img class="modal-pic" src="${a.img}" alt="${esc(a.title)}" style="max-height:190px" onerror="imgErr(this,'दुं')">
+    <h2>🔱 ${esc(a.title)}</h2>
+    <p class="small muted">${esc(a.meta)}</p>
+    <p>${esc(a.intro)}</p>
+    ${a.verses.map(v=>`<div class="shloka-block"><div class="shloka-skt">${esc(v[0])}</div><p style="margin:8px 0 0"><b>अर्थ:</b> ${esc(v[1])}</p></div>`).join('')}
+    <button data-act="closemodal">बंद करें</button>
+  </div>`,a.title);
+}
+
 R.saptashati=()=>{
-  $('#dsCh').innerHTML=DATA.DSCH.map(c=>`<div class="card"><div class="lbl">अध्याय ${esc(c[0])} · ${esc(c[1])}</div><h3 style="margin:4px 0">${esc(c[2])}</h3><small class="muted" lang="en">${esc(c[3])}</small><div class="ch-summary small" style="margin-top:8px">${esc((c[4]||'').slice(0,130))}…</div><p><button class="alt sm" data-act="dsopen" data-k="${esc(c[0])}">पूरा अध्याय सार पढ़ें</button></p><label style="margin-top:8px;color:var(--ink)"><input type="checkbox" data-act="read" data-k="${esc(c[0])}" ${readCh[c[0]]?'checked':''}> पढ़ लिया</label></div>`).join('');
+  $('#dsChips').innerHTML=DSFILTERS.map(f=>`<button data-act="dsflt" data-f="${esc(f)}" class="${f===dsFilter?'on':''}">${esc(f)}</button>`).join('');
+  const showAnga=(dsFilter==='सभी (13 अध्याय + अंग)'||dsFilter==='अंग एवं कुञ्जिका');
+  const showCh=(dsFilter!=='अंग एवं कुञ्जिका');
+  $('#dsAngaWrap').style.display=showAnga?'block':'none';
+  $('#dsChWrap').style.display=showCh?'block':'none';
+
+  $('#dsAnga').innerHTML=DATA.DSANGA.map(a=>`<div class="card">
+    <div class="row" style="align-items:center">
+      <img class="deity-thumb" src="${a.img}" alt="${esc(a.title)}" loading="lazy" onerror="imgErr(this,'दुं')">
+      <div><div class="lbl">सप्तशती अंग</div><h3 style="margin:2px 0">${esc(a.title)}</h3><small class="muted">${esc(a.sub)}</small></div>
+    </div>
+    <p class="small" style="margin:8px 0">${esc(a.intro)}</p>
+    <button class="sm" data-act="angaopen" data-id="${a.id}">श्लोक एवं अर्थ पढ़ें</button>
+  </div>`).join('');
+
+  const chs=DATA.DSCH.filter(c=>{
+    const n=+c.n;
+    if(dsFilter==='प्रथम चरित्र (1)')return n===1;
+    if(dsFilter==='मध्यम चरित्र (2–4)')return n>=2&&n<=4;
+    if(dsFilter==='उत्तम चरित्र (5–13)')return n>=5;
+    return true;
+  });
+  $('#dsCh').innerHTML=chs.map(c=>`<div class="card">
+    <div class="row" style="align-items:center">
+      <img class="deity-thumb" src="${c.img}" alt="${esc(c.title)}" loading="lazy" onerror="imgErr(this,'दुं')">
+      <div>
+        <span class="badge charitra">अध्याय ${esc(c.n)} · ${c.verses} श्लोक</span>
+        <div class="lbl" style="margin-top:4px">${esc(c.charitra)}</div>
+        <h3 style="margin:2px 0">${esc(c.title)}</h3>
+        <small class="muted" lang="en">${esc(c.en)}</small>
+      </div>
+    </div>
+    <div class="ch-summary small" style="margin-top:8px">${esc(c.hi.slice(0,155))}…</div>
+    <div class="row" style="margin-top:10px;align-items:center">
+      <button class="sm" data-act="dsopen" data-k="${esc(c.n)}">संपूर्ण पाठ व श्लोक पढ़ें</button>
+      <label style="margin:0;color:var(--ink);flex:0 0 auto"><input type="checkbox" data-act="read" data-k="${esc(c.n)}" ${readCh[c.n]?'checked':''}> पढ़ लिया</label>
+    </div>
+  </div>`).join('');
+
   $('#dsProg').textContent=Object.keys(readCh).filter(k=>readCh[k]).length+' / 13';
+  $('#dsSchedule').innerHTML='<tr><th>पारायण विधि</th><th>अध्याय विभाजन</th></tr>'+DATA.DSSCHED.map(r=>`<tr><td><b>${esc(r[0])}</b></td><td>${esc(r[1])}</td></tr>`).join('');
   $('#dsOrdHi').textContent=DATA.DSORDER_HI;$('#dsOrdEn').textContent=DATA.DSORDER_EN;
-  $('#dsMt').innerHTML=DATA.DSMT.map(v=>`<div class="card"><div class="lbl">${esc(v[4])}</div><div class="mantra" style="font-size:1.15em">${esc(v[0])}</div><div class="ro">${esc(v[1])}</div><p style="margin:10px 0 4px"><b>हिन्दी:</b> ${esc(v[2])}</p><p class="muted" lang="en" style="margin:0"><b>English:</b> ${esc(v[3])}</p><div class="row" style="margin-top:8px"><button class="alt sm" data-act="copy" data-t="${esc(v[0].replace(/\n/g,' '))}">Copy</button></div></div>`).join('');
+  $('#dsMt').innerHTML=DATA.DSMT.map(v=>`<div class="card"><div class="lbl">${esc(v[4])}</div><div class="mantra" style="font-size:1.12em">${esc(v[0])}</div><div class="ro">${esc(v[1])}</div><p style="margin:10px 0 4px"><b>हिन्दी:</b> ${esc(v[2])}</p><p class="muted" lang="en" style="margin:0"><b>English:</b> ${esc(v[3])}</p><div class="row" style="margin-top:8px"><button class="alt sm" data-act="copy" data-t="${esc(v[0].replace(/\n/g,' '))}">Copy</button><button class="alt sm" data-act="speak" data-t="${esc(v[0])}">🔊 सुनें</button></div></div>`).join('');
 };
 
 /* ---------- पर्व ---------- */
@@ -688,17 +1414,17 @@ R.calendar=()=>{
   $('#festivals').innerHTML=FEST.map(f=>`<div class="card"><h3 style="margin-top:0">${esc(f[0])}</h3><p style="margin:0">${esc(f[1])}</p><small class="muted">${esc(f[2])}</small></div>`).join('');
 };
 
-/* ---------- meditation timer ---------- */
+/* ---------- ध्यान टाइमर ---------- */
 function medRender(){
   const mm=Math.floor(medLeft/60),ss=medLeft%60;$('#medTime').textContent=pad(mm)+':'+pad(ss);
   $('#medFill').style.width=(medTotal?((medTotal-medLeft)/medTotal*100):0)+'%';
 }
 function medStop(){if(medInterval){clearInterval(medInterval);medInterval=null;}}
 function medSet(sec){medStop();medTotal=medLeft=sec;$('#medMsg').textContent='ध्यान अवधि '+Math.round(sec/60)+' मिनट चुनी गई।';$('#medStart').textContent='▶ शुरू';medRender();}
-function medStart(){if(medInterval){medStop();$('#medStart').textContent='▶ जारी';$('#medMsg').textContent='ध्यान रोका गया।';return;}if(medLeft<=0)medSet(medTotal);$('#medStart').textContent='⏸ रोकें';$('#medMsg').textContent='धीरे श्वास लें…';medInterval=setInterval(()=>{medLeft--;medRender();if(medLeft<=0){medStop();$('#medStart').textContent='▶ शुरू';$('#medMsg').textContent='🕊️ ध्यान पूर्ण हुआ।';buzz([180,120,180,120,300]);}},1000);}
+function medStart(){if(medInterval){medStop();$('#medStart').textContent='▶ जारी';$('#medMsg').textContent='ध्यान रोका गया।';return;}if(medLeft<=0)medSet(medTotal);$('#medStart').textContent='⏸ रोकें';$('#medMsg').textContent='धीरे श्वास लें…';medInterval=setInterval(()=>{medLeft--;medRender();if(medLeft<=0){medStop();$('#medStart').textContent='▶ शुरू';$('#medMsg').textContent='🕊️ ध्यान पूर्ण हुआ।';buzz([180,120,180,120,300]);playBell();}},1000);}
 R.meditate=medRender;
 
-/* ---------- planner ---------- */
+/* ---------- Planner ---------- */
 function showPlans(){
   $('#planList').innerHTML=plans.length?plans.slice().reverse().map((x,i)=>`<div class="card"><small class="muted">${esc(x.date)}</small><p style="white-space:pre-wrap;overflow-wrap:anywhere">${esc(x.text)}</p><button class="alt sm" data-act="delplan" data-i="${plans.length-1-i}">हटाएँ</button></div>`).join(''):'<p class="muted">अभी कुछ सेव नहीं है।</p>';
 }
@@ -707,21 +1433,22 @@ R.planner=showPlans;
 /* ---------- पसंदीदा ---------- */
 R.saved=()=>{
   const items=favs.map(id=>{
-    const v=VID.find(x=>x.id===id);if(v)return `<div class="card tile" data-act="openD" data-id="${v.id}" role="button" tabindex="0"><div class="emoji">${v.emoji}</div><h3>${esc(v.name)}</h3></div>`;
-    const m=mById(id);if(m)return `<div class="card tile" data-act="openM" data-id="${m.id}" role="button" tabindex="0"><div class="lbl">${esc(m.cat)}</div><h3>${esc(m.title)}</h3><small class="muted">${esc(m.dv.split('\n')[0])}</small></div>`;
+    const v=VID.find(x=>x.id===id);if(v)return `<div class="card tile" data-act="openD" data-id="${v.id}" role="button" tabindex="0"><img class="deity-pic" src="${v.img}" alt="${esc(v.name)}" onerror="imgErr(this,'${esc(v.beej)}')"><h3>${v.emoji} ${esc(v.name)}</h3></div>`;
+    const m=mById(id);if(m)return `<div class="card tile" data-act="openM" data-id="${m.id}" role="button" tabindex="0"><img class="deity-pic" style="aspect-ratio:1/1;max-height:150px" src="${m.img||IMGS.durga}" alt="${esc(m.title)}" onerror="imgErr(this,'ॐ')"><div class="lbl">${esc(m.cat)}</div><h3>${esc(m.title)}</h3><small class="muted">${esc(m.dv.split('\n')[0])}</small></div>`;
     return '';
   }).join('');
   $('#fav').innerHTML=items||'<p>अभी कोई पसंदीदा नहीं।</p>';
 };
 
-/* ---------- settings ---------- */
+/* ---------- Settings ---------- */
 function applyTheme(dark){document.body.classList.toggle('dark',dark);const m=document.querySelector('meta[name=theme-color]');if(m)m.content=dark?'#171117':'#6b183a'}
 function applyFont(){document.documentElement.style.setProperty('--fs',fontPx+'px')}
-R.settings=()=>{$('#vibOn').checked=!!vib};
+R.settings=()=>{$('#vibOn').checked=!!vib;$('#bellOn').checked=!!bellSound};
 $('#vibOn').addEventListener('change',e=>{vib=e.target.checked;LS.set('dv3_vib',vib)});
+$('#bellOn').addEventListener('change',e=>{bellSound=e.target.checked;LS.set('dv4_bell',bellSound)});
 function exportAll(){
-  const data={app:'divya-sadhana',version:4,favorites:favs,japaCount:ct,target:goal,history:hist,days,planner:plans,checks:chk,visited,read:readCh,mantra:curM};
-  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));a.download='divya-sadhana-backup.json';document.body.appendChild(a);a.click();a.remove();
+  const data={app:'divya-sadhana',version:6,favorites:favs,japaCount:ct,target:goal,history:hist,days,planner:plans,checks:chk,visited,read:readCh,mantra:curM};
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));a.download='divya-sadhana-v6-backup.json';document.body.appendChild(a);a.click();a.remove();
 }
 $('#impFile').addEventListener('change',async e=>{
   const f=e.target.files[0];if(!f)return;
@@ -743,7 +1470,7 @@ $('#impFile').addEventListener('change',async e=>{
   e.target.value='';
 });
 
-/* ---------- click router ---------- */
+/* ---------- Click & Keyboard Router ---------- */
 document.addEventListener('click',e=>{
   if(e.target.id==='modal'){closeModal();return}
   const b=e.target.closest('[data-act]');if(!b)return;
@@ -752,14 +1479,28 @@ document.addEventListener('click',e=>{
     case'tab':closeModal();tab(id);break;
     case'openD':openD(id);break;
     case'openM':openM(id);break;
+    case'darshan':{
+      const d=DARSHAN[+b.dataset.i];if(!d)break;
+      if(d.vidyaId)openD(d.vidyaId);
+      else if(d.mantraId)openM(d.mantraId);
+      break;
+    }
+    case'zoomImg':showModal(`<img class="modal-pic" style="max-width:100%;max-height:70vh" src="${b.src}" alt="${esc(b.alt)}"><h3 style="text-align:center">${esc(b.dataset.title||b.alt)}</h3>`,'दिव्य दर्शन');break;
     case'closemodal':closeModal();break;
     case'copy':copyText(b.dataset.t);break;
+    case'speak':speakText(b.dataset.t);break;
+    case'bell':playBell(true);toast('🔔 मंदिर की घंटी');break;
     case'share':shareText(b.dataset.t);break;
     case'fav':toggleFav(id);break;
     case'res':{const f=resFns[+b.dataset.i];if(f)f();break}
     case'japaWith':curM=id;LS.set('dv3_mantra',curM);closeModal();tab('japa');break;
     case'mcat':mCat=b.dataset.c;R.mantra();break;
     case'pgrp':pGroup=b.dataset.c;R.peeth();break;
+    case'dsflt':dsFilter=b.dataset.f;R.saptashati();break;
+    case'dsopen':openChapter(b.dataset.k);break;
+    case'angaopen':openAnga(b.dataset.id);break;
+    case'rfsup':{readerFs=Math.min(24,readerFs+1);LS.set('dv4_rfs',readerFs);const rb=document.querySelector('.reader-body');if(rb)rb.style.setProperty('--rfs',readerFs+'px');break}
+    case'rfsdn':{readerFs=Math.max(13,readerFs-1);LS.set('dv4_rfs',readerFs);const rb=document.querySelector('.reader-body');if(rb)rb.style.setProperty('--rfs',readerFs+'px');break}
     case'inc':inc();break;
     case'undo':undo();break;
     case'reset':twoStep(b,()=>{ct=0;LS.set('dv2_ct',0);updateJapa()});break;
@@ -769,8 +1510,12 @@ document.addEventListener('click',e=>{
     case'chk':chk[b.dataset.k]=b.checked;LS.set('dv3_chk',chk);b.closest('.check').classList.toggle('done',b.checked);break;
     case'pjreset':chk={};LS.set('dv3_chk',chk);R.puja();break;
     case'visit':visited[b.dataset.k]=b.checked;LS.set('dv3_visited',visited);$('#pvis').textContent=Object.keys(visited).filter(k=>visited[k]).length+' / '+DATA.SP.length;break;
-    case'read':readCh[b.dataset.k]=b.checked;LS.set('dv3_read',readCh);$('#dsProg').textContent=Object.keys(readCh).filter(k=>readCh[k]).length+' / 13';break;
-    case'dsopen':{const c=DATA.DSCH.find(x=>x[0]===b.dataset.k);if(c)showModal(`<h2>📖 अध्याय ${esc(c[0])}</h2><div class="lbl">${esc(c[1])}</div><h3>${esc(c[2])}</h3><p class="muted" lang="en">${esc(c[3])}</p><div class="ch-summary" style="margin:14px 0"><b>हिन्दी सार:</b><br>${esc(c[4]||'')}</div><div class="ch-summary muted" lang="en"><b>English summary:</b><br>${esc(c[5]||'')}</div><p class="note">पूरा श्लोक-पाठ प्रामाणिक ग्रंथ (गीताप्रेस आदि) से करें। यह सार अध्ययन हेतु है।</p><button data-act="closemodal">बंद करें</button>`);break;}
+    case'read':{
+      readCh[b.dataset.k]=b.checked;LS.set('dv3_read',readCh);
+      $('#dsProg').textContent=Object.keys(readCh).filter(k=>readCh[k]).length+' / 13';
+      document.querySelectorAll(`input[data-act="read"][data-k="${b.dataset.k}"]`).forEach(el=>el.checked=b.checked);
+      break;
+    }
     case'medset':medSet(+b.dataset.sec);break;
     case'medstart':medStart();break;
     case'medreset':medStop();medLeft=medTotal;$('#medStart').textContent='▶ शुरू';$('#medMsg').textContent='टाइमर रीसेट हुआ।';medRender();break;
@@ -781,16 +1526,19 @@ document.addEventListener('click',e=>{
     case'fontdn':fontPx=Math.max(13,fontPx-1);LS.set('dv3_font',fontPx);applyFont();break;
     case'export':exportAll();break;
     case'import':$('#impFile').click();break;
-    case'wipe':twoStep(b,()=>{try{Object.keys(localStorage).filter(k=>/^dv[23]_/.test(k)).forEach(k=>localStorage.removeItem(k))}catch(x){}location.reload()});break;
+    case'wipe':twoStep(b,()=>{try{Object.keys(localStorage).filter(k=>/^dv[234]_/.test(k)).forEach(k=>localStorage.removeItem(k))}catch(x){}location.reload()});break;
   }
 });
 document.addEventListener('keydown',e=>{
   if(e.key==='Escape')closeModal();
-  if((e.key==='Enter'||e.key===' ')&&e.target.matches('.tile[role=button]')){e.preventDefault();e.target.click()}
+  if((e.key==='Enter'||e.key===' ')&&e.target.matches('[role=button]')){e.preventDefault();e.target.click();return}
+  if(e.key===' '&&$('#japa').classList.contains('on')&&!$('#modal').classList.contains('show')&&!/^(INPUT|TEXTAREA|SELECT|BUTTON)$/.test(document.activeElement.tagName)){
+    e.preventDefault();inc();
+  }
 });
 window.addEventListener('hashchange',()=>tab(location.hash.slice(1),true));
 
-/* ---------- boot ---------- */
+/* ---------- Boot ---------- */
 const savedDark=LS.get('dv2_dark',null);
 applyTheme(savedDark===null?window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches:savedDark);
 applyFont();
@@ -801,4 +1549,3 @@ if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol)){
 </script>
 </body>
 </html>
-All chapters of durga sapsti write and Fully advance, looking all gods pics and mantra update 
